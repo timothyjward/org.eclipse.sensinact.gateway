@@ -114,7 +114,7 @@
 		<!-- HTTP -->
 		<com.sun.jersey.version>1.19.4</com.sun.jersey.version>
 		<org.apache.httpcomponents.fluent-hc.version>4.5.11</org.apache.httpcomponents.fluent-hc.version>
-		<org.apache.httpcomponents.httpclient.version>4.5.11</org.apache.httpcomponents.httpclient.version>
+		<org.apache.httpcomponents.httpclient.version>4.5.13</org.apache.httpcomponents.httpclient.version>
 		<org.apache.httpcomponents.httpclient-cache.version>4.5.11</org.apache.httpcomponents.httpclient-cache.version>
 		<org.apache.httpcomponents.httpclient-osgi.version>4.5.11</org.apache.httpcomponents.httpclient-osgi.version>
 		<org.apache.httpcomponents.httpcore-osgi.version>4.4.13</org.apache.httpcomponents.httpcore-osgi.version>
