@@ -143,7 +143,6 @@
 		<!-- BUILD: org.apache.maven.plugins -->
 		<maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
 		<maven-assembly-plugin.version>3.2.0</maven-assembly-plugin.version>
-		<maven-bundle-plugin.version>4.0.0</maven-bundle-plugin.version>
 		<maven-checkstyle-plugin.version>3.1.0</maven-checkstyle-plugin.version>
 		<maven-clean-plugin.version>3.1.0</maven-clean-plugin.version>
 		<maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
@@ -159,6 +158,9 @@
 		<maven-scm-plugin.version>1.11.2</maven-scm-plugin.version>
 		<maven-site-plugin.version>3.8.2</maven-site-plugin.version>
 		<maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+
+		<!-- BUILD: BND Maven plugins -->
+		<bnd-maven-plugin.version>5.3.0</bnd-maven-plugin.version>
 
 		<!-- BUILD: Mojos -->
 		<mojo-build-helper-maven-plugin.version>3.0.0</mojo-build-helper-maven-plugin.version>
@@ -282,6 +284,7 @@
 
 	<developers>
 		<developer>
+			<id>lguergen</id>
 			<name>Levent Gürgen</name>
 			<email>levent@kentyou.com</email>
 			<organization>Kentyou</organization>
@@ -291,6 +294,7 @@
 			</roles>
 		</developer>
 		<developer>
+			<id>skleisarchaki</id>
 			<name>Sofia Kleisarchaki</name>
 			<email>sofia.kleisarchaki@kentyou.com</email>
 			<organization>Kentyou</organization>
@@ -300,6 +304,7 @@
 			</roles>
 		</developer>	
 		<developer>
+			<id>cmunilla</id>
 			<name>Christophe Munilla</name>
 			<email>cmunilla@kentyou.com</email>
 			<organization>Kentyou</organization>
@@ -309,6 +314,7 @@
 			</roles>
 		</developer>	
 		<developer>
+			<id>rdruilhe</id>
 			<name>Remi Druilhe</name>
 			<organization>CEA</organization>
 			<roles>
@@ -317,6 +323,7 @@
 			</roles>
 		</developer>
 		<developer>
+			<id>egandrille</id>
 			<name>Etienne Gandrille</name>
 			<organization>CEA</organization>
 			<roles>
@@ -325,6 +332,7 @@
 			</roles>
 		</developer>
 		<developer>
+			<id>sbergeon</id>
 			<name>Stéphane Bergeon</name>
 			<organization>CEA</organization>
 			<roles>
@@ -333,6 +341,7 @@
 			</roles>
 		</developer>
 		<developer>
+			<id>jbnascimento</id>
 			<name>Jander Botelho do Nascimento</name>
 			<organization>CEA</organization>
 			<roles>
@@ -341,6 +350,7 @@
 			</roles>
 		</developer>
 		<developer>
+			<id>mgalissot</id>
 			<name>Mathieu Galissot</name>
 			<organization>CEA</organization>
 			<roles>
@@ -349,6 +359,7 @@
 			</roles>
 		</developer>
 		<developer>
+			<id>oganalp</id>
 			<name>Ozan Gunalp</name>
 			<organization>CEA</organization>
 			<roles>
@@ -357,6 +368,7 @@
 			</roles>
 		</developer>
 		<developer>
+			<id>ybanazzouz</id>
 			<name>Yazid Benazzouz</name>
 			<organization>CEA</organization>
 			<roles>
@@ -365,6 +377,7 @@
 			</roles>
 		</developer>
 		<developer>
+			<id>dmoreno</id>
 			<name>Diana Moreno</name>
 			<organization>CEA</organization>
 			<roles>
@@ -1409,6 +1422,10 @@
 			<groupId>org.osgi</groupId>
 			<artifactId>org.osgi.core</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>org.osgi</groupId>
+			<artifactId>osgi.annotation</artifactId>
+		</dependency>
 	</dependencies>
 
 
@@ -1758,30 +1775,132 @@
 						</execution>
 					</executions>
 				</plugin>
-				<plugin>
-					<groupId>org.apache.felix</groupId>
-					<artifactId>maven-bundle-plugin</artifactId>
-					<version>${maven-bundle-plugin.version}</version>
-					<extensions>true</extensions>
-					<configuration>
-						<unpackBundle>true</unpackBundle>
-						<instructions>
-							<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
-							<Bundle-Name>${project.name}</Bundle-Name>
-							<Bundle-Vendor>Eclipse</Bundle-Vendor>
-							<Build-By>Eclipse</Build-By>
-							<Bundle-Description>${project.name}</Bundle-Description>
-							<_nouses>true</_nouses>
-							<_include>-bnd.bnd</_include>
-							<_snapshot>${maven.build.timestamp}</_snapshot>
-							<_plugin>aQute.bnd.signing.JartoolSigner;alias="selfsigned";path="${signer.path}";keystore="${sensinact.rootdir}/platform/sensinact-security/cert/keystore.jks";storepass="sensiNact_team"</_plugin>
-							<_sign>selfsigned</_sign>
-							<_failok>true</_failok>
-							<!-- <_exportcontents> *, !*.internal, !*.internal.*, !${private.package} 
-								</_exportcontents> -->
-						</instructions>
-					</configuration>
-				</plugin>
+				
+				                    <plugin>
+                        <groupId>biz.aQute.bnd</groupId>
+                        <artifactId>bnd-maven-plugin</artifactId>
+                        <version>${bnd-maven-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>bnd-process</goal>
+                                </goals>
+                                <configuration>
+                                    <bnd><![CDATA[
+Bundle-Vendor: Eclipse
+-contract: *
+-includeresource.about: -about.html
+-plugin.jarsigner: aQute.bnd.signing.JartoolSigner;alias="selfsigned";path="${signer.path}";keystore="${sensinact.rootdir}/platform/sensinact-security/cert/keystore.jks";storepass="sensiNact_team"
+-verbose: true
+							]]></bnd>
+                                </configuration>
+                            </execution>
+<!--                             <execution> -->
+<!--                                 <id>bnd-process-tests</id> -->
+<!--                                 <phase>process-test-classes</phase> -->
+<!--                                 <goals> -->
+<!--                                     <goal>bnd-process-tests</goal> -->
+<!--                                 </goals> -->
+<!--                                 <configuration> -->
+<!--                                     <bnd><![CDATA[ -->
+<!-- Bundle-Vendor: Eclipse -->
+<!-- -contract: * -->
+<!-- -includeresource.about: -about.html -->
+<!-- -plugin.jarsigner: aQute.bnd.signing.JartoolSigner;alias="selfsigned";path="${signer.path}";keystore="${sensinact.rootdir}/platform/sensinact-security/cert/keystore.jks";storepass="sensiNact_team" -->
+<!-- -verbose: true -->
+<!-- ]]></bnd> -->
+<!--                                     <testCases>junit4</testCases> -->
+<!--                                 </configuration> -->
+<!--                             </execution> -->
+                        </executions>
+                    </plugin>
+                     <!-- This dynamically calculates all the things we need to run our code. -->
+<!--                     <plugin> -->
+<!--                         <groupId>biz.aQute.bnd</groupId> -->
+<!--                         <artifactId>bnd-resolver-maven-plugin</artifactId> -->
+<!--                         <version>${version.bnd}</version> -->
+<!--                         <executions> -->
+<!--                             Integration Test Configuration -->
+<!--                             <execution> -->
+<!--                                 <id>resolve-test</id> -->
+<!--                                 <phase>pre-integration-test</phase> -->
+<!--                                 <goals> -->
+<!--                                     <goal>resolve</goal> -->
+<!--                                 </goals> -->
+<!--                                 <configuration> -->
+<!--                                     <bndruns> -->
+<!--                                         <bndrun>itest.bndrun</bndrun> -->
+<!--                                     </bndruns> -->
+<!--                                     <bundles> -->
+<!--                                         <bundle>target/${project.build.finalName}-tests.jar</bundle> -->
+<!--                                     </bundles> -->
+<!--                                     <failOnChanges>false</failOnChanges> -->
+<!--                                     <includeDependencyManagement>true</includeDependencyManagement> -->
+<!--                                     <reportOptional>false</reportOptional> -->
+<!--                                     <scopes> -->
+<!--                                         <scope>compile</scope> -->
+<!--                                         <scope>runtime</scope> -->
+<!--                                         <scope>test</scope> -->
+<!--                                     </scopes> -->
+<!--                                 </configuration> -->
+<!--                             </execution> -->
+<!--                         </executions> -->
+<!--                     </plugin> -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-jarsigner-plugin</artifactId>
+						<version>3.0.0</version>
+						<executions>
+							<execution>
+								<id>sign</id>
+								<phase>prepare-package</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<keystore>${sensinact.rootdir}/platform/sensinact-security/cert/keystore.jks</keystore>
+							<alias>Sensinact Keystore</alias>
+							<storepass>sensiNact_team</storepass>
+						</configuration>
+					</plugin>
+                    <!-- Required to make the maven-jar-plugin pick up the bnd generated manifest. Also avoid packaging empty Jars -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <version>3.2.0</version>
+                        <configuration>
+                            <archive>
+                                <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+                            </archive>
+                            <skipIfEmpty>true</skipIfEmpty>
+                        </configuration>
+                    </plugin>
+<!-- 				<plugin> -->
+<!-- 					<groupId>org.apache.felix</groupId> -->
+<!-- 					<artifactId>maven-bundle-plugin</artifactId> -->
+<!-- 					<version>${maven-bundle-plugin.version}</version> -->
+<!-- 					<extensions>true</extensions> -->
+<!-- 					<configuration> -->
+<!-- 						<unpackBundle>true</unpackBundle> -->
+<!-- 						<instructions> -->
+<!-- 							<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName> -->
+<!-- 							<Bundle-Name>${project.name}</Bundle-Name> -->
+<!-- 							<Bundle-Vendor>Eclipse</Bundle-Vendor> -->
+<!-- 							<Build-By>Eclipse</Build-By> -->
+<!-- 							<Bundle-Description>${project.name}</Bundle-Description> -->
+<!-- 							<_nouses>true</_nouses> -->
+<!-- 							<_include>-bnd.bnd</_include> -->
+<!-- 							<_snapshot>${maven.build.timestamp}</_snapshot> -->
+<!-- 							<_plugin>aQute.bnd.signing.JartoolSigner;alias="selfsigned";path="${signer.path}";keystore="${sensinact.rootdir}/platform/sensinact-security/cert/keystore.jks";storepass="sensiNact_team"</_plugin> -->
+<!-- 							<_sign>selfsigned</_sign> -->
+<!-- 							<_failok>true</_failok> -->
+<!-- 							<_exportcontents> *, !*.internal, !*.internal.*, !${private.package} -->  
+<!--								</_exportcontents> -->
+<!-- 						</instructions> -->
+<!-- 					</configuration> -->
+<!-- 				</plugin> -->
 				<plugin>
 					<groupId>org.sonarsource.scanner.maven</groupId>
 					<artifactId>sonar-maven-plugin</artifactId>
@@ -1807,6 +1926,10 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>versions-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+                <groupId>biz.aQute.bnd</groupId>
+            	<artifactId>bnd-maven-plugin</artifactId>
+            </plugin>
 		</plugins>
 	</build>
 
@@ -1904,7 +2027,7 @@
 
 	
 	<reporting>
-		<plugins>			
+		<plugins>		
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>

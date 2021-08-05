@@ -1,0 +1,3 @@
+Import-Package: \
+	org.osgi.service.log,\
+	*

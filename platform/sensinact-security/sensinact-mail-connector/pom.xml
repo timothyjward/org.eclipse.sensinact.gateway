@@ -23,25 +23,27 @@
 
 	<artifactId>sensinact-mail-connector</artifactId>
 
-	<packaging>bundle</packaging>
-
 	<name>sensiNact IoT Gateway - EMail Account Connector</name>
 
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<extensions>true</extensions>
-				<configuration>
-					<instructions>
-						<Bundle-Activator>org.eclipse.sensinact.gateway.mail.connector.osgi.Activator</Bundle-Activator>
-						<Include-Resource>
-							about.html
-						</Include-Resource>
-					</instructions>
-				</configuration>
+				<groupId>biz.aQute.bnd</groupId>
+				<artifactId>bnd-maven-plugin</artifactId>
 			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.felix</groupId> -->
+<!-- 				<artifactId>maven-bundle-plugin</artifactId> -->
+<!-- 				<extensions>true</extensions> -->
+<!-- 				<configuration> -->
+<!-- 					<instructions> -->
+<!-- 						<Bundle-Activator>org.eclipse.sensinact.gateway.mail.connector.osgi.Activator</Bundle-Activator> -->
+<!-- 						<Include-Resource> -->
+<!-- 							about.html -->
+<!-- 						</Include-Resource> -->
+<!-- 					</instructions> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
 		</plugins>
 	</build>
 

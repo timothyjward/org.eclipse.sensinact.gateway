@@ -22,7 +22,6 @@
 	</parent>
 
 	<artifactId>sensinact-core</artifactId>
-	<packaging>bundle</packaging>
 
 	<name>sensiNact IoT Gateway - Core</name>
 
@@ -67,26 +66,30 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<configuration>
-					<obrRepository>NONE</obrRepository>
-					<instructions>
-						<!--<Bundle-Activator>org.eclipse.sensinact.gateway.core.osgi.Activator</Bundle-Activator>-->
-						<DynamicImport-Package>
-							org.eclipse.sensinact.gateway.core.security.impl
-						</DynamicImport-Package>
-						<Require-Capability>
-							org.eclipse.sensinact.security,
-							org.eclipse.sensinact.data.store,
-							org.eclipse.sensinact.signature.validator
-						</Require-Capability>
-						<Include-Resource>
-							about.html
-						</Include-Resource>
-					</instructions>
-				</configuration>
+				<groupId>biz.aQute.bnd</groupId>
+				<artifactId>bnd-maven-plugin</artifactId>
 			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.felix</groupId> -->
+<!-- 				<artifactId>maven-bundle-plugin</artifactId> -->
+<!-- 				<configuration> -->
+<!-- 					<obrRepository>NONE</obrRepository> -->
+<!-- 					<instructions> -->
+<!-- 						<Bundle-Activator>org.eclipse.sensinact.gateway.core.osgi.Activator</Bundle-Activator> -->
+<!-- 						<DynamicImport-Package> -->
+<!-- 							org.eclipse.sensinact.gateway.core.security.impl -->
+<!-- 						</DynamicImport-Package> -->
+<!-- 						<Require-Capability> -->
+<!-- 							org.eclipse.sensinact.security, -->
+<!-- 							org.eclipse.sensinact.data.store, -->
+<!-- 							org.eclipse.sensinact.signature.validator -->
+<!-- 						</Require-Capability> -->
+<!-- 						<Include-Resource> -->
+<!-- 							about.html -->
+<!-- 						</Include-Resource> -->
+<!-- 					</instructions> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
 		</plugins>
 	</build>
 

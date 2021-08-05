@@ -22,7 +22,6 @@
 	</parent>
 
 	<artifactId>onem2m-device</artifactId>
-	<packaging>bundle</packaging>
 
 	<name>sensiNact IoT Gateway - HTTP oneM2M Device</name>
 
@@ -42,18 +41,8 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<extensions>true</extensions>
-				<configuration>
-					<instructions>
-						<Bundle-Activator>org.eclipse.sensinact.gateway.sthbnd.http.onem2m.osgi.Activator</Bundle-Activator>
-						<Include-Resource>
-							about.html,
-							src/main/resources/
-						</Include-Resource>
-					</instructions>
-				</configuration>
+				<groupId>biz.aQute.bnd</groupId>
+				<artifactId>bnd-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>

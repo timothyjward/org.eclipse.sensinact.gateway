@@ -22,41 +22,44 @@
 	</parent>
 
 	<artifactId>http-device</artifactId>
-	<packaging>bundle</packaging>
 
 	<name>sensiNact IoT Gateway - HTTP Protocol Device</name>
 
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<configuration>
-					<instructions>
-						<_exportcontents>*</_exportcontents>
-						<Include-Resource>
-							about.html
-						</Include-Resource>
-					</instructions>
-				</configuration>
-				<extensions>true</extensions>
-				<executions>
-					<execution>
-						<goals>
-							<goal>manifest</goal>
-						</goals>
-						<phase>generate-test-resources</phase>
-						<configuration>
-							<manifestLocation>${project.basedir}/target/generated-test-sources/META-INF</manifestLocation>
-							<instructions>
-								<_noee>true</_noee>
-								<_exportcontents>*</_exportcontents>
-								<_nouses>true</_nouses>
-							</instructions>
-						</configuration>
-					</execution>
-				</executions>
+				<groupId>biz.aQute.bnd</groupId>
+				<artifactId>bnd-maven-plugin</artifactId>
 			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.felix</groupId> -->
+<!-- 				<artifactId>maven-bundle-plugin</artifactId> -->
+<!-- 				<configuration> -->
+<!-- 					<instructions> -->
+<!-- 						<_exportcontents>*</_exportcontents> -->
+<!-- 						<Include-Resource> -->
+<!-- 							about.html -->
+<!-- 						</Include-Resource> -->
+<!-- 					</instructions> -->
+<!-- 				</configuration> -->
+<!-- 				<extensions>true</extensions> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<goals> -->
+<!-- 							<goal>manifest</goal> -->
+<!-- 						</goals> -->
+<!-- 						<phase>generate-test-resources</phase> -->
+<!-- 						<configuration> -->
+<!-- 							<manifestLocation>${project.basedir}/target/generated-test-sources/META-INF</manifestLocation> -->
+<!-- 							<instructions> -->
+<!-- 								<_noee>true</_noee> -->
+<!-- 								<_exportcontents>*</_exportcontents> -->
+<!-- 								<_nouses>true</_nouses> -->
+<!-- 							</instructions> -->
+<!-- 						</configuration> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 			</plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>

@@ -22,7 +22,6 @@
 	</parent>
 
 	<artifactId>sensinact-security-core</artifactId>
-	<packaging>bundle</packaging>
 
 	<name>sensiNact IoT Gateway - Security Core</name>
 
@@ -278,43 +277,47 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<configuration>
-					<instructions>
-						<Fragment-Host>
-							sensinact-core
-						</Fragment-Host>
-						<Export-Package>
-							org.eclipse.sensinact.gateway.core.security.impl
-						</Export-Package>
-						<Provide-Capability>
-							org.eclipse.sensinact.user.manager,
-							org.eclipse.sensinact.security
-						</Provide-Capability>
-						<Include-Resource>
-							about.html,
-							src/main/resources/
-						</Include-Resource>
-					</instructions>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>manifest</goal>
-						</goals>
-						<phase>generate-test-resources</phase>
-						<configuration>
-							<manifestLocation>${project.basedir}/target/generated-test-sources/META-INF</manifestLocation>
-							<instructions>
-								<_noee>true</_noee>
-								<_exportcontents>*</_exportcontents>
-								<_nouses>true</_nouses>
-							</instructions>
-						</configuration>
-					</execution>
-				</executions>
+				<groupId>biz.aQute.bnd</groupId>
+				<artifactId>bnd-maven-plugin</artifactId>
 			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.felix</groupId> -->
+<!-- 				<artifactId>maven-bundle-plugin</artifactId> -->
+<!-- 				<configuration> -->
+<!-- 					<instructions> -->
+<!-- 						<Fragment-Host> -->
+<!-- 							sensinact-core -->
+<!-- 						</Fragment-Host> -->
+<!-- 						<Export-Package> -->
+<!-- 							org.eclipse.sensinact.gateway.core.security.impl -->
+<!-- 						</Export-Package> -->
+<!-- 						<Provide-Capability> -->
+<!-- 							org.eclipse.sensinact.user.manager, -->
+<!-- 							org.eclipse.sensinact.security -->
+<!-- 						</Provide-Capability> -->
+<!-- 						<Include-Resource> -->
+<!-- 							about.html, -->
+<!-- 							src/main/resources/ -->
+<!-- 						</Include-Resource> -->
+<!-- 					</instructions> -->
+<!-- 				</configuration> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<goals> -->
+<!-- 							<goal>manifest</goal> -->
+<!-- 						</goals> -->
+<!-- 						<phase>generate-test-resources</phase> -->
+<!-- 						<configuration> -->
+<!-- 							<manifestLocation>${project.basedir}/target/generated-test-sources/META-INF</manifestLocation> -->
+<!-- 							<instructions> -->
+<!-- 								<_noee>true</_noee> -->
+<!-- 								<_exportcontents>*</_exportcontents> -->
+<!-- 								<_nouses>true</_nouses> -->
+<!-- 							</instructions> -->
+<!-- 						</configuration> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 			</plugin> -->
 		</plugins>
 	</build>
 

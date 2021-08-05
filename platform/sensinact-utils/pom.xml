@@ -20,7 +20,6 @@
 	</parent>
 
 	<artifactId>sensinact-utils</artifactId>
-	<packaging>bundle</packaging>
 
 	<name>sensiNact IoT Gateway - Utilities</name>
 	<description>SensiNact - Utilities</description>
@@ -81,22 +80,26 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<extensions>true</extensions>
-				<configuration>
-					<instructions>
-						<_nouses>true</_nouses>
-						<_exportcontents>*</_exportcontents>
-						<Include-Resource>
-							about.html
-						</Include-Resource>
-						<Export-Package>
-							org.json.*;version="20080701"
-						</Export-Package>
-					</instructions>
-				</configuration>
+				<groupId>biz.aQute.bnd</groupId>
+				<artifactId>bnd-maven-plugin</artifactId>
 			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.felix</groupId> -->
+<!-- 				<artifactId>maven-bundle-plugin</artifactId> -->
+<!-- 				<extensions>true</extensions> -->
+<!-- 				<configuration> -->
+<!-- 					<instructions> -->
+<!-- 						<_nouses>true</_nouses> -->
+<!-- 						<_exportcontents>*</_exportcontents> -->
+<!-- 						<Include-Resource> -->
+<!-- 							about.html -->
+<!-- 						</Include-Resource> -->
+<!-- 						<Export-Package> -->
+<!-- 							org.json.*;version="20080701" -->
+<!-- 						</Export-Package> -->
+<!-- 					</instructions> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
 		</plugins>
 	</build>
 </project>

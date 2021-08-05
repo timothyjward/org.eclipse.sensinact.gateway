@@ -32,6 +32,7 @@
 			slf4j-api,
 			org.osgi.core,
 			osgi.cmpn,
+			osgi.annotation,
 			sensinact-generic,
 			sensinact-core,
 			sensinact-utils,

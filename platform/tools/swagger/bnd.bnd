@@ -1,0 +1,2 @@
+-includeresource.swagger: \
+	swagger-api=${project.build.directory}/swagger-api/dist

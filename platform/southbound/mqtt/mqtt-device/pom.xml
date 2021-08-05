@@ -23,23 +23,13 @@
 
 	<artifactId>mqtt-device</artifactId>
 
-	<packaging>bundle</packaging>
-
 	<name>sensiNact IoT Gateway - MQTT Protocol Device</name>
 
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<extensions>true</extensions>
-				<configuration>
-					<instructions>
-						<Include-Resource>
-							about.html
-						</Include-Resource>
-					</instructions>
-				</configuration>
+				<groupId>biz.aQute.bnd</groupId>
+				<artifactId>bnd-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>

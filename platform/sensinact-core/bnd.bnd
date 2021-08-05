@@ -1,0 +1,5 @@
+DynamicImport-Package: org.eclipse.sensinact.gateway.core.security.impl
+Require-Capability: \
+	org.eclipse.sensinact.security,\
+	org.eclipse.sensinact.data.store,\
+	org.eclipse.sensinact.signature.validator

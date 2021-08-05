@@ -21,7 +21,6 @@
 	</parent>
 
 	<modelVersion>4.0.0</modelVersion>
-	<packaging>bundle</packaging>
 
 	<artifactId>mock-signature-validator</artifactId>
 
@@ -110,33 +109,37 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<extensions>true</extensions>
-				<configuration>
-					<instructions>
-						<Include-Resource>
-							about.html
-						</Include-Resource>
-						<_nouses>true</_nouses>
-						<Bundle-Activator>
-							org.eclipse.sensinact.gateway.security.signature.osgi.BundleValidationActivator
-						</Bundle-Activator>
-						<Export-Package>
-							org.eclipse.sensinact.gateway.security.signature.api,
-							org.eclipse.sensinact.gateway.security.signature.exception,
-							org.eclipse.sensinact.gateway.security.signature.osgi
-						</Export-Package>
-						<_plugin>aQute.bnd.signing.JartoolSigner;alias="selfsigned";path="${bnd.path}";keystore="../cert/keystore.jks";storepass="sensiNact_team"</_plugin>
-						<_sign>selfsigned</_sign>
-						<_failok>true</_failok>
-						<Bundle-ClassPath>.</Bundle-ClassPath>
-						<Provide-Capability>
-							org.eclipse.sensinact.signature.validator
-						</Provide-Capability>
-					</instructions>
-				</configuration>
+				<groupId>biz.aQute.bnd</groupId>
+				<artifactId>bnd-maven-plugin</artifactId>
 			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.felix</groupId> -->
+<!-- 				<artifactId>maven-bundle-plugin</artifactId> -->
+<!-- 				<extensions>true</extensions> -->
+<!-- 				<configuration> -->
+<!-- 					<instructions> -->
+<!-- 						<Include-Resource> -->
+<!-- 							about.html -->
+<!-- 						</Include-Resource> -->
+<!-- 						<_nouses>true</_nouses> -->
+<!-- 						<Bundle-Activator> -->
+<!-- 							org.eclipse.sensinact.gateway.security.signature.osgi.BundleValidationActivator -->
+<!-- 						</Bundle-Activator> -->
+<!-- 						<Export-Package> -->
+<!-- 							org.eclipse.sensinact.gateway.security.signature.api, -->
+<!-- 							org.eclipse.sensinact.gateway.security.signature.exception, -->
+<!-- 							org.eclipse.sensinact.gateway.security.signature.osgi -->
+<!-- 						</Export-Package> -->
+<!-- 						<_plugin>aQute.bnd.signing.JartoolSigner;alias="selfsigned";path="${bnd.path}";keystore="../cert/keystore.jks";storepass="sensiNact_team"</_plugin> -->
+<!-- 						<_sign>selfsigned</_sign> -->
+<!-- 						<_failok>true</_failok> -->
+<!-- 						<Bundle-ClassPath>.</Bundle-ClassPath> -->
+<!-- 						<Provide-Capability> -->
+<!-- 							org.eclipse.sensinact.signature.validator -->
+<!-- 						</Provide-Capability> -->
+<!-- 					</instructions> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
 		</plugins>
 	</build>
 </project>

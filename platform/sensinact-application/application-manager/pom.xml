@@ -23,32 +23,35 @@
 	</parent>
 
 	<artifactId>application-manager</artifactId>
-	<packaging>bundle</packaging>
 
 	<name>sensiNact IoT AppManager - Core</name>
 
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<extensions>true</extensions>
-				<configuration>
-					<unpackBundle>true</unpackBundle>
-					<instructions>
-						<Export-Package>
-							org.eclipse.sensinact.gateway.app.api.*,
-							org.eclipse.sensinact.gateway.app.manager.component.data,
-							org.eclipse.sensinact.gateway.app.manager.json
-						</Export-Package>
-						<!-- <Bundle-Activator>org.eclipse.sensinact.gateway.app.manager.osgi.Activator</Bundle-Activator>-->
-						<Include-Resource>
-							about.html,
-							src/main/resources/
-						</Include-Resource>
-					</instructions>
-				</configuration>
+				<groupId>biz.aQute.bnd</groupId>
+				<artifactId>bnd-maven-plugin</artifactId>
 			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.felix</groupId> -->
+<!-- 				<artifactId>maven-bundle-plugin</artifactId> -->
+<!-- 				<extensions>true</extensions> -->
+<!-- 				<configuration> -->
+<!-- 					<unpackBundle>true</unpackBundle> -->
+<!-- 					<instructions> -->
+<!-- 						<Export-Package> -->
+<!-- 							org.eclipse.sensinact.gateway.app.api.*, -->
+<!-- 							org.eclipse.sensinact.gateway.app.manager.component.data, -->
+<!-- 							org.eclipse.sensinact.gateway.app.manager.json -->
+<!-- 						</Export-Package> -->
+<!-- 						<Bundle-Activator>org.eclipse.sensinact.gateway.app.manager.osgi.Activator</Bundle-Activator> -->
+<!-- 						<Include-Resource> -->
+<!-- 							about.html, -->
+<!-- 							src/main/resources/ -->
+<!-- 						</Include-Resource> -->
+<!-- 					</instructions> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>sql-maven-plugin</artifactId>

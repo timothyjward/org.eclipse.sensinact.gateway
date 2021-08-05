@@ -1,0 +1,4 @@
+Fragment-Host: sensinact-core
+Provide-Capability: \
+	org.eclipse.sensinact.user.manager,\
+	org.eclipse.sensinact.security

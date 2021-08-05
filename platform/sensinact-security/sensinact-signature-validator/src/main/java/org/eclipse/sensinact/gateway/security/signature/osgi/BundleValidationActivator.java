@@ -13,10 +13,15 @@ package org.eclipse.sensinact.gateway.security.signature.osgi;
 import org.eclipse.sensinact.gateway.common.bundle.Mediator;
 import org.eclipse.sensinact.gateway.security.signature.api.BundleValidation;
 import org.eclipse.sensinact.gateway.security.signature.internal.BundleValidationImpl;
+import org.osgi.annotation.bundle.Capability;
+import org.osgi.annotation.bundle.Header;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.Constants;
 import org.osgi.framework.ServiceRegistration;
 
+@Header(name = Constants.BUNDLE_ACTIVATOR, value = "${@class}")
+@Capability(namespace = "org.eclipse.sensinact.signature.validator")
 public class BundleValidationActivator implements BundleActivator {
     private ServiceRegistration<BundleValidation> serviceRegistration;
 

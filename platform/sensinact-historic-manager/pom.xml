@@ -22,7 +22,6 @@
 	</parent>
 
 	<artifactId>sensinact-historic-manager</artifactId>
-	<packaging>bundle</packaging>
 	<name>sensiNact IoT Gateway - sensiNact Historic Reader Manager</name>
 	
 	<dependencies>
@@ -51,14 +50,18 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<configuration>
-					<instructions>
-						<Bundle-Activator>org.eclipse.sensinact.gateway.historic.storage.manager.osgi.Activator</Bundle-Activator>
-					</instructions>
-				</configuration>
+				<groupId>biz.aQute.bnd</groupId>
+				<artifactId>bnd-maven-plugin</artifactId>
 			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.felix</groupId> -->
+<!-- 				<artifactId>maven-bundle-plugin</artifactId> -->
+<!-- 				<configuration> -->
+<!-- 					<instructions> -->
+<!-- 						<Bundle-Activator>org.eclipse.sensinact.gateway.historic.storage.manager.osgi.Activator</Bundle-Activator> -->
+<!-- 					</instructions> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
 		</plugins>
 	</build>
 </project>

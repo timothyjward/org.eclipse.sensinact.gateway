@@ -23,8 +23,6 @@
 	</parent>
 
 	<artifactId>sensinact-datastore-api</artifactId>
-
-	<packaging>bundle</packaging>
 	<name>sensiNact IoT Gateway - Data Store Access API</name>
 
 	<dependencies>
@@ -43,15 +41,8 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<configuration>
-					<instructions>
-						<Include-Resource>
-							about.html
-						</Include-Resource>
-					</instructions>
-				</configuration>
+				<groupId>biz.aQute.bnd</groupId>
+				<artifactId>bnd-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>

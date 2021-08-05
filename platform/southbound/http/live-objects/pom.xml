@@ -22,7 +22,6 @@
 	</parent>
 
 	<artifactId>live-objects</artifactId>
-	<packaging>bundle</packaging>
 
 	<name>sensiNact IoT Gateway - Live Objects Orange Protocol Device</name>
 
@@ -33,20 +32,24 @@
 				<artifactId>xml-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<extensions>true</extensions>
-				<configuration>
-					<instructions>
-						<Export-Package>org.eclipse.sensinact.gateway.sthbnd.liveobjects.*</Export-Package>
-						<Bundle-Activator>org.eclipse.sensinact.gateway.sthbnd.liveobjects.osgi.Activator</Bundle-Activator>
-						<Include-Resource>
-							about.html,
-							src/main/resources/
-						</Include-Resource>
-					</instructions>
-				</configuration>
+				<groupId>biz.aQute.bnd</groupId>
+				<artifactId>bnd-maven-plugin</artifactId>
 			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.felix</groupId> -->
+<!-- 				<artifactId>maven-bundle-plugin</artifactId> -->
+<!-- 				<extensions>true</extensions> -->
+<!-- 				<configuration> -->
+<!-- 					<instructions> -->
+<!-- 						<Export-Package>org.eclipse.sensinact.gateway.sthbnd.liveobjects.*</Export-Package> -->
+<!-- 						<Bundle-Activator>org.eclipse.sensinact.gateway.sthbnd.liveobjects.osgi.Activator</Bundle-Activator> -->
+<!-- 						<Include-Resource> -->
+<!-- 							about.html, -->
+<!-- 							src/main/resources/ -->
+<!-- 						</Include-Resource> -->
+<!-- 					</instructions> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
 		</plugins>
 	</build>
 

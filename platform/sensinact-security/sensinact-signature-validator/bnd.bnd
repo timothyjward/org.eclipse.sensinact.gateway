@@ -1,0 +1,7 @@
+-privatepackage:\
+	 !org.bouncycastle.util.test,\
+	 org.bouncycastle.*
+	 
+Import-Package: \
+	!junit.framework,\
+	*

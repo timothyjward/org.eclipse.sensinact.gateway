@@ -22,7 +22,6 @@
 	</parent>
 
 	<artifactId>rest-access</artifactId>
-	<packaging>bundle</packaging>
 
 	<name>sensiNact IoT Gateway - HTTP REST Access</name>
 
@@ -92,34 +91,38 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<extensions>true</extensions>
-				<configuration>
-					<instructions>
-						<Export-Package>org.eclipse.sensinact.gateway.nthbnd.rest.component</Export-Package>
-						<Include-Resource>
-							about.html
-						</Include-Resource>
-					</instructions>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>manifest</goal>
-						</goals>
-						<phase>generate-test-resources</phase>
-						<configuration>
-							<manifestLocation>${project.basedir}/target/generated-test-sources/META-INF</manifestLocation>
-							<instructions>
-								<_noee>true</_noee>
-								<_exportcontents>*</_exportcontents>
-								<_nouses>true</_nouses>
-							</instructions>
-						</configuration>
-					</execution>
-				</executions>
+				<groupId>biz.aQute.bnd</groupId>
+				<artifactId>bnd-maven-plugin</artifactId>
 			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.felix</groupId> -->
+<!-- 				<artifactId>maven-bundle-plugin</artifactId> -->
+<!-- 				<extensions>true</extensions> -->
+<!-- 				<configuration> -->
+<!-- 					<instructions> -->
+<!-- 						<Export-Package>org.eclipse.sensinact.gateway.nthbnd.rest.component</Export-Package> -->
+<!-- 						<Include-Resource> -->
+<!-- 							about.html -->
+<!-- 						</Include-Resource> -->
+<!-- 					</instructions> -->
+<!-- 				</configuration> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<goals> -->
+<!-- 							<goal>manifest</goal> -->
+<!-- 						</goals> -->
+<!-- 						<phase>generate-test-resources</phase> -->
+<!-- 						<configuration> -->
+<!-- 							<manifestLocation>${project.basedir}/target/generated-test-sources/META-INF</manifestLocation> -->
+<!-- 							<instructions> -->
+<!-- 								<_noee>true</_noee> -->
+<!-- 								<_exportcontents>*</_exportcontents> -->
+<!-- 								<_nouses>true</_nouses> -->
+<!-- 							</instructions> -->
+<!-- 						</configuration> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 			</plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>

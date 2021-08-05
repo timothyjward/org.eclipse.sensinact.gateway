@@ -1,0 +1,8 @@
+-runee: JavaSE-1.8
+-runvm: ${def;argLine}
+
+-runfw: org.apache.felix.framework
+-resolve.effective: active
+
+-runrequires: \
+	bnd.identity;id='mock-siganture-validator`

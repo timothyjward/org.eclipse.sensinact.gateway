@@ -18,6 +18,7 @@ import javax.servlet.Servlet;
 
 import org.eclipse.sensinact.gateway.common.bundle.AbstractActivator;
 import org.eclipse.sensinact.gateway.common.bundle.Mediator;
+import org.osgi.annotation.bundle.Header;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
 import org.osgi.service.http.whiteboard.HttpWhiteboardConstants;
@@ -27,6 +28,7 @@ import org.osgi.service.http.whiteboard.HttpWhiteboardConstants;
  *
  * @author Jander Nascimento
  */
+@Header(name = Constants.BUNDLE_ACTIVATOR, value = "${@class}")
 public class Activator extends AbstractActivator<Mediator> {
 
     private static final String SWAGGER_ALIAS = "/swagger-api";

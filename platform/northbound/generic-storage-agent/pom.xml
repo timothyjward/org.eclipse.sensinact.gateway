@@ -9,7 +9,6 @@
 	</parent>
 
     <artifactId>generic-storage-agent</artifactId>
-    <packaging>bundle</packaging>
 
     <name>sensiNact IoT Gateway - Generic Historical Storage Agent</name>
 
@@ -27,9 +26,9 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-            </plugin>
+				<groupId>biz.aQute.bnd</groupId>
+				<artifactId>bnd-maven-plugin</artifactId>
+			</plugin>
         </plugins>
     </build>
 

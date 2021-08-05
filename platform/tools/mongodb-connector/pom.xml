@@ -9,8 +9,6 @@
 	</parent>
 
     <artifactId>mongodb-connector</artifactId>
-    <packaging>bundle</packaging>
-
 
 	<name>sensiNact IoT Gateway - MongoDB Connector</name>
 
@@ -37,11 +35,10 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.felix</groupId>
-                <artifactId>maven-bundle-plugin</artifactId>
-                <extensions>true</extensions>
-            </plugin>
+           <plugin>
+				<groupId>biz.aQute.bnd</groupId>
+				<artifactId>bnd-maven-plugin</artifactId>
+			</plugin>
         </plugins>
     </build>
 </project>
