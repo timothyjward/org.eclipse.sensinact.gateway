@@ -61,6 +61,7 @@
 									<type>zip</type>
 									<groupId>org.eclipse.sensinact.gateway.distribution</groupId>
 									<artifactId>sensinact-distribution-template</artifactId>
+									<version>${project.version}</version>
 									<outputDirectory>${project.build.directory}/</outputDirectory>
 								</artifactItem>
 							</artifactItems>

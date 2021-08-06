@@ -1,4 +1,3 @@
-Bundle-Activator: org.eclipse.sensinact.gateway.agent.mqtt.onem2m.osgi.Activator
 Import-Package: \
 	org.json,\
 	*

@@ -16,7 +16,7 @@
         <groupId>org.eclipse.sensinact.gateway.tools</groupId>
         <artifactId>platform.tools</artifactId>
         <version>2.0-SNAPSHOT</version>
-    </parent>
+    <relativePath>../pom.xml</relativePath></parent>
 
     <artifactId>studio-web</artifactId>
     <name>sensiNact IoT Gateway - Studio Web</name>

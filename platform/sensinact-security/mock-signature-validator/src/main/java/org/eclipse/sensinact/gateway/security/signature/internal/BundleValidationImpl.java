@@ -14,6 +14,9 @@ import org.eclipse.sensinact.gateway.common.bundle.Mediator;
 import org.eclipse.sensinact.gateway.security.signature.api.BundleValidation;
 import org.eclipse.sensinact.gateway.security.signature.exception.BundleValidationException;
 import org.osgi.framework.Bundle;
+import org.osgi.framework.BundleContext;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,6 +28,7 @@ import java.util.Map;
 /**
  * An implementation of the BundleValidation service
  */
+@Component(immediate = true, property = {"type=mock"})
 public class BundleValidationImpl implements BundleValidation {
     // ********************************************************************//
     // 						NESTED DECLARATIONS 						   //
@@ -58,8 +62,9 @@ public class BundleValidationImpl implements BundleValidation {
     private final KeyStoreManager ksm;
     private Mediator mediator;
 
-    public BundleValidationImpl(Mediator mediator) throws KeyStoreManagerException, NoSuchAlgorithmException {
-        this.mediator = mediator;
+    @Activate
+    public BundleValidationImpl(BundleContext ctx) throws KeyStoreManagerException, NoSuchAlgorithmException {
+        this.mediator = new Mediator(ctx);
         this.validated = new HashMap<String, ValidBundleKey>();
 
         this.cryptoUtils = new CryptographicUtils(mediator);

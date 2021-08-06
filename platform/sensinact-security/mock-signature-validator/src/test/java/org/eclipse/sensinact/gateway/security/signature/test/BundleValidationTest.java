@@ -10,27 +10,32 @@
  */
 package org.eclipse.sensinact.gateway.security.signature.test;
 
-import org.apache.felix.framework.FrameworkFactory;
-import org.eclipse.sensinact.gateway.common.bundle.Mediator;
-import org.eclipse.sensinact.gateway.security.signature.api.BundleValidation;
-import org.eclipse.sensinact.gateway.security.signature.internal.BundleValidationImpl;
-import org.eclipse.sensinact.gateway.security.signature.internal.KeyStoreManagerException;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.osgi.framework.Bundle;
-import org.osgi.framework.BundleException;
-import org.osgi.framework.launch.Framework;
-
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
+
+import org.assertj.core.api.Assertions;
+import org.eclipse.sensinact.gateway.common.bundle.Mediator;
+import org.eclipse.sensinact.gateway.security.signature.api.BundleValidation;
+import org.eclipse.sensinact.gateway.security.signature.internal.KeyStoreManagerException;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.BundleException;
+import org.osgi.framework.FrameworkUtil;
+import org.osgi.test.common.annotation.InjectService;
+import org.osgi.test.junit5.context.BundleContextExtension;
+import org.osgi.test.junit5.service.ServiceExtension;
 
 /*
  * signature validation with embedded archive: embedded archives are to be signed by the same signer as the main archive
  * testCheckNOKWithEmbeddedArchive not performed
  */
+@ExtendWith(BundleContextExtension.class)
+@ExtendWith(ServiceExtension.class)
 public class BundleValidationTest {
     private static final Map<String, String> CONFIGURATION = new HashMap<String, String>();
 
@@ -43,59 +48,19 @@ public class BundleValidationTest {
         CONFIGURATION.put("org.osgi.framework.system.packages.extra", "org.eclipse.sensinact.gateway.generic.core;version= \"2.0.0\"," + "org.eclipse.sensinact.gateway.generic.core.impl;version= \"2.0.0\"," + "org.eclipse.sensinact.gateway.generic.core.packet;version=\"2.0.0\"," + "org.eclipse.sensinact.gateway.generic.stream;version= \"2.0.0\"," + "org.eclipse.sensinact.gateway.generic.uri;version= \"2.0.0\"," + "org.eclipse.sensinact.gateway.generic.parser;version= \"2.0.0\"," + "org.eclipse.sensinact.gateway.generic.automata;version= \"2.0.0\"," + "org.eclipse.sensinact.gateway.generic.annotation;version= \"2.0.0\"," + "org.eclipse.sensinact.gateway.generic.local;version= \"2.0.0\"," + "org.eclipse.sensinact.gateway.util;version= \"2.0.0\"," + "org.eclipse.sensinact.gateway.util.constraint;version= \"2.0.0\"," + "org.eclipse.sensinact.gateway.util.crypto;version= \"2.0.0\"," + "org.eclipse.sensinact.gateway.util.json;version= \"2.0.0\"," + "org.eclipse.sensinact.gateway.util.mediator;version= \"2.0.0\"," + "org.eclipse.sensinact.gateway.util.properties;version= \"2.0.0\"," + "org.eclipse.sensinact.gateway.util.reflect;version= \"2.0.0\"," + "org.eclipse.sensinact.gateway.util.rest;version= \"2.0.0\"," + "org.eclipse.sensinact.gateway.util.xml;version= \"2.0.0\"," + "json-20140107.jar;version= \"2.0.0\"," + "org.json;version;version= \"2.0.0\"," + "org.json.zip;version=\"2.0.0\"");
     }
 
-    private Framework felix = new FrameworkFactory().newFramework(CONFIGURATION);
     private Mediator mediator = null;
     private BundleValidation jval = null;
     private Bundle fan = null;
     private Bundle button = null;
-    private static final String DEFAULT_KEYSTORE_FILE_PATH = "../../sensinact-security/cert/keystore.jks";
+//    private static final String DEFAULT_KEYSTORE_FILE_PATH = "../sensinact-security/cert/keystore.jks";
     private static final String DEFAULT_KEYSTORE_PASSWORD = "sensiNact_team";
-
-    @Before
-    public void init() throws NoSuchAlgorithmException, KeyStoreManagerException, BundleException {
-        felix = new FrameworkFactory().newFramework(CONFIGURATION);
-        felix.init();
-        felix.start();
-
-        Assert.assertTrue(felix.getState() == Bundle.ACTIVE);
-        this.mediator = new Mediator(felix.getBundleContext());
-
-        this.jval = new BundleValidationImpl(this.mediator) {
-            @Override
-            protected String getKeyStoreFileName() {
-                return BundleValidationTest.DEFAULT_KEYSTORE_FILE_PATH;
-            }
-
-            @Override
-            protected String getKeyStorePassword() {
-                return BundleValidationTest.DEFAULT_KEYSTORE_PASSWORD;
-            }
-
-            @Override
-            protected String getSignerPassword() {
-                return BundleValidationTest.DEFAULT_KEYSTORE_PASSWORD;
-            }
-        };
-    }
-
-    @After
-    public void tearDown() {
-        try {
-            felix.stop();
+	private BundleContext ctx;
 
 
-        } catch (BundleException e) {
-            e.printStackTrace();
-        }
-        this.mediator = null;
-        this.jval = null;
-        this.fan = null;
-        this.button = null;
-    }
 
     @Test
-    public void testCheckFanOK() throws BundleException {
-        this.fan = felix.getBundleContext().installBundle("file:./target/extra/fan.jar");
+    public void testCheckFanOK(@InjectService(timeout = 500,filter = "(type=mock)")  BundleValidation jval ) throws BundleException {
+        this.fan = ctx.installBundle("file:./target/extra/fan.jar");
         ////logger.log(Level.INFO, "testCheckOK");
         String result = null;
         try {
@@ -106,12 +71,13 @@ public class BundleValidationTest {
         } finally {
             this.fan.uninstall();
         }
-        Assert.assertTrue(result != null);
+        Assertions.assertThat(result).isNotNull();
+    
     }
 
     @Test
     public void testCheckButtonOK() throws BundleException {
-        this.button = felix.getBundleContext().installBundle("file:./target/extra/button.jar");
+        this.button = ctx.installBundle("file:./target/extra/button.jar");
 
         ////logger.log(Level.INFO, "testCheckOK");
         String result = null;
@@ -123,6 +89,7 @@ public class BundleValidationTest {
         } finally {
             this.button.uninstall();
         }
-        Assert.assertTrue(result != null);
+        Assertions.assertThat(result).isNotNull();
+
     }
 }

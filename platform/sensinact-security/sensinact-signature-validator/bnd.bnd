@@ -1,3 +1,5 @@
+-split-package:=merge-first
+
 -privatepackage:\
 	 !org.bouncycastle.util.test,\
 	 org.bouncycastle.*
