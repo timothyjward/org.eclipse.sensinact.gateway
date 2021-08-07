@@ -46,6 +46,7 @@
 		<org.osgi.service.log.version>1.4.0</org.osgi.service.log.version>
 		<org.osgi.service.metatype.version>1.4.0</org.osgi.service.metatype.version>
 		<org.osgi.service.remoteserviceadmin.version>1.1.0</org.osgi.service.remoteserviceadmin.version>
+		<org.osgi.service.http.whiteboeard.version>1.1.0</org.osgi.service.http.whiteboeard.version>
 		<org.osgi.util.function.version>1.1.0</org.osgi.util.function.version>
 		<org.osgi.util.promise.version>1.1.1</org.osgi.util.promise.version>
 		<org.osgi.util.pushstream.version>1.0.1</org.osgi.util.pushstream.version>
@@ -58,17 +59,18 @@
 		<org.apache.felix.configadmin.version>1.9.16</org.apache.felix.configadmin.version>
 		<org.apache.felix.fileinstall.version>3.6.4</org.apache.felix.fileinstall.version>
 		<org.apache.felix.framework.security.version>2.6.1</org.apache.felix.framework.security.version>
-		<org.apache.felix.gogo.command.version>1.1.0</org.apache.felix.gogo.command.version>
-		<org.apache.felix.gogo.jline.version>1.1.0</org.apache.felix.gogo.jline.version> <!-- Do NOT move to 1.1.4 #0edd6ad296adb630142776c43ad8635a98517d96 -->
-		<org.apache.felix.gogo.runtime.version>1.1.2</org.apache.felix.gogo.runtime.version>
+		<org.apache.felix.gogo.command.version>1.1.2</org.apache.felix.gogo.command.version>
+		<org.apache.felix.gogo.shell.version>1.1.4</org.apache.felix.gogo.shell.version>
+		<org.apache.felix.gogo.jline.version>1.1.8</org.apache.felix.gogo.jline.version>
+		<org.apache.felix.gogo.runtime.version>1.1.4</org.apache.felix.gogo.runtime.version>
 		<org.apache.felix.http.api.version>3.0.0</org.apache.felix.http.api.version>
-		<org.apache.felix.http.servlet-api.version>1.1.2</org.apache.felix.http.servlet-api.version>
+		<org.apache.felix.http.servlet-api.version>1.1.4</org.apache.felix.http.servlet-api.version>
 		<org.apache.felix.log.version>1.2.2</org.apache.felix.log.version>
 		<org.apache.felix.scr.version>2.1.16</org.apache.felix.scr.version>
 		<org.apache.felix.shell.remote.version>1.2.0</org.apache.felix.shell.remote.version>
 
 		<!-- Jetty -->
-		<org.apache.felix.http.jetty.version>4.0.14</org.apache.felix.http.jetty.version>
+		<org.apache.felix.http.jetty.version>4.1.10</org.apache.felix.http.jetty.version>
 		<org.eclipse.jetty.version>9.4.25.v20191220</org.eclipse.jetty.version>
 
 		<!-- Logs -->
@@ -133,12 +135,11 @@
 		<commons-codec.version>1.14</commons-codec.version>
 		<javax.inject.version>1</javax.inject.version>
 		<javax.jmdns.version>3.4.1</javax.jmdns.version>
-		<javax.servlet-api.version>4.0.1</javax.servlet-api.version>
 		<javax.mail.version>1.6.2</javax.mail.version>
 		<jsr311-api.version>1.1.1</jsr311-api.version>
 		<org.eclipse.paho.client.mqttv3.version>1.2.2</org.eclipse.paho.client.mqttv3.version>
 		<org.fusesource.jansi.version>1.18</org.fusesource.jansi.version>
-		<org.jline.version>3.13.3</org.jline.version>
+		<org.jline.version>3.13.2</org.jline.version>
 		<org.json.version>20190722</org.json.version>
 		<org.mapdb.version>1.0.8</org.mapdb.version>
 		<org.xerial.sqlite-jdbc.version>3.30.1</org.xerial.sqlite-jdbc.version>
@@ -146,6 +147,7 @@
 		<io.moquette.version>0.9</io.moquette.version>
 		<io.netty.version>4.1.45.Final</io.netty.version>
 		<org.bouncycastle.version>1.64</org.bouncycastle.version>
+		<biz.aQute.gogo.commands.provider.verion>1.7.0</biz.aQute.gogo.commands.provider.verion>
 
 		<!-- BUILD: org.apache.maven.plugins -->
 		<maven-antrun-plugin.version>1.8</maven-antrun-plugin.version>
@@ -446,6 +448,11 @@
 			</dependency>
 			<dependency>
 				<groupId>org.osgi</groupId>
+				<artifactId>org.osgi.service.http.whiteboard</artifactId>
+				<version>${org.osgi.service.http.whiteboeard.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.osgi</groupId>
 				<artifactId>org.osgi.util.function</artifactId>
 				<version>${org.osgi.util.function.version}</version>
 			</dependency>
@@ -549,6 +556,7 @@
 				<groupId>org.apache.felix</groupId>
 				<artifactId>org.apache.felix.http.jetty</artifactId>
 				<version>${org.apache.felix.http.jetty.version}</version>
+<!-- 				<classifier>light</classifier> -->
 			</dependency>
 			<dependency>
 				<groupId>org.eclipse.jetty</groupId>
@@ -558,6 +566,11 @@
 			<dependency>
 				<groupId>org.eclipse.jetty</groupId>
 				<artifactId>jetty-http</artifactId>
+				<version>${org.eclipse.jetty.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.eclipse.jetty.websocket</groupId>
+				<artifactId>websocket-api</artifactId>
 				<version>${org.eclipse.jetty.version}</version>
 			</dependency>
 
@@ -965,11 +978,6 @@
 				<version>${javax.jmdns.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>javax.servlet</groupId>
-				<artifactId>javax.servlet-api</artifactId>
-				<version>${javax.servlet-api.version}</version>
-			</dependency>
-			<dependency>
 				<groupId>javax.mail</groupId>
 				<artifactId>javax.mail-api</artifactId>
 				<version>${javax.mail.version}</version>
@@ -1054,6 +1062,11 @@
 				<groupId>org.bouncycastle</groupId>
 				<artifactId>bcpkix-jdk15on</artifactId>
 				<version>${org.bouncycastle.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>biz.aQute</groupId>
+				<artifactId>biz.aQute.gogo.commands.provider</artifactId>
+				<version>${biz.aQute.gogo.commands.provider.verion}</version>
 			</dependency>
 			
 			<!--  Gradle  -->
@@ -1528,6 +1541,11 @@
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-params</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>

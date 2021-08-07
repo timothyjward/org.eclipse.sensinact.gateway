@@ -97,41 +97,15 @@
 			</plugin>
 			<plugin>
 				<groupId>biz.aQute.bnd</groupId>
-				<artifactId>bnd-resolver-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>biz.aQute.bnd</groupId>
 				<artifactId>bnd-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
 				<groupId>biz.aQute.bnd</groupId>
+				<artifactId>bnd-resolver-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>biz.aQute.bnd</groupId>
 				<artifactId>bnd-testing-maven-plugin</artifactId>
-				<executions>
-					<!-- OSGi integration tests execution -->
-					<execution>
-						<id>testing</id>
-						<goals>
-							<goal>testing</goal>
-						</goals>
-						<configuration>
-							<bndruns>
-								<bndrun>tests.bndrun</bndrun>
-							</bndruns>
-							<bundles>
-								<bundle>${project.build.directory}/${project.build.finalName}-tests.jar</bundle>
-							</bundles>
-							<failOnChanges>false</failOnChanges>
-							<includeDependencyManagement>true</includeDependencyManagement>
-							<resolve>true</resolve>
-							<scopes>
-								<scope>compile</scope>
-								<scope>runtime</scope>
-								<scope>test</scope>
-								<scope>provided</scope>
-							</scopes>
-						</configuration>
-					</execution>
-				</executions>
 			</plugin>
 			<!-- <plugin> -->
 			<!-- <groupId>org.apache.felix</groupId> -->
