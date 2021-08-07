@@ -10,12 +10,6 @@
  */
 package org.eclipse.sensinact.gateway.security.signature.test;
 
-import org.eclipse.sensinact.gateway.security.signature.internal.CryptographicUtils;
-import org.eclipse.sensinact.gateway.util.crypto.Base64;
-import org.junit.Assert;
-import org.junit.Ignore;
-import org.junit.Test;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -25,7 +19,13 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
 
-@Ignore
+import org.assertj.core.api.Assertions;
+import org.eclipse.sensinact.gateway.security.signature.internal.CryptographicUtils;
+import org.eclipse.sensinact.gateway.util.crypto.Base64;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+
+@Disabled
 public class CryptographicUtilsTest {
     static CryptographicUtils cutils = null;
     String fileName4hash = "src/test/resources/textFile.txt.bis";
@@ -57,10 +57,11 @@ public class CryptographicUtilsTest {
      * @throws IOException
      */
     byte[] getData(String fileName) throws IOException {
-        FileInputStream fis = new FileInputStream(fileName);
+      try (  FileInputStream fis = new FileInputStream(fileName);){
         byte[] data = new byte[fis.available()];
         fis.read(data);
         return data;
+      }
     }
 
     /**
@@ -103,7 +104,7 @@ public class CryptographicUtilsTest {
         byte[] data = getData(fileName4hash);
         String trueHashValue = this.getTrueHashValue(data, defaultAlgo);
         boolean result = cutils.checkHashValue(data, trueHashValue, "SHA1-Digest");
-        Assert.assertTrue(result);
+        Assertions.assertThat(result).isTrue();
     }
 
     @Test
@@ -111,25 +112,20 @@ public class CryptographicUtilsTest {
         byte[] data = getData(fileName4hash);
         String trueHashValue = getTrueHashValue(data, defaultAlgo);
         String result = cutils.getHashValue(data, "SHA1-Digest");
-        ;
-        Assert.assertTrue(result.equals(trueHashValue));
+
+        Assertions.assertThat(result).isEqualTo(trueHashValue);
     }
 
     /**
      * A method for verifying validity of a given CMS file
      */
-    @Ignore
-    @Test
+    @Disabled
+    @Test()
     public void testCheckCMSDataValidity() throws Exception {
-        try {
-            byte[] signatureFileData = this.getData(signatureFileName);
-            byte[] signatureBlockData = this.getData(signatureBlockName);
-            boolean res = cutils.checkCMSDataValidity(signatureFileData, signatureBlockData, "SHA1-Digest");
-            Assert.assertTrue(res);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } catch (Error e) {
-            e.printStackTrace();
-        }
+        byte[] signatureFileData = this.getData(signatureFileName);
+        byte[] signatureBlockData = this.getData(signatureBlockName);
+        boolean res = cutils.checkCMSDataValidity(signatureFileData, signatureBlockData, "SHA1-Digest");
+        Assertions.assertThat(res).isTrue();
+
     }
 }

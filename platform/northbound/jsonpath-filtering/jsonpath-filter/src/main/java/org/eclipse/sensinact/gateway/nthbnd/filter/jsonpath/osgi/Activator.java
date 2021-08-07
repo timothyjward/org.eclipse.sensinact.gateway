@@ -10,15 +10,15 @@
  */
 package org.eclipse.sensinact.gateway.nthbnd.filter.jsonpath.osgi;
 
+import java.util.Hashtable;
+
 import org.eclipse.sensinact.gateway.common.bundle.AbstractActivator;
 import org.eclipse.sensinact.gateway.common.bundle.Mediator;
-import org.eclipse.sensinact.gateway.core.Filtering;
+import org.eclipse.sensinact.gateway.core.filtering.Filtering;
 import org.eclipse.sensinact.gateway.nthbnd.filter.jsonpath.internal.JsonPathFiltering;
 import org.osgi.annotation.bundle.Header;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
-
-import java.util.Hashtable;
 
 /**
  */

@@ -31,7 +31,7 @@
 	<name>sensiNact IoT Gateway - JSONPath filtering parent module</name>
 
 	<modules>
-		<module>jsonpath-filter</module>
+<!-- 		<module>jsonpath-filter</module> -->
 	</modules>
 
 </project>

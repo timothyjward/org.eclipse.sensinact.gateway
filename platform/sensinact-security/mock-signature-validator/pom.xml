@@ -115,11 +115,10 @@
 						</goals>
 						<configuration>
 							<bndruns>
-								<bndrun>itest.bndrun</bndrun>
+								<bndrun>tests.bndrun</bndrun>
 							</bndruns>
 							<bundles>
 								<bundle>${project.build.directory}/${project.build.finalName}-tests.jar</bundle>
-								<bundle>${project.build.directory}/${project.build.finalName}.jar</bundle>
 							</bundles>
 							<failOnChanges>false</failOnChanges>
 							<includeDependencyManagement>true</includeDependencyManagement>
@@ -128,6 +127,7 @@
 								<scope>compile</scope>
 								<scope>runtime</scope>
 								<scope>test</scope>
+								<scope>provided</scope>
 							</scopes>
 						</configuration>
 					</execution>

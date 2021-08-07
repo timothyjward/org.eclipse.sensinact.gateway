@@ -10,6 +10,8 @@
  */
 package org.eclipse.sensinact.studio.web;
 
+import javax.servlet.ServletException;
+
 import org.apache.felix.http.api.ExtHttpService;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -20,8 +22,6 @@ import org.osgi.service.http.NamespaceException;
 import org.osgi.util.tracker.ServiceTracker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import javax.servlet.ServletException;
 
 /**
  * Service that published studio-lite on Jetty server

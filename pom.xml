@@ -1955,7 +1955,7 @@ Bundle-Vendor: Eclipse
                                     <goal>bnd-process-tests</goal>
                                 </goals>
                                 <configuration>
-                                	<bndfile>test.bnd</bndfile>
+                                	<bndfile>tests.bnd</bndfile>
                                 	<artifactFragment>true</artifactFragment>
                                     <bnd><![CDATA[
 Bundle-Vendor: Eclipse
@@ -1983,7 +1983,7 @@ Bundle-Vendor: Eclipse
 								</goals>
 								<configuration>
 									<bndruns>
-										<bndrun>itest.bndrun</bndrun>
+										<bndrun>tests.bndrun</bndrun>
 									</bndruns>
 									<bundles>
 										<bundle>${project.build.directory}/${project.build.finalName}-tests.jar</bundle>
@@ -2022,7 +2022,7 @@ Bundle-Vendor: Eclipse
 							</goals>
 							<configuration>
 								<bndruns>
-									<bndrun>itest.bndrun</bndrun>
+									<bndrun>tests.bndrun</bndrun>
 								</bndruns>
 								<bundles>
 									<bundle>${project.build.directory}/${project.build.finalName}-tests.jar</bundle>
@@ -2232,7 +2232,7 @@ Bundle-Vendor: Eclipse
 		<module>platform</module>
 		<module>distribution</module>
 		<module>integration-tests</module>
-  </modules>
+	</modules>
 
 	
 	<reporting>

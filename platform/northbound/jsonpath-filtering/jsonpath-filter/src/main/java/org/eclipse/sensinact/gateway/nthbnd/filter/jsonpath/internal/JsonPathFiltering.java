@@ -13,7 +13,7 @@ package org.eclipse.sensinact.gateway.nthbnd.filter.jsonpath.internal;
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
 import org.eclipse.sensinact.gateway.common.bundle.Mediator;
-import org.eclipse.sensinact.gateway.core.Filtering;
+import org.eclipse.sensinact.gateway.core.filtering.Filtering;
 
 /**
  * {@link Filtering} implementation allowing to apply a JsonPath expression to

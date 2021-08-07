@@ -37,6 +37,7 @@
 		<module>influxdb-storage-agent</module>
 		<module>http-onem2m-agent</module>
 		<module>http-tools</module>
+		<module>jsonpath-filtering</module>
 	</modules>
 </project>
 
