@@ -1,5 +1,7 @@
 -make: (*).(jar); type=bnd; recipe="${.}/tb/$1.bnd"
 -includeresource:\
-		tb_nosign_fail.jar
+		tb_nosign_fail.jar,\
+		tb_sign_ok.jar
+
 		
--plugin.2jarsigner: aQute.bnd.signing.JartoolSigner;alias="selfsigned";path="${signer.path}";keystore="${sensinact.rootdir}/platform/sensinact-security/cert/keystore.jks";storepass="sensiNact_team";sigFile="tb_sign_ok.jar"
+-sign: alias="selfsigned";path="${signer.path}";keystore="${sensinact.rootdir}/platform/sensinact-security/cert/keystore.jks";storepass="sensiNact_team"

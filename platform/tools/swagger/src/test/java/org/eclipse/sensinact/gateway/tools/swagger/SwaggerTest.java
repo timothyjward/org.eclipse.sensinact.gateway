@@ -36,9 +36,9 @@ public class SwaggerTest {
 	}
 
 	@ParameterizedTest
-	@ValueSource(strings =  {"/swagger-api/index.html","/swagger-api/rest-api-swagger.yaml","/swagger-api/schemas/act_request.json"})
-	public void testIndex() throws Exception {
-		URL url = new URL("http://localhost:8080/swagger-api/index.html");
+	@ValueSource(strings =  {"/swagger-api/index.html 2","/swagger-api/rest-api-swagger.yaml","/swagger-api/schemas/act_request.json"})
+	public void testIndex(String text) throws Exception {
+		URL url = new URL("http://localhost:8080"+text);
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 		connection.setRequestMethod("GET");
 		connection.connect();
