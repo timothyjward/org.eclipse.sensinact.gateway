@@ -2,6 +2,3 @@
 -includeresource:\
 		tb_nosign_fail.jar,\
 		tb_sign_ok.jar
-
-		
--sign: alias="selfsigned";path="${signer.path}";keystore="${sensinact.rootdir}/platform/sensinact-security/cert/keystore.jks";storepass="sensiNact_team"

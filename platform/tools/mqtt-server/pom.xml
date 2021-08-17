@@ -35,12 +35,14 @@
 		<dependency>
 			<groupId>io.moquette</groupId>
 			<artifactId>moquette-broker</artifactId>
+			<version>0.9</version>
 			<scope>system</scope>
 			<systemPath>${project.basedir}/lib/moquette-broker-0.9.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>io.moquette</groupId>
 			<artifactId>moquette-netty-parser</artifactId>
+			<version>0.9</version>
 			<scope>system</scope>
 			<systemPath>${project.basedir}/lib/moquette-netty-parser-0.9.jar</systemPath>
 		</dependency>

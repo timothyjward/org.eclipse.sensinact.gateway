@@ -177,7 +177,8 @@
 		<mojo-sql-maven-plugin.version>1.5</mojo-sql-maven-plugin.version>
 		<mojo-versions-maven-plugin.version>2.7</mojo-versions-maven-plugin.version>
 		<mojo-xml-maven-plugin.version>1.0.2</mojo-xml-maven-plugin.version>
-
+		<directory-maven-plugin.version>0.3.1</directory-maven-plugin.version>
+		
 		<!-- BUILD: other plugins -->
 		<depends-maven-plugin.version>1.4.0</depends-maven-plugin.version>
 		<download-maven-plugin>1.5.0</download-maven-plugin>
@@ -192,7 +193,6 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.build.timestamp.format>yyyyMMd</maven.build.timestamp.format>
 		<sonar.jacoco.itReportPath>${project.basedir}/../../target/jacoco-it.exec</sonar.jacoco.itReportPath>
-		<signer.path>${java.home}/../bin/jarsigner</signer.path>
 		<checkstyle.suppressions.file>checkstyle-suppressions.xml</checkstyle.suppressions.file>
 		<checkstyle.header.file>checkstyle-sun.xml</checkstyle.header.file>
 		<timestamp>${maven.build.timestamp}</timestamp>
@@ -483,6 +483,7 @@
 				<groupId>org.apache.felix</groupId>
 				<artifactId>org.apache.felix.main.distribution</artifactId>
 				<version>${org.apache.felix.version}</version>
+				<type>zip</type>
 			</dependency>
 
 
@@ -1032,16 +1033,16 @@
 				<artifactId>keycloak-admin-client</artifactId>
 				<version>${keycloak.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>io.moquette</groupId>
-				<artifactId>moquette-broker</artifactId>
-				<version>${io.moquette.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>io.moquette</groupId>
-				<artifactId>moquette-netty-parser</artifactId>
-				<version>${io.moquette.version}</version>
-			</dependency>
+<!-- 			<dependency> -->
+<!-- 				<groupId>io.moquette</groupId> -->
+<!-- 				<artifactId>moquette-broker</artifactId> -->
+<!-- 				<version>${io.moquette.version}</version> -->
+<!-- 			</dependency> -->
+<!-- 			<dependency> -->
+<!-- 				<groupId>io.moquette</groupId> -->
+<!-- 				<artifactId>moquette-netty-parser</artifactId> -->
+<!-- 				<version>${io.moquette.version}</version> -->
+<!-- 			</dependency> -->
 			<!-- Specific subproducts used are netty-transport,netty-common,netty-buffer,netty-handler,netty-codec -->
 			<dependency>
 				<groupId>io.netty</groupId>
@@ -1072,11 +1073,11 @@
 			<!--  Gradle  -->
 			<!-- dirty trick to avoid to change the settings.xml file -->
 			<!-- @see  jsonpath-filtering:jsonpath-filter module      -->
-			<dependency>		
-				<groupId>org.gradle</groupId>
-				<artifactId>gradle-tooling-api</artifactId>
-				<version>${gradle-tooling-api.version}</version>
-			</dependency>
+<!-- 			<dependency>		 -->
+<!-- 				<groupId>org.gradle</groupId> -->
+<!-- 				<artifactId>gradle-tooling-api</artifactId> -->
+<!-- 				<version>${gradle-tooling-api.version}</version> -->
+<!-- 			</dependency> -->
 			
 			<!--  Connectors -->
 			
@@ -1595,6 +1596,62 @@
 		<pluginManagement>
 			<plugins>
 
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.codehaus.gmaven</groupId>
+										<artifactId>groovy-maven-plugin</artifactId>
+										<versionRange>2.0</versionRange>
+										<goals>
+											<goal>execute</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute>
+											<runOnIncremental>true</runOnIncremental>
+										</execute>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-antrun-plugin</artifactId>
+										<versionRange>1.8</versionRange>
+										<goals>
+											<goal>run</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.commonjava.maven.plugins</groupId>
+										<artifactId>directory-maven-plugin</artifactId>
+										<versionRange>0.3.1</versionRange>
+										<goals>
+											<goal>execution-root</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute>
+											<runOnIncremental>false</runOnIncremental>
+										</execute>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+
 				<!-- BUILD: org.apache.maven.plugins -->
 
 				<plugin>
@@ -1842,7 +1899,7 @@
 
 	
 				<!-- BUILD: Other plugins -->
-
+			
 				<plugin>
 					<groupId>org.apache.servicemix.tooling</groupId>
 					<artifactId>depends-maven-plugin</artifactId>
@@ -1961,7 +2018,8 @@
 Bundle-Vendor: Eclipse
 -contract: *
 -includeresource.about: -about.html
--plugin.jarsigner: aQute.bnd.signing.JartoolSigner;alias="selfsigned";path="${signer.path}";keystore="${sensinact.rootdir}/platform/sensinact-security/cert/keystore.jks";storepass="sensiNact_team"
+-plugin.sign: aQute.bnd.signing.JartoolSigner;alias="selfsigned";path=${osfile;${env;JAVA_HOME}/../bin;jarsigner};keystore="${sensinact.rootdir}/platform/sensinact-security/cert/keystore.jks";storepass="sensiNact_team"
+-sign: selfsigned
 -verbose: true
 							]]></bnd>
                                 </configuration>
@@ -1979,7 +2037,6 @@ Bundle-Vendor: Eclipse
 Bundle-Vendor: Eclipse
 -contract: *
 -includeresource.about: -about.html
--plugin.jarsigner: aQute.bnd.signing.JartoolSigner;alias="selfsigned";path="${signer.path}";keystore="${sensinact.rootdir}/platform/sensinact-security/cert/keystore.jks";storepass="sensiNact_team"
 -verbose: true
 ]]></bnd>
                                     <testCases>junit5</testCases>
@@ -2137,6 +2194,10 @@ Bundle-Vendor: Eclipse
 		</pluginManagement>
 
 		<plugins>
+			<plugin>	
+				<groupId>org.commonjava.maven.plugins</groupId>
+				<artifactId>directory-maven-plugin</artifactId>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-enforcer-plugin</artifactId>

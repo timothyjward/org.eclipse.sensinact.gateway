@@ -8,9 +8,9 @@
 -resolve.effective: active
 
 -runrequires: \
-	bnd.identity;id='${project.artifactId}-tests',\
-	bnd.identity;id='junit-jupiter-engine',\
-	bnd.identity;id='junit-platform-launcher'
+	bnd.identity;id=junit-jupiter-engine,\
+	bnd.identity;id=junit-platform-launcher,\
+	bnd.identity;id=mock-signature-validator-tests
 -runbundles: \
 	org.osgi.service.cm;version='[1.6.0,1.6.1)',\
 	org.osgi.service.log;version='[1.4.0,1.4.1)',\
