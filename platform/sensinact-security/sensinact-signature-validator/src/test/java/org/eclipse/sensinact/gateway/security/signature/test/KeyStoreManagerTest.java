@@ -10,9 +10,9 @@
  */
 package org.eclipse.sensinact.gateway.security.signature.test;
 
-import org.eclipse.sensinact.gateway.security.signature.internal.KeyStoreManager;
-import org.eclipse.sensinact.gateway.security.signature.internal.KeyStoreManagerException;
-import org.junit.Test;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -23,9 +23,9 @@ import java.security.PublicKey;
 import java.security.cert.Certificate;
 import java.security.cert.CertificateException;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
+import org.eclipse.sensinact.gateway.security.signature.internal.KeyStoreManager;
+import org.eclipse.sensinact.gateway.security.signature.internal.KeyStoreManagerException;
+import org.junit.jupiter.api.Test;
 
 public class KeyStoreManagerTest {
     static KeyStoreManager ksm = null;

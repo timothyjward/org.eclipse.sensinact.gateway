@@ -2018,7 +2018,16 @@
 Bundle-Vendor: Eclipse
 -contract: *
 -includeresource.about: -about.html
--plugin.sign: aQute.bnd.signing.JartoolSigner;alias="selfsigned";path=${osfile;${env;JAVA_HOME}/../bin;jarsigner};keystore="${sensinact.rootdir}/platform/sensinact-security/cert/keystore.jks";storepass="sensiNact_team"
+jarsigner1: ${osfile;${env;JAVA_HOME}/../bin;${findfile;${env;JAVA_HOME}/../bin;jarsigner*}}
+jarsigner2: ${if;${isfile;${jarsigner1}};\
+				${jarsigner1};\
+				${osfile;${env;JAVA_HOME}/bin;${findfile;${env;JAVA_HOME}/bin;jarsigner*}}\
+			}
+jarsigner: ${if;${isfile;${jarsigner2}};\
+				${jarsigner2};\
+				${osfile;${java.home}/../bin;${findfile;${java.home}/../bin;jarsigner*}}\
+			}
+-plugin.sign: aQute.bnd.signing.JartoolSigner;alias="selfsigned";path=${jarsigner};keystore="${sensinact.rootdir}/platform/sensinact-security/cert/keystore.jks";storepass="sensiNact_team"
 -sign: selfsigned
 -verbose: true
 							]]></bnd>
@@ -2194,10 +2203,6 @@ Bundle-Vendor: Eclipse
 		</pluginManagement>
 
 		<plugins>
-			<plugin>	
-				<groupId>org.commonjava.maven.plugins</groupId>
-				<artifactId>directory-maven-plugin</artifactId>
-			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-enforcer-plugin</artifactId>

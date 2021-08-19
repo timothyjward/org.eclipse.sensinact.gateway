@@ -13,6 +13,7 @@ package org.eclipse.sensinact.gateway.security.signature.internal;
 import org.eclipse.sensinact.gateway.common.bundle.Mediator;
 import org.eclipse.sensinact.gateway.security.signature.api.BundleValidation;
 import org.eclipse.sensinact.gateway.security.signature.exception.BundleValidationException;
+import org.osgi.annotation.bundle.Capability;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.component.annotations.Activate;
@@ -28,6 +29,7 @@ import java.util.Map;
 /**
  * An implementation of the BundleValidation service
  */
+@Capability(namespace = "org.eclipse.sensinact.signature.validator")
 @Component(immediate = true, property = {"type=mock"})
 public class BundleValidationImpl implements BundleValidation {
     // ********************************************************************//
@@ -46,6 +48,7 @@ public class BundleValidationImpl implements BundleValidation {
         }
     }
 
+    
     // ********************************************************************//
     // 						ABSTRACT DECLARATIONS 						   //
     // ********************************************************************//

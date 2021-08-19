@@ -10,12 +10,6 @@
  */
 package org.eclipse.sensinact.gateway.security.signature.test;
 
-import org.eclipse.sensinact.gateway.security.signature.internal.CryptographicUtils;
-import org.eclipse.sensinact.gateway.util.crypto.Base64;
-import org.junit.Assert;
-import org.junit.Ignore;
-import org.junit.Test;
-
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -25,7 +19,14 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
 
-@Ignore
+import org.eclipse.sensinact.gateway.security.signature.internal.CryptographicUtils;
+import org.eclipse.sensinact.gateway.util.crypto.Base64;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+
+@Disabled
 public class CryptographicUtilsTest {
     static CryptographicUtils cutils = null;
     String fileName4hash = "src/test/resources/textFile.txt.bis";

@@ -22,9 +22,9 @@
 	org.apache.felix.http.servlet-api;version='[1.1.4,1.1.5)',\
 	org.apache.felix.scr;version='[2.1.16,2.1.17)',\
 	org.opentest4j;version='[1.2.0,1.2.1)',\
-	org.osgi.service.http.whiteboard;version='[1.1.0,1.1.1)',\
 	org.osgi.util.function;version='[1.1.0,1.1.1)',\
 	org.osgi.util.promise;version='[1.1.1,1.1.2)',\
 	swagger;version='[2.0.0,2.0.1)',\
 	swagger-tests;version='[2.0.0,2.0.1)',\
-	junit-jupiter-params;version='[5.7.2,5.7.3)'
+	junit-jupiter-params;version='[5.7.2,5.7.3)',\
+	org.osgi.service.http.whiteboard;version='[1.1.0,1.1.1)'

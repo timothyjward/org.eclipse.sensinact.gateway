@@ -10,6 +10,8 @@
  */
 package org.eclipse.sensinact.gateway.security.signature.test;
 
+import java.io.File;
+
 import org.assertj.core.api.Assertions;
 import org.eclipse.sensinact.gateway.security.signature.api.BundleValidation;
 import org.junit.jupiter.api.Test;
@@ -52,8 +54,8 @@ public class BundleValidationTest {
 	}
 	
 	@Test
-	public void testCheck_TestBundleNoSign_NotOK(@InjectInstalledBundle(value = "tb_no_sign.jar") Bundle failerFan)
+	public void testCheck_TestBundleNoSign_NotOK(@InjectInstalledBundle(value = "tb_nosign_fail.jar") Bundle nosign)
 			throws Exception {
-		Assertions.assertThat(jval.check(failerFan)).isNull();
+		Assertions.assertThat(jval.check(nosign)).isNull();
 	}
 }

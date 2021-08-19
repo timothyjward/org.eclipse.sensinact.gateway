@@ -1,4 +1,4 @@
-src: extra-src
+src: extra-src2
 
 jarsigner1: ${osfile;${env;JAVA_HOME}/../bin;${findfile;${env;JAVA_HOME}/../bin;jarsigner*}}
 jarsigner2: ${if;${isfile;${jarsigner1}};\

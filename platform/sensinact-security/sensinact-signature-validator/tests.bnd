@@ -1,0 +1,8 @@
+-make: (*).(jar); type=bnd; recipe="${.}/tb/$1.bnd"
+-includeresource:\
+		-fan.jar,\
+		-button.jar
+		
+#Import-Package: \
+#	!org.eclipse.sensinact.gateway.security.signature.internal,\
+#	*
