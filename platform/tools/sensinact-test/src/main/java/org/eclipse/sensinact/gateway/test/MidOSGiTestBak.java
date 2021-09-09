@@ -32,7 +32,7 @@ import java.util.jar.JarOutputStream;
 import java.util.jar.Manifest;
 import java.util.zip.ZipEntry;
 
-public abstract class MidOSGiTest implements BundleContextProvider {
+public abstract class MidOSGiTestBak implements BundleContextProvider {
     /**
      * Completes the initialization configuration Map
      *
@@ -88,7 +88,7 @@ public abstract class MidOSGiTest implements BundleContextProvider {
     protected File bundleDir = null;
     protected File loadDir = null;
 
-    public MidOSGiTest() throws Exception {
+    public MidOSGiTestBak() throws Exception {
         String directoryName = "target/felix";
         felixDir = new File(directoryName);
         bundleDir = new File(felixDir, "bundle");
@@ -283,7 +283,7 @@ public abstract class MidOSGiTest implements BundleContextProvider {
         configuration.put("felix.bootdelegation.classloaders", new HashMap() {
             public Object get(Object key) {
                 if (Bundle.class.isAssignableFrom(key.getClass())) {
-                    if (MidOSGiTest.this.isExcluded(((Bundle) key).getSymbolicName())) {
+                    if (MidOSGiTestBak.this.isExcluded(((Bundle) key).getSymbolicName())) {
                         return null;
                     }
                     return classloader;

@@ -11,34 +11,21 @@
 
 package org.eclipse.sensinact.gateway.core.security.test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
 import java.io.File;
 import java.lang.reflect.Method;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 
 import org.eclipse.sensinact.gateway.common.primitive.Describable;
 import org.eclipse.sensinact.gateway.core.ActionResource;
-import org.eclipse.sensinact.gateway.core.Core;
 import org.eclipse.sensinact.gateway.core.Resource;
-import org.eclipse.sensinact.gateway.core.ServiceProvider;
-import org.eclipse.sensinact.gateway.core.Session;
-import org.eclipse.sensinact.gateway.core.security.Authentication;
-import org.eclipse.sensinact.gateway.core.security.Credentials;
-import org.eclipse.sensinact.gateway.test.MidOSGiTest;
-import org.eclipse.sensinact.gateway.test.MidProxy;
-import org.junit.Test;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 /**
  *
  * @author <a href="mailto:christophe.munilla@cea.fr">Christophe Munilla</a>
  */
-public class TestSecurityPattern extends MidOSGiTest {
+public class TestSecurityPattern {
 	// ********************************************************************//
 	// NESTED DECLARATIONS //
 	// ********************************************************************//
@@ -90,7 +77,6 @@ public class TestSecurityPattern extends MidOSGiTest {
 	 * @see MidOSGiTest#doInit(java.util.Map)
 	 */
 	@SuppressWarnings("unchecked")
-	@Override
 	protected void doInit(Map configuration) {
 		configuration.put("org.osgi.framework.system.packages.extra",
 				"org.eclipse.sensinact.gateway.test," + "com.sun.net.httpserver," + "javax.net.ssl,"
@@ -135,7 +121,7 @@ public class TestSecurityPattern extends MidOSGiTest {
 		configuration.put("felix.log.level", "4");
 	}
 
-	@Ignore
+	@Disabled
 	@Test
 	public void testSecurityAccessWithPattern() throws Throwable {
 		// slider[0-9]{2} - authenticated access level
@@ -150,104 +136,104 @@ public class TestSecurityPattern extends MidOSGiTest {
 		// slider1[0-9]/cursor - authenticated access level
 		// fake2 user is authenticated on slider1[0-9]
 
-		MidProxy<Core> mid = new MidProxy<Core>(classloader, this, Core.class);
-
-		Core core = mid.buildProxy();
-		Session session = core.getAnonymousSession();
-		assertNotNull(session);
-
-		Set providers = session.serviceProviders();
-		System.out.println("====================================>>>>>");
-		System.out.println(providers);
-		System.out.println("====================================>>>>>");
-		assertTrue(providers.isEmpty());
-
-		// ******************************************************
-		// admin
-		// the admin user is suppose to see every thing
-		// service providers and services
-		MidProxy<Authentication> midCredentials = new MidProxy<Authentication>(classloader, this, Authentication.class);
-
-		midCredentials.buildProxy(Credentials.class.getCanonicalName(), new Class<?>[] { String.class, String.class },
-				new Object[] { "cea", "sensiNact_team" });
-
-		Method method = mid.getContextualizedType().getDeclaredMethod("getSession",
-				new Class<?>[] { midCredentials.getContextualizedType() });
-
-		session = (Session) mid.toOSGi(method, new Object[] { midCredentials.getInstance() });
-
-		assertNotNull(session);
-
-		providers = session.serviceProviders();
-		assertEquals(3, providers.size());
-		Iterator<ServiceProvider> iterator = providers.iterator();
-
-		while (iterator.hasNext()) {
-			MidProxy<ServiceProvider> provider = new MidProxy<ServiceProvider>(classloader, this,
-					ServiceProvider.class);
-
-			ServiceProvider serviceProvider = provider.buildProxy(iterator.next());
-			assertEquals(2, serviceProvider.getServices().size());
-			System.out.println(serviceProvider.getDescription().getJSON());
-		}
-
-		// *************************************
-		// fake
-		// the fake user is suppose to see only two service providers
-		// and only the cursor service for each one
-		midCredentials = new MidProxy<Authentication>(classloader, this, Authentication.class);
-
-		midCredentials.buildProxy(Credentials.class.getCanonicalName(), new Class<?>[] { String.class, String.class },
-				new Object[] { "fake", "fake" });
-
-		method = mid.getContextualizedType().getDeclaredMethod("getSession",
-				new Class<?>[] { midCredentials.getContextualizedType() });
-
-		session = (Session) mid.toOSGi(method, new Object[] { midCredentials.getInstance() });
-
-		assertNotNull(session);
-
-		providers = session.serviceProviders();
-
-		assertEquals(2, providers.size());
-		iterator = providers.iterator();
-
-		while (iterator.hasNext()) {
-			MidProxy<ServiceProvider> provider = new MidProxy<ServiceProvider>(classloader, this,
-					ServiceProvider.class);
-
-			ServiceProvider serviceProvider = provider.buildProxy(iterator.next());
-			assertEquals(1, serviceProvider.getServices().size());
-			System.out.println(serviceProvider.getDescription().getJSON());
-		}
-
-		// ***************************************
-		// fake2
-		// the fake2 user is suppose to see only one service provider
-		// and only its cursor service
-		midCredentials = new MidProxy<Authentication>(classloader, this, Authentication.class);
-
-		midCredentials.buildProxy(Credentials.class.getCanonicalName(), new Class<?>[] { String.class, String.class },
-				new Object[] { "fake2", "fake2" });
-
-		method = mid.getContextualizedType().getDeclaredMethod("getSession",
-				new Class<?>[] { midCredentials.getContextualizedType() });
-
-		session = (Session) mid.toOSGi(method, new Object[] { midCredentials.getInstance() });
-
-		assertNotNull(session);
-
-		providers = session.serviceProviders();
-		assertEquals(1, providers.size());
-		iterator = providers.iterator();
-
-		while (iterator.hasNext()) {
-			MidProxy<ServiceProvider> provider = new MidProxy<ServiceProvider>(classloader, this,
-					ServiceProvider.class);
-
-			ServiceProvider serviceProvider = provider.buildProxy(iterator.next());
-			assertEquals(1, serviceProvider.getServices().size());
-			System.out.println(serviceProvider.getDescription().getJSON());
-		}
+//		MidProxy<Core> mid = new MidProxy<Core>(classloader, this, Core.class);
+//
+//		Core core = mid.buildProxy();
+//		Session session = core.getAnonymousSession();
+//		assertNotNull(session);
+//
+//		Set providers = session.serviceProviders();
+//		System.out.println("====================================>>>>>");
+//		System.out.println(providers);
+//		System.out.println("====================================>>>>>");
+//		assertTrue(providers.isEmpty());
+//
+//		// ******************************************************
+//		// admin
+//		// the admin user is suppose to see every thing
+//		// service providers and services
+//		MidProxy<Authentication> midCredentials = new MidProxy<Authentication>(classloader, this, Authentication.class);
+//
+//		midCredentials.buildProxy(Credentials.class.getCanonicalName(), new Class<?>[] { String.class, String.class },
+//				new Object[] { "cea", "sensiNact_team" });
+//
+//		Method method = mid.getContextualizedType().getDeclaredMethod("getSession",
+//				new Class<?>[] { midCredentials.getContextualizedType() });
+//
+//		session = (Session) mid.toOSGi(method, new Object[] { midCredentials.getInstance() });
+//
+//		assertNotNull(session);
+//
+//		providers = session.serviceProviders();
+//		assertEquals(3, providers.size());
+//		Iterator<ServiceProvider> iterator = providers.iterator();
+//
+//		while (iterator.hasNext()) {
+//			MidProxy<ServiceProvider> provider = new MidProxy<ServiceProvider>(classloader, this,
+//					ServiceProvider.class);
+//
+//			ServiceProvider serviceProvider = provider.buildProxy(iterator.next());
+//			assertEquals(2, serviceProvider.getServices().size());
+//			System.out.println(serviceProvider.getDescription().getJSON());
+//		}
+//
+//		// *************************************
+//		// fake
+//		// the fake user is suppose to see only two service providers
+//		// and only the cursor service for each one
+//		midCredentials = new MidProxy<Authentication>(classloader, this, Authentication.class);
+//
+//		midCredentials.buildProxy(Credentials.class.getCanonicalName(), new Class<?>[] { String.class, String.class },
+//				new Object[] { "fake", "fake" });
+//
+//		method = mid.getContextualizedType().getDeclaredMethod("getSession",
+//				new Class<?>[] { midCredentials.getContextualizedType() });
+//
+//		session = (Session) mid.toOSGi(method, new Object[] { midCredentials.getInstance() });
+//
+//		assertNotNull(session);
+//
+//		providers = session.serviceProviders();
+//
+//		assertEquals(2, providers.size());
+//		iterator = providers.iterator();
+//
+//		while (iterator.hasNext()) {
+//			MidProxy<ServiceProvider> provider = new MidProxy<ServiceProvider>(classloader, this,
+//					ServiceProvider.class);
+//
+//			ServiceProvider serviceProvider = provider.buildProxy(iterator.next());
+//			assertEquals(1, serviceProvider.getServices().size());
+//			System.out.println(serviceProvider.getDescription().getJSON());
+//		}
+//
+//		// ***************************************
+//		// fake2
+//		// the fake2 user is suppose to see only one service provider
+//		// and only its cursor service
+//		midCredentials = new MidProxy<Authentication>(classloader, this, Authentication.class);
+//
+//		midCredentials.buildProxy(Credentials.class.getCanonicalName(), new Class<?>[] { String.class, String.class },
+//				new Object[] { "fake2", "fake2" });
+//
+//		method = mid.getContextualizedType().getDeclaredMethod("getSession",
+//				new Class<?>[] { midCredentials.getContextualizedType() });
+//
+//		session = (Session) mid.toOSGi(method, new Object[] { midCredentials.getInstance() });
+//
+//		assertNotNull(session);
+//
+//		providers = session.serviceProviders();
+//		assertEquals(1, providers.size());
+//		iterator = providers.iterator();
+//
+//		while (iterator.hasNext()) {
+//			MidProxy<ServiceProvider> provider = new MidProxy<ServiceProvider>(classloader, this,
+//					ServiceProvider.class);
+//
+//			ServiceProvider serviceProvider = provider.buildProxy(iterator.next());
+//			assertEquals(1, serviceProvider.getServices().size());
+//			System.out.println(serviceProvider.getDescription().getJSON());
+//		}
 	}
 }

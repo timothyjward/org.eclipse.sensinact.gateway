@@ -1,0 +1,8 @@
+-make: (*).(jar); type=bnd; recipe="${.}/tb/$1.bnd"
+
+-includeresource:\
+		resources.jar,\
+		resources2.jar,\
+		resources3.jar,\
+		resources4.jar,\
+		resources5.jar

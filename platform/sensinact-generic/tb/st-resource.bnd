@@ -1,0 +1,2 @@
+src: extra-src/test/java,extra-src/test/resources
+-includeresource: ${.}/st-resource

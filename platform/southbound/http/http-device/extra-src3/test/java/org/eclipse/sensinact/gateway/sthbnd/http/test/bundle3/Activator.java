@@ -17,6 +17,8 @@ import org.eclipse.sensinact.gateway.sthbnd.http.annotation.ChainedHttpTasks;
 import org.eclipse.sensinact.gateway.sthbnd.http.annotation.HttpChildTaskConfiguration;
 import org.eclipse.sensinact.gateway.sthbnd.http.annotation.HttpTaskConfiguration;
 import org.eclipse.sensinact.gateway.sthbnd.http.smpl.HttpActivator;
+import org.osgi.annotation.bundle.Header;
+import org.osgi.framework.Constants;
 
 @ChainedHttpTasks(tasks = {
 	@ChainedHttpTask(
@@ -37,6 +39,7 @@ import org.eclipse.sensinact.gateway.sthbnd.http.smpl.HttpActivator;
 		}
 	)
 })
+@Header(name = Constants.BUNDLE_ACTIVATOR, value = "${@class}")
 public class Activator extends HttpActivator
 {
 

@@ -16,6 +16,8 @@ import org.eclipse.sensinact.gateway.sthbnd.http.annotation.HttpTaskConfiguratio
 import org.eclipse.sensinact.gateway.sthbnd.http.annotation.HttpTasks;
 import org.eclipse.sensinact.gateway.sthbnd.http.annotation.RecurrentHttpTask;
 import org.eclipse.sensinact.gateway.sthbnd.http.smpl.HttpActivator;
+import org.osgi.annotation.bundle.Header;
+import org.osgi.framework.Constants;
 
 @HttpTasks( recurrences = {
 	@RecurrentHttpTask(
@@ -28,6 +30,7 @@ import org.eclipse.sensinact.gateway.sthbnd.http.smpl.HttpActivator;
 			path = "/get")
 		)
 })
+@Header(name = Constants.BUNDLE_ACTIVATOR, value = "${@class}")
 public class Activator extends HttpActivator
 {
 	/**

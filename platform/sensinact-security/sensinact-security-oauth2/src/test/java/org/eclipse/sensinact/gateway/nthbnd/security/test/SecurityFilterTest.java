@@ -4,28 +4,25 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
-import org.junit.Test;
-import org.keycloak.models.KeycloakSession;
-import org.keycloak.models.RealmModel;
-import org.keycloak.representations.idm.RealmRepresentation;
-import org.keycloak.services.managers.RealmManager;
-import org.keycloak.testsuite.KeycloakServer;
-import org.junit.Ignore;
-
 import java.io.FileInputStream;
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 import org.eclipse.sensinact.gateway.protocol.http.client.ConnectionConfigurationImpl;
 import org.eclipse.sensinact.gateway.protocol.http.client.SimpleRequest;
 import org.eclipse.sensinact.gateway.protocol.http.client.SimpleResponse;
-
-import org.eclipse.sensinact.gateway.test.MidOSGiTest;
 import org.eclipse.sensinact.gateway.util.crypto.Base64;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
+import org.keycloak.models.KeycloakSession;
+import org.keycloak.models.RealmModel;
+import org.keycloak.representations.idm.RealmRepresentation;
+import org.keycloak.services.managers.RealmManager;
+import org.keycloak.testsuite.KeycloakServer;
 
-public class SecurityFilterTest extends MidOSGiTest {
+public class SecurityFilterTest {
 	
 	class KServer {
 		
@@ -73,30 +70,20 @@ public class SecurityFilterTest extends MidOSGiTest {
 	
     KServer s;
     
-    /**
-     * @throws MalformedURLException
-     * @throws IOException
-     */
-    public SecurityFilterTest() throws Exception {
-        super();
+    @BeforeEach
+    public void before() throws Throwable {
+    	s = new KServer();
     }
 
-    /**
-     * @inheritDoc
-     * @see MidOSGiTest#isExcluded(java.lang.String)
-     */
-    public boolean isExcluded(String fileName) {
-        if ("org.apache.felix.framework.security.jar".equals(fileName)) {
-            return true;
-        }
-        return false;
+    @AfterEach
+    public void after() throws Throwable {
+    	s.stop();
     }
-
+    
     /**
      * @inheritDoc
      * @see MidOSGiTest#doInit(java.util.Map)
      */
-    @Override
     @SuppressWarnings({"unchecked", "rawtypes"})
     protected void doInit(Map configuration) {
     	    	
@@ -160,7 +147,7 @@ public class SecurityFilterTest extends MidOSGiTest {
         configuration.put("org.apache.felix.http.whiteboardEnabled", true);
     }
 
-    @Ignore
+    @Disabled
 	@Test
 	public void testKeycloakServer() throws Throwable {//		
 //		Manually call http://localhost:8899/sensinact/slider with both adminTester 
@@ -175,7 +162,6 @@ public class SecurityFilterTest extends MidOSGiTest {
 	@Test
 	public void testAccess() throws Throwable {	
 
-		Thread.sleep(2000);
 		
 		String credentials = new String("anonymousTester:anonymousTester");
 		String basic = Base64.encodeBytes(credentials.getBytes(StandardCharsets.UTF_8));
@@ -213,8 +199,7 @@ public class SecurityFilterTest extends MidOSGiTest {
 		response = new SimpleRequest(conf).send();
 		assertEquals(401, response.getStatusCode());
 
-		Thread.sleep(5000);
-		s.stop();
+		
 	}
     
 }

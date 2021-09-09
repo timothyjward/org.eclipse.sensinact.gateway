@@ -11,33 +11,21 @@
 
 package org.eclipse.sensinact.gateway.core.security.test;
 
-import static org.junit.Assert.assertNotNull;
-
 import java.io.File;
 import java.lang.reflect.Method;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
-
-import org.eclipse.sensinact.gateway.core.ActionResource;
-import org.eclipse.sensinact.gateway.core.Core;
-import org.eclipse.sensinact.gateway.core.Resource;
-import org.eclipse.sensinact.gateway.core.ServiceProvider;
-import org.eclipse.sensinact.gateway.core.Session;
-import org.eclipse.sensinact.gateway.core.security.Authentication;
-import org.eclipse.sensinact.gateway.core.security.Credentials;
-import org.junit.Test;
-import org.junit.Ignore;
 
 import org.eclipse.sensinact.gateway.common.primitive.Describable;
-import org.eclipse.sensinact.gateway.test.MidOSGiTest;
-import org.eclipse.sensinact.gateway.test.MidProxy;
+import org.eclipse.sensinact.gateway.core.ActionResource;
+import org.eclipse.sensinact.gateway.core.Resource;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 /**
  *
  * @author <a href="mailto:christophe.munilla@cea.fr">Christophe Munilla</a>
  */
-public class TestSecurity extends MidOSGiTest {
+public class TestSecurity {
 	// ********************************************************************//
 	// NESTED DECLARATIONS //
 	// ********************************************************************//
@@ -85,7 +73,6 @@ public class TestSecurity extends MidOSGiTest {
 	 * @see MidOSGiTest#doInit(java.util.Map)
 	 */
 	@SuppressWarnings("unchecked")
-	@Override
 	protected void doInit(Map configuration) {
 		configuration.put("org.osgi.framework.system.packages.extra",
 				"org.eclipse.sensinact.gateway.test," + "com.sun.net.httpserver," + "javax.net.ssl,"
@@ -128,51 +115,51 @@ public class TestSecurity extends MidOSGiTest {
 				+ "file:target/felix/bundle/fan.jar " + "file:target/felix/bundle/button.jar ");
 	}
 
-	@Ignore
+	@Disabled
 	@Test
 	public void testSecurityAccessInitialization() throws Throwable {
-		MidProxy<Core> mid = new MidProxy<Core>(classloader, this, Core.class);
-
-		Core core = mid.buildProxy();
-		Session session = core.getAnonymousSession();
-		assertNotNull(session);
-
-		Set providers = session.serviceProviders();
-		Iterator iterator = providers.iterator();
-
-		while (iterator.hasNext()) {
-			MidProxy<ServiceProvider> provider = new MidProxy<ServiceProvider>(classloader, this,
-					ServiceProvider.class);
-
-			ServiceProvider serviceProvider = provider.buildProxy(iterator.next());
-
-			System.out.println(serviceProvider.getDescription().getJSON());
-		}
-		System.out.println("============================================");
-
-		MidProxy<Authentication> midCredentials = new MidProxy<Authentication>(classloader, this, Authentication.class);
-
-		midCredentials.buildProxy(Credentials.class.getCanonicalName(), new Class<?>[] { String.class, String.class },
-				new Object[] { "cea", "sensiNact_team" });
-
-		Method method = mid.getContextualizedType().getDeclaredMethod("getSession",
-				new Class<?>[] { midCredentials.getContextualizedType() });
-
-		session = (Session) mid.toOSGi(method, new Object[] { midCredentials.getInstance() });
-
-		assertNotNull(session);
-
-		providers = session.serviceProviders();
-		iterator = providers.iterator();
-
-		while (iterator.hasNext()) {
-			MidProxy<ServiceProvider> provider = new MidProxy<ServiceProvider>(classloader, this,
-					ServiceProvider.class);
-
-			ServiceProvider serviceProvider = provider.buildProxy(iterator.next());
-
-			System.out.println(serviceProvider.getDescription().getJSON());
-		}
+//		MidProxy<Core> mid = new MidProxy<Core>(classloader, this, Core.class);
+//
+//		Core core = mid.buildProxy();
+//		Session session = core.getAnonymousSession();
+//		assertNotNull(session);
+//
+//		Set providers = session.serviceProviders();
+//		Iterator iterator = providers.iterator();
+//
+//		while (iterator.hasNext()) {
+//			MidProxy<ServiceProvider> provider = new MidProxy<ServiceProvider>(classloader, this,
+//					ServiceProvider.class);
+//
+//			ServiceProvider serviceProvider = provider.buildProxy(iterator.next());
+//
+//			System.out.println(serviceProvider.getDescription().getJSON());
+//		}
+//		System.out.println("============================================");
+//
+//		MidProxy<Authentication> midCredentials = new MidProxy<Authentication>(classloader, this, Authentication.class);
+//
+//		midCredentials.buildProxy(Credentials.class.getCanonicalName(), new Class<?>[] { String.class, String.class },
+//				new Object[] { "cea", "sensiNact_team" });
+//
+//		Method method = mid.getContextualizedType().getDeclaredMethod("getSession",
+//				new Class<?>[] { midCredentials.getContextualizedType() });
+//
+//		session = (Session) mid.toOSGi(method, new Object[] { midCredentials.getInstance() });
+//
+//		assertNotNull(session);
+//
+//		providers = session.serviceProviders();
+//		iterator = providers.iterator();
+//
+//		while (iterator.hasNext()) {
+//			MidProxy<ServiceProvider> provider = new MidProxy<ServiceProvider>(classloader, this,
+//					ServiceProvider.class);
+//
+//			ServiceProvider serviceProvider = provider.buildProxy(iterator.next());
+//
+//			System.out.println(serviceProvider.getDescription().getJSON());
+//		}
 
 	}
 

@@ -474,11 +474,11 @@
 				<artifactId>org.apache.felix.framework</artifactId>
 				<version>${org.apache.felix.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>org.apache.felix.main</artifactId>
-				<version>${org.apache.felix.version}</version>
-			</dependency>
+<!-- 			<dependency> -->
+<!-- 				<groupId>org.apache.felix</groupId> -->
+<!-- 				<artifactId>org.apache.felix.main</artifactId> -->
+<!-- 				<version>${org.apache.felix.version}</version> -->
+<!-- 			</dependency> -->
 			<dependency>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>org.apache.felix.main.distribution</artifactId>
