@@ -82,7 +82,6 @@
 			<groupId>org.eclipse.sensinact.gateway.nthbnd</groupId>
 			<artifactId>http-tools</artifactId>
 			<version>${project.version}</version>
-			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 </project>

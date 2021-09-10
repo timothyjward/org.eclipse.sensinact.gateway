@@ -1,0 +1,30 @@
+-tester: biz.aQute.tester.junit-platform
+
+-runsystempackages: com.sun.net.httpserver
+
+-runee: JavaSE-1.8
+-runvm: ${def;argLine}
+
+-runfw: org.apache.felix.framework
+-resolve.effective: active
+
+-runrequires: \
+	bnd.identity;id=junit-jupiter-engine,\
+	bnd.identity;id=junit-platform-launcher,\
+	bnd.identity;id='${project.artifactId}-tests',\
+	bnd.identity;id=mock-signature-validator
+
+-runvm.test: \
+	-Dorg.eclipse.sensinact.gateway.security.jks.filename=${.}/../cert/keystore.jks\n\
+	-Dorg.eclipse.sensinact.gateway.security.jks.password=sensiNact_team\n\
+	-Dorg.eclipse.sensinact.gateway.security.signer.password=sensiNact_team
+-runproperties: \
+	org.eclipse.sensinact.security.oauth2.config=${.}/src/test/resources/sensinact-security-oauth2.config,\
+	org.eclipse.sensinact.gateway.security.jks.filename=${.}/../cert/keystore.jks,\
+    org.eclipse.sensinact.gateway.security.jks.password=sensiNact_team,\
+    "org.eclipse.sensinact.http.corsheader", false
+    org.eclipse.sensinact.gateway.location.latitude=45.2d,\
+    org.eclipse.sensinact.gateway.location.longitude=5.7d,\
+    org.osgi.service.http.port=8899,\
+    org.apache.felix.http.jettyEnabled=true,\
+    org.apache.felix.http.whiteboardEnabled=true

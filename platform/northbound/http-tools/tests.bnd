@@ -1,0 +1,8 @@
+-make: (*).(jar); type=bnd; recipe="${.}/tb/$1.bnd"
+
+-includeresource:\
+		extra.jar,\
+		extra-2.jar,\
+		extra-3.jar
+		
+-conditionalpackage: org.skyscreamer.jsonassert.*

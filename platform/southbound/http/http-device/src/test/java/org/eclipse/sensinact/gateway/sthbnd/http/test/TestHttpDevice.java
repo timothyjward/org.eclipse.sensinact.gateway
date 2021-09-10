@@ -158,7 +158,10 @@ public class TestHttpDevice {
     }
 
     @Test
-    public void testHttpTask(@InjectService(timeout = 500) Core core, @InjectInstalledBundle(value = "resources.jar") Bundle bundle) throws Throwable {
+    public void testHttpTask(
+    		@InjectService(timeout = 500) Core core, 
+    		@InjectInstalledBundle(value = "resources.jar") Bundle bundle
+    		) throws Throwable {
         callback.setRemoteEntity(new JSONObject().put("serviceProviderId", "TestForSensiNactGateway").put("serviceId", "service1").put("resourceId", "temperature").put("data", 24));
 
         Session session = core.getAnonymousSession();

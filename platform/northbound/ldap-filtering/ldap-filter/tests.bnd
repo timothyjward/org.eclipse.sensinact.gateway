@@ -1,0 +1,4 @@
+-make: (*).(jar); type=bnd; recipe="${.}/tb/$1.bnd"
+
+-includeresource:\
+		extra.jar

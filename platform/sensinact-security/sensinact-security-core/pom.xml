@@ -67,7 +67,6 @@
 			<groupId>org.eclipse.sensinact.gateway.nthbnd</groupId>
 			<artifactId>http-tools</artifactId>
 			<version>${project.version}</version>
-			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.sensinact.gateway.protocol</groupId>
