@@ -2,9 +2,9 @@
 
 
 -runee: JavaSE-1.8
--runvm: ${def;argLine}\n\
-	-Dorg.eclipse.sensinact.gateway.security.jks.filename=${.}/../cert/keystore.jks\n\
-	-Dorg.eclipse.sensinact.gateway.security.jks.password=sensiNact_team\n\
+-runvm.test: ${def;argLine}, \
+	-Dorg.eclipse.sensinact.gateway.security.jks.filename=${.}/../cert/keystore.jks, \
+	-Dorg.eclipse.sensinact.gateway.security.jks.password=sensiNact_team, \
 	-Dorg.eclipse.sensinact.gateway.security.signer.password=sensiNact_team
 
 -runfw: org.apache.felix.framework
@@ -33,8 +33,10 @@
 	log4j;version='[1.2.17,1.2.18)',\
 	sensinact-signature-validator;version='[2.0.0,2.0.1)',\
 	sensinact-signature-validator-tests;version='[2.0.0,2.0.1)',\
-	sensinact-test;version='[2.0.0,2.0.1)',\
 	javax.mail-api;version='[1.6.2,1.6.3)',\
-	org.apache.felix.scr;version='[2.1.16,2.1.17)'
-	
--runvm.test: \
+	org.apache.felix.scr;version='[2.1.16,2.1.17)',\
+	assertj-core;version='[3.20.2,3.20.3)',\
+	junit-jupiter-params;version='[5.7.2,5.7.3)',\
+	org.osgi.test.common;version='[1.0.1,1.0.2)',\
+	org.osgi.test.junit5;version='[1.0.1,1.0.2)'
+

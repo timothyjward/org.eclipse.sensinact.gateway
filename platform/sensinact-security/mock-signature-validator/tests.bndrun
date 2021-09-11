@@ -35,6 +35,6 @@
 	org.osgi.test.junit5;version='[1.0.1,1.0.2)'
 	
 -runvm.test: \
-	-Dorg.eclipse.sensinact.gateway.security.jks.filename=${.}/../cert/keystore.jks\n\
-	-Dorg.eclipse.sensinact.gateway.security.jks.password=sensiNact_team\n\
+	-Dorg.eclipse.sensinact.gateway.security.jks.filename=${.}/../cert/keystore.jks, \
+	-Dorg.eclipse.sensinact.gateway.security.jks.password=sensiNact_team, \
 	-Dorg.eclipse.sensinact.gateway.security.signer.password=sensiNact_team

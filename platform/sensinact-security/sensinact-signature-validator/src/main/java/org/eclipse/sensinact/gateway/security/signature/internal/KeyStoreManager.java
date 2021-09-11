@@ -14,6 +14,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.security.KeyStore;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
@@ -46,7 +48,16 @@ public class KeyStoreManager {
         //System.out.println("KEYSTORE : " + keystoreFile + " / PASSWD : " + keyStorePassword);
         try {
             this.keystore = KeyStore.getInstance(KEYSTORE_TYPE);
-            final InputStream iStream = (InputStream) new FileInputStream(keystoreFile);
+            System.out.println(Paths.get(keystoreFile).toAbsolutePath());
+            System.out.println(Paths.get(keystoreFile).toAbsolutePath());
+            System.out.println(Paths.get(keystoreFile).toAbsolutePath());
+            System.out.println(Paths.get(keystoreFile).toAbsolutePath());
+            System.out.println(Paths.get(keystoreFile).toAbsolutePath());
+            System.out.println(Paths.get(keystoreFile).toAbsolutePath());
+            System.out.println(Paths.get(keystoreFile).toAbsolutePath());
+            System.out.println(Paths.get(keystoreFile).toAbsolutePath());
+            System.out.println(Paths.get(keystoreFile).toAbsolutePath());
+            final InputStream iStream =Files.newInputStream(Paths.get(keystoreFile).toAbsolutePath());
             keystore.load(iStream, keyStorePassword.toCharArray());
         } catch (Exception e) {
             throw new KeyStoreManagerException(e);
