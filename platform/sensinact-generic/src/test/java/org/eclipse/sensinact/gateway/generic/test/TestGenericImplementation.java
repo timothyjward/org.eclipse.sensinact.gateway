@@ -13,11 +13,7 @@ package org.eclipse.sensinact.gateway.generic.test;
 import static org.junit.Assert.assertEquals;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.lang.reflect.Proxy;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.eclipse.sensinact.gateway.common.primitive.Description;
@@ -32,21 +28,21 @@ import org.eclipse.sensinact.gateway.core.message.SnaMessage;
 import org.eclipse.sensinact.gateway.core.method.DescribeResponse;
 import org.eclipse.sensinact.gateway.test.ProcessorService;
 import org.eclipse.sensinact.gateway.test.StarterService;
-import org.eclipse.sensinact.gateway.util.IOUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.osgi.framework.Bundle;
-import org.osgi.framework.ServiceReference;
 import org.osgi.test.common.annotation.InjectInstalledBundle;
 import org.osgi.test.common.annotation.InjectService;
 import org.osgi.test.junit5.context.BundleContextExtension;
+import org.osgi.test.junit5.context.InstalledBundleExtension;
 import org.osgi.test.junit5.service.ServiceExtension;
 import org.skyscreamer.jsonassert.JSONAssert;
 
 @ExtendWith(BundleContextExtension.class)
 @ExtendWith(ServiceExtension.class)
+@ExtendWith(InstalledBundleExtension.class)
 public class TestGenericImplementation {
 
 

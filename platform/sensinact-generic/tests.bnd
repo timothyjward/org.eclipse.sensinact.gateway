@@ -10,3 +10,9 @@
 		extra-4.jar,\
 		extra-5.jar,\
 		extra-6.jar
+
+
+Private-Package: \
+	org.skyscreamer.*
+	
+#; lib:=true
