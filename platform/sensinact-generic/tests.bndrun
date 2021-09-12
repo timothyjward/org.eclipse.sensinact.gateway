@@ -20,7 +20,7 @@
 	
 -runproperties: \
 	org.eclipse.sensinact.security.oauth2.config=${.}/src/test/resources/sensinact-security-oauth2.config,\
-	org.eclipse.sensinact.gateway.security.jks.filename=${.}/../cert/keystore.jks,\
+	org.eclipse.sensinact.gateway.security.jks.filename=${.}/../sensinact-security/cert/keystore.jks,\
     org.eclipse.sensinact.gateway.security.jks.password=sensiNact_team,\
     "org.eclipse.sensinact.http.corsheader", false
     org.eclipse.sensinact.gateway.location.latitude=45.2d,\

@@ -30,6 +30,7 @@ import org.eclipse.sensinact.gateway.test.ProcessorService;
 import org.eclipse.sensinact.gateway.test.StarterService;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.osgi.framework.Bundle;
@@ -43,6 +44,7 @@ import org.skyscreamer.jsonassert.JSONAssert;
 @ExtendWith(BundleContextExtension.class)
 @ExtendWith(ServiceExtension.class)
 @ExtendWith(InstalledBundleExtension.class)
+@Disabled
 public class TestGenericImplementation {
 
 

@@ -14,5 +14,3 @@
 
 Private-Package: \
 	org.skyscreamer.*
-	
-#; lib:=true
