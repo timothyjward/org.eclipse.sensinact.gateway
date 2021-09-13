@@ -13,14 +13,13 @@ package org.eclipse.sensinact.gateway.nthbnd.forward.test;
 import static org.junit.Assert.assertEquals;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.Map;
 
 import org.eclipse.sensinact.gateway.common.bundle.Mediator;
-import org.eclipse.sensinact.gateway.util.IOUtils;
+import org.eclipse.sensinact.gateway.nthbnd.http.callback.CallbackService;
+import org.eclipse.sensinact.gateway.nthbnd.http.callback.test.bundle1.CallbackServiceImpl;
+import org.eclipse.sensinact.gateway.nthbnd.http.forward.ForwardingService;
+import org.eclipse.sensinact.gateway.nthbnd.http.forward.test.bundle1.ForwardingServiceImpl;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
@@ -28,13 +27,17 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.test.common.annotation.InjectBundleContext;
+import org.osgi.test.common.annotation.InjectBundleInstaller;
 import org.osgi.test.common.annotation.InjectInstalledBundle;
+import org.osgi.test.common.install.BundleInstaller;
 import org.osgi.test.junit5.context.BundleContextExtension;
+import org.osgi.test.junit5.context.InstalledBundleExtension;
 import org.osgi.test.junit5.service.ServiceExtension;
 import org.skyscreamer.jsonassert.JSONAssert;
 
 @SuppressWarnings({"unchecked", "rawtypes"})
 @ExtendWith(BundleContextExtension.class)
+@ExtendWith(InstalledBundleExtension.class)
 @ExtendWith(ServiceExtension.class)
 public class TestForwardingService {
     //********************************************************************//
@@ -133,14 +136,14 @@ public class TestForwardingService {
 
     @Test
     public void testForwarding(
-    			@InjectInstalledBundle(value = "extra.jar") Bundle bundle,
     			@InjectBundleContext BundleContext context
     		) throws Exception {
+    	context.registerService(ForwardingService.class, new ForwardingServiceImpl(), null);
         Mediator mediator = new Mediator(context);
 //        this.initializeMoke(new File("./extra-src/test/resources/MANIFEST.MF"), new File("./extra-src/test/resources/meta"), new File("./target/extra-test-classes"));
         
         String simulated1 = HttpServiceTestClient.newRequest(mediator, HTTP_ROOTURL + "/sensinact/providers", null, "GET");
-        System.out.println(simulated1);
+        System.out.println("1- " +  simulated1);
 
         String simulated2 = HttpServiceTestClient.newRequest(mediator, HTTP_ROOTURL + "/forwardingTest1/0", null, "GET");
         System.out.println(simulated2);
@@ -158,9 +161,9 @@ public class TestForwardingService {
 
     @Test
     public void testCallback(
-    		@InjectInstalledBundle(value = "extra-2.jar") Bundle bundle,
     		@InjectBundleContext BundleContext context
     		) throws Exception {
+    	context.registerService(CallbackService.class, new CallbackServiceImpl(), null);
         Mediator mediator = new Mediator(context);
 //        this.initializeMoke(new File("./extra-src2/test/resources/MANIFEST.MF"), new File("./extra-src2/test/resources/meta"), new File("./target/extra-test-classes2"));
         try {
@@ -180,10 +183,11 @@ public class TestForwardingService {
 
     @Test
     public void testCallbackHttpAndWebSocket(
-    		@InjectInstalledBundle(value = "extra-3.jar") Bundle bundle,
     		@InjectBundleContext BundleContext context
     		) throws Exception {
-        Mediator mediator = new Mediator(context);
+    	context.registerService(CallbackService.class, new org.eclipse.sensinact.gateway.nthbnd.http.callback.test.CallbackServiceImpl(), null);
+    	
+    	Mediator mediator = new Mediator(context);
 //        this.initializeMoke(new File("./extra-src3/test/resources/MANIFEST.MF"), new File("./extra-src3/test/resources/meta"), new File("./target/extra-test-classes3"));
         String simulated1 = HttpServiceTestClient.newRequest(mediator, HTTP_ROOTURL + "/callbackTest1", null, "GET");
         System.out.println(simulated1);
