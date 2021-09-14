@@ -87,7 +87,7 @@
 <!--                         <Build-By>Kentyou</Build-By> -->
 <!--                         <Bundle-Description>${project.name}</Bundle-Description> -->
 <!--                         <_nouses>true</_nouses> -->
-<!--                         <_plugin>aQute.bnd.signing.JartoolSigner;alias="selfsigned";path="${signer.path}";keystore="${sensinact.rootdir}/platform/sensinact-security/cert/keystore.jks";storepass="sensiNact_team"</_plugin> -->
+<!--                         <_plugin>aQute.bnd.signing.JartoolSigner;alias="selfsigned";path="${signer.path}";keystore="${maven.multiModuleProjectDirectory}/platform/sensinact-security/cert/keystore.jks";storepass="sensiNact_team"</_plugin> -->
 <!--                         <_sign>selfsigned</_sign> -->
 <!--                         <_failok>true</_failok> -->
 <!--                         <Service-Components>OSGI-INF/*.xml</Service-Components>  -->

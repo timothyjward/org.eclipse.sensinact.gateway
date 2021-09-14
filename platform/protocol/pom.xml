@@ -25,19 +25,6 @@
 
 	<name>sensiNact IoT Gateway - Communication protocol parent</name>
 
-	<properties>
-		<cert.path>../../sensinact-security/cert/keystore.jks</cert.path>		 
-	</properties>
-	
-	<dependencies>
-		<dependency>
-			<groupId>org.eclipse.sensinact.gateway</groupId>
-			<artifactId>sensinact-utils</artifactId>
-			<version>${project.version}</version>
-			<scope>provided</scope>
-		</dependency>	
-	</dependencies>
-	
 	<modules>
 		<module>http</module>
 		<module>ssdp</module>

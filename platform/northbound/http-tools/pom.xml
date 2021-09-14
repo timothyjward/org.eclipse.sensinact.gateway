@@ -28,6 +28,29 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>org.eclipse.sensinact.gateway.nthbnd</groupId>
+			<artifactId>sensinact-northbound-access</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.eclipse.sensinact.gateway.nthbnd</groupId>
+			<artifactId>rest-access</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.sensinact.gateway</groupId>
+			<artifactId>sensinact-generic</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.eclipse.sensinact.gateway</groupId>
+			<artifactId>sensinact-security-none</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.eclipse.sensinact.gateway</groupId>
 			<artifactId>mock-signature-validator</artifactId>
 			<version>${project.version}</version>

@@ -36,6 +36,6 @@
 	json;version='[20190722.0.0,20190722.0.1)'
 	
 -runvm.test: \
-	-Dorg.eclipse.sensinact.gateway.security.jks.filename=${.}/../cert/keystore.jks, \
+	-Dorg.eclipse.sensinact.gateway.security.jks.filename=${maven.multiModuleProjectDirectory}/platform/sensinact-security/cert/keystore.jks, \
 	-Dorg.eclipse.sensinact.gateway.security.jks.password=sensiNact_team, \
 	-Dorg.eclipse.sensinact.gateway.security.signer.password=sensiNact_team

@@ -1513,8 +1513,8 @@
 							<id>validate</id>
 							<phase>validate</phase>
 							<configuration>
-								<configLocation>${sensinact.rootdir}/checkstyle-sun.xml</configLocation>
-								<suppressionsLocation>${sensinact.rootdir}/checkstyle-suppressions.xml</suppressionsLocation>
+								<configLocation>${maven.multiModuleProjectDirectory}/checkstyle-sun.xml</configLocation>
+								<suppressionsLocation>${maven.multiModuleProjectDirectory}/checkstyle-suppressions.xml</suppressionsLocation>
 								<encoding>UTF-8</encoding>
 								<consoleOutput>false</consoleOutput>
 								<failsOnError>false</failsOnError>
@@ -1694,7 +1694,7 @@
 					</dependencies>
 					<configuration>
 						<driver>org.sqlite.JDBC</driver>
-						<url>jdbc:sqlite:${sensinact.rootdir}/platform/sensinact-security/sensinact-security-core/src/test/resources/sensinact.sqlite</url>
+						<url>jdbc:sqlite:${maven.multiModuleProjectDirectory}/platform/sensinact-security/sensinact-security-core/src/test/resources/sensinact.sqlite</url>
 						<autocommit>true</autocommit>
 						<printResultSet>true</printResultSet>
 						<delimiter>;</delimiter>
@@ -1725,7 +1725,7 @@
 									<include>resources.xml</include>
 									<include>*-resource.xml</include>
 								</includes>
-								<systemId>${sensinact.rootdir}/platform/sensinact-generic/src/main/resources/sensinact-resource.xsd</systemId>
+								<systemId>${maven.multiModuleProjectDirectory}/platform/sensinact-generic/src/main/resources/sensinact-resource.xsd</systemId>
 							</validationSet>
 						</validationSets>
 					</configuration>
@@ -1758,85 +1758,88 @@
 					<artifactId>gradle-maven-plugin</artifactId>
 					<version>${gradle-maven-plugin.version}</version>
 				</plugin>
-				<plugin>
-					<groupId>org.codehaus.gmaven</groupId>
-					<artifactId>groovy-maven-plugin</artifactId>
-					<version>${groovy-maven-plugin.version}</version>
-					<executions>
-						<execution>
-							<id>search-root-clean</id>
-							<phase>pre-clean</phase>
-							<goals>
-								<goal>execute</goal>
-							</goals>
-							<configuration>
-								<defaults>
-									<name>find-root</name>
-								</defaults>
-								<source>
-									String basedir = project.basedir.absolutePath.replace('\\','/');
-									File projectFile = new File(basedir)
-									File pomFile = null
-									while((pomFile = new File(projectFile.getParentFile(),"pom.xml")).exists())
-									{
-										projectFile = projectFile.getParentFile()
-									}
-									project.properties.setProperty('sensinact.rootdir',projectFile.getAbsolutePath())
-									log.info('PATH: {}', projectFile.getAbsolutePath())
-								</source>
-							</configuration>
-						</execution>
-						<execution>
-							<id>search-root-validate</id>
-							<phase>validate</phase>
-							<goals>
-								<goal>execute</goal>
-							</goals>
-							<configuration>
-								<defaults>
-									<name>find-root</name>
-								</defaults>
-								<source>
-									String basedir = project.basedir.absolutePath.replace('\\','/');
-									File projectFile = new File(basedir)
-									File pomFile = null
-									while((pomFile = new File(projectFile.getParentFile(),"pom.xml")).exists())
-									{
-										projectFile = projectFile.getParentFile()
-									}
-									project.properties.setProperty('sensinact.rootdir',projectFile.getAbsolutePath())
-									log.info('PATH: {}', projectFile.getAbsolutePath())
-								</source>
-							</configuration>
-						</execution>
-						<execution>
-							<id>search-sha</id>
-							<phase>install</phase>
-							<goals>
-								<goal>execute</goal>
-							</goals>
-							<configuration>
-								<defaults>
-									<name>extract-sha</name>
-								</defaults>
-								<source>
-									File basedir = new File(project.basedir.absolutePath.replace('\\','/'));
-									File signature = new File(basedir, "/target/classes/META-INF/SELFSIGN.SF")
+<!-- 	<plugin> -->
+<!-- 		<groupId>org.codehaus.gmaven</groupId> -->
+<!-- 		<artifactId>groovy-maven-plugin</artifactId> -->
+<!-- 		<version>${groovy-maven-plugin.version}</version> -->
+<!-- 		<executions> -->
+<!-- 			<execution> -->
+<!-- 				<id>search-root-clean</id> -->
+<!-- 				<phase>pre-clean</phase> -->
+<!-- 				<goals> -->
+<!-- 					<goal>execute</goal> -->
+<!-- 				</goals> -->
+<!-- 				<configuration> -->
+<!-- 					<defaults> -->
+<!-- 						<name>find-root</name> -->
+<!-- 					</defaults> -->
+<!-- 					<source> -->
+<!-- 						String basedir = project.basedir.absolutePath.replace('\\','/'); -->
+<!-- 						File projectFile = new File(basedir) -->
+<!-- 						File pomFile = null -->
+<!-- 						while((pomFile = new File(projectFile.getParentFile(),"pom.xml")).exists()) -->
+<!-- 						{ -->
+<!-- 						projectFile = projectFile.getParentFile() -->
+<!-- 						} -->
+<!-- 						project.properties.setProperty('sensinact.rootdir',projectFile.getAbsolutePath()) -->
+<!-- 						log.info('PATH: {}', projectFile.getAbsolutePath()) -->
+<!-- 					</source> -->
+<!-- 				</configuration> -->
+<!-- 			</execution> -->
+<!-- 			<execution> -->
+<!-- 				<id>search-root-validate</id> -->
+<!-- 				<phase>validate</phase> -->
+<!-- 				<goals> -->
+<!-- 					<goal>execute</goal> -->
+<!-- 				</goals> -->
+<!-- 				<configuration> -->
+<!-- 					<defaults> -->
+<!-- 						<name>find-root</name> -->
+<!-- 					</defaults> -->
+<!-- 					<source> -->
+<!-- 						String basedir = project.basedir.absolutePath.replace('\\','/'); -->
+<!-- 						File projectFile = new File(basedir) -->
+<!-- 						File pomFile = null -->
+<!-- 						while((pomFile = new File(projectFile.getParentFile(),"pom.xml")).exists()) -->
+<!-- 						{ -->
+<!-- 						projectFile = projectFile.getParentFile() -->
+<!-- 						} -->
+<!-- 						project.properties.setProperty('sensinact.rootdir',projectFile.getAbsolutePath()) -->
+<!-- 						log.info('PATH: {}', projectFile.getAbsolutePath()) -->
+<!-- 					</source> -->
+<!-- 				</configuration> -->
+<!-- 			</execution> -->
+<!-- 			<execution> -->
+<!-- 				<id>search-sha</id> -->
+<!-- 				<phase>install</phase> -->
+<!-- 				<goals> -->
+<!-- 					<goal>execute</goal> -->
+<!-- 				</goals> -->
+<!-- 				<configuration> -->
+<!-- 					<defaults> -->
+<!-- 						<name>extract-sha</name> -->
+<!-- 					</defaults> -->
+<!-- 					<source> -->
+<!-- 						File basedir = new -->
+<!-- 						File(project.basedir.absolutePath.replace('\\','/')); -->
+<!-- 						File signature = new File(basedir, -->
+<!-- 						"/target/classes/META-INF/SELFSIGN.SF") -->
 
-									if(signature.exists())
-									{
-									    String fileContents = signature.getText('UTF-8')
-									    matcher = (fileContents =~ /(?s)SHA(1|-256)-Digest-Manifest\s*:\s*([^\s]+)\s*$?/)
+<!-- 						if(signature.exists()) -->
+<!-- 						{ -->
+<!-- 						String fileContents = signature.getText('UTF-8') -->
+<!-- 						matcher = (fileContents =~ -->
+<!-- 						/(?s)SHA(1|-256)-Digest-Manifest\s*:\s*([^\s]+)\s*$?/) -->
 
-									    String sha = matcher.getAt(0).getAt(2)
-									    log.info('SHA: {}', sha)
-									    project.properties.setProperty('sha',sha)
-									}
-								</source>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
+<!-- 						String sha = matcher.getAt(0).getAt(2) -->
+<!-- 						log.info('SHA: {}', sha) -->
+<!-- 						project.properties.setProperty('sha',sha) -->
+<!-- 						} -->
+<!-- 					</source> -->
+<!-- 				</configuration> -->
+<!-- 			</execution> -->
+<!-- 		</executions> -->
+<!-- 	</plugin> -->
 				
                 <plugin>
                         <groupId>biz.aQute.bnd</groupId>
@@ -1861,7 +1864,7 @@ jarsigner: ${if;${isfile;${jarsigner2}};\
 				${jarsigner2};\
 				${osfile;${java.home}/../bin;${findfile;${java.home}/../bin;jarsigner*}}\
 			}
--plugin.sign: aQute.bnd.signing.JartoolSigner;alias="selfsigned";path=${jarsigner};keystore="${sensinact.rootdir}/platform/sensinact-security/cert/keystore.jks";storepass="sensiNact_team"
+-plugin.sign: aQute.bnd.signing.JartoolSigner;alias="selfsigned";path=${jarsigner};keystore="${maven.multiModuleProjectDirectory}/platform/sensinact-security/cert/keystore.jks";storepass="sensiNact_team"
 -sign: selfsigned
 -verbose: true
 							]]></bnd>
@@ -1974,7 +1977,7 @@ Bundle-Vendor: Eclipse
 							</execution>
 						</executions>
 						<configuration>
-							<keystore>${sensinact.rootdir}/platform/sensinact-security/cert/keystore.jks</keystore>
+							<keystore>${maven.multiModuleProjectDirectory}/platform/sensinact-security/cert/keystore.jks</keystore>
 							<alias>Sensinact Keystore</alias>
 							<storepass>sensiNact_team</storepass>
 						</configuration>
@@ -2021,7 +2024,7 @@ Bundle-Vendor: Eclipse
 <!-- 							<_nouses>true</_nouses> -->
 <!-- 							<_include>-bnd.bnd</_include> -->
 <!-- 							<_snapshot>${maven.build.timestamp}</_snapshot> -->
-<!-- 							<_plugin>aQute.bnd.signing.JartoolSigner;alias="selfsigned";path="${signer.path}";keystore="${sensinact.rootdir}/platform/sensinact-security/cert/keystore.jks";storepass="sensiNact_team"</_plugin> -->
+<!-- 							<_plugin>aQute.bnd.signing.JartoolSigner;alias="selfsigned";path="${signer.path}";keystore="${maven.multiModuleProjectDirectory}/platform/sensinact-security/cert/keystore.jks";storepass="sensiNact_team"</_plugin> -->
 <!-- 							<_sign>selfsigned</_sign> -->
 <!-- 							<_failok>true</_failok> -->
 <!-- 							<_exportcontents> *, !*.internal, !*.internal.*, !${private.package} -->  

@@ -9,5 +9,5 @@ jarsigner: ${if;${isfile;${jarsigner2}};\
 				${jarsigner2};\
 				${osfile;${java.home}/../bin;${findfile;${java.home}/../bin;jarsigner*}}\
 			}
--plugin.sign: aQute.bnd.signing.JartoolSigner;alias="selfsigned";path=${jarsigner};keystore="${sensinact.rootdir}/platform/sensinact-security/cert/keystore.jks";storepass="sensiNact_team"
+-plugin.sign: aQute.bnd.signing.JartoolSigner;alias="selfsigned";path=${jarsigner};keystore="${maven.multiModuleProjectDirectory}/platform/sensinact-security/cert/keystore.jks";storepass="sensiNact_team"
 -sign: selfsigned
