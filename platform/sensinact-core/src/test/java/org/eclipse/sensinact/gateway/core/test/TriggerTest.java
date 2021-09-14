@@ -13,6 +13,13 @@ package org.eclipse.sensinact.gateway.core.test;
 
 import static org.junit.Assert.assertEquals;
 
+import org.eclipse.sensinact.gateway.common.bundle.Mediator;
+import org.eclipse.sensinact.gateway.core.method.AccessMethodResponse;
+import org.eclipse.sensinact.gateway.core.method.AccessMethodResponse.Status;
+import org.eclipse.sensinact.gateway.core.method.AccessMethodResponseBuilder;
+import org.eclipse.sensinact.gateway.core.method.trigger.AccessMethodTrigger;
+import org.eclipse.sensinact.gateway.core.method.trigger.AccessMethodTriggerFactory;
+import org.eclipse.sensinact.gateway.core.method.trigger.TriggerArgumentBuilder;
 import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,14 +34,6 @@ import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
 import org.osgi.service.log.LogService;
 import org.skyscreamer.jsonassert.JSONAssert;
-
-import org.eclipse.sensinact.gateway.common.bundle.Mediator;
-import org.eclipse.sensinact.gateway.core.method.AccessMethodResponse;
-import org.eclipse.sensinact.gateway.core.method.AccessMethodResponse.Status;
-import org.eclipse.sensinact.gateway.core.method.AccessMethodResponseBuilder;
-import org.eclipse.sensinact.gateway.core.method.trigger.AccessMethodTrigger;
-import org.eclipse.sensinact.gateway.core.method.trigger.AccessMethodTriggerFactory;
-import org.eclipse.sensinact.gateway.core.method.trigger.TriggerArgumentBuilder;
 
 /**
  * test Constraint

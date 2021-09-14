@@ -10,6 +10,12 @@
  */
 package org.eclipse.sensinact.gateway.protocol.http.test;
 
+import static org.junit.Assert.assertEquals;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.concurrent.atomic.AtomicBoolean;
+
 import org.eclipse.sensinact.gateway.protocol.http.client.ConnectionConfiguration;
 import org.eclipse.sensinact.gateway.protocol.http.client.ConnectionConfigurationImpl;
 import org.eclipse.sensinact.gateway.protocol.http.client.SimpleRequest;
@@ -21,14 +27,8 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-import static org.junit.Assert.assertEquals;
 
 public class TestHttpProtocolJetty {
     //********************************************************************//
