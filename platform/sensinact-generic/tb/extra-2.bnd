@@ -1,1 +1,2 @@
-src: extra-src2/test/java,extra-src2/test/resources
+-privatepackage: org.eclipse.sensinact.gateway.generic.test.bundle
+-includeresource: ${.}/extra-2

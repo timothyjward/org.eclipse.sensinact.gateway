@@ -12,5 +12,6 @@
 		extra-6.jar
 
 
-Private-Package: \
+-privatepackage: \
+	org.eclipse.sensinact.gateway.generic.test,\
 	org.skyscreamer.*

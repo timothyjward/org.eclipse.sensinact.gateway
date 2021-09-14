@@ -1,2 +1,2 @@
-src: extra-src/test/java,extra-src/test/resources
+-privatepackage: org.eclipse.sensinact.gateway.generic.test.moke
 -includeresource: ${.}/temperature-resource

@@ -959,6 +959,11 @@
 				<version>${bnd.version}</version>
 			</dependency>
 			<dependency>
+			  <groupId>biz.aQute.bnd</groupId>
+			  <artifactId>biz.aQute.bnd.annotation</artifactId>
+			  <version>${bnd-maven-plugin.version}</version>
+			</dependency>
+			<dependency>
 				<groupId>com.hazelcast</groupId>
 				<artifactId>hazelcast</artifactId>
 				<version>${com.hazelcast.version}</version>
