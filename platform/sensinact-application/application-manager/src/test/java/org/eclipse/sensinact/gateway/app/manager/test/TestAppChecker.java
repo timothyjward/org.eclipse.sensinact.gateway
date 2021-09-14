@@ -32,7 +32,6 @@ import org.mockito.stubbing.Answer;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
-import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.io.IOException;
 import java.net.URL;
@@ -40,10 +39,9 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
-@RunWith(PowerMockRunner.class)
 public class TestAppChecker extends TestCase {
-    @Mock
-    private AppServiceMediator mediator;
+    
+    private AppServiceMediator mediator=Mockito.mock(AppServiceMediator.class);
 
     @Before
     public void init() throws Exception {

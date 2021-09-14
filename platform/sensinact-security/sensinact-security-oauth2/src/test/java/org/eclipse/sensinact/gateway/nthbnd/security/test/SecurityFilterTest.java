@@ -16,56 +16,56 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.keycloak.models.KeycloakSession;
-import org.keycloak.models.RealmModel;
-import org.keycloak.representations.idm.RealmRepresentation;
-import org.keycloak.services.managers.RealmManager;
-import org.keycloak.testsuite.KeycloakServer;
+//import org.keycloak.models.KeycloakSession;
+//import org.keycloak.models.RealmModel;
+//import org.keycloak.representations.idm.RealmRepresentation;
+//import org.keycloak.services.managers.RealmManager;
+//import org.keycloak.testsuite.KeycloakServer;
 
 public class SecurityFilterTest {
 	
 	class KServer {
 		
-		KeycloakServer server = null;		
-		KServer() throws Throwable {	
-		    server = KeycloakServer.bootstrapKeycloakServer(
-		    	new String[] {"-b","localhost","-p","8895"});		
-			assertNotNull(server);		
-			RealmRepresentation representation = KeycloakServer.loadJson(
-			    new FileInputStream("src/test/resources/testRealm.json"), 
-				    RealmRepresentation.class);
-			KeycloakSession session = server.getSessionFactory().create();
-	        session.getTransactionManager().begin();
-	        try {
-	        	
-	            RealmManager manager = new RealmManager(session);
-	            assertNull(manager.getRealmByName("test"));
-	            //manager.setContextPath(representation.getClients().get(0).getBaseUrl());
-	            RealmModel realm = manager.importRealm(representation);
-	            System.out.println("Imported realm " + realm.getName());
-	            session.getTransactionManager().commit();
-	        } finally {
-	            session.close();
-	        }
-	        
-//			Keycloak kc = Keycloak.getInstance("http://localhost:8080/sensinact.auth", 
-//			    "test", "testRealmAdmin", "testRealmAdminPassword", "testClient", "testClient");
-//			CredentialRepresentation credential = new CredentialRepresentation();
-//			credential.setType(CredentialRepresentation.PASSWORD);
-//			credential.setValue("test123");
-//			UserRepresentation user = new UserRepresentation();
-//			user.setUsername("testuser");
-//			user.setFirstName("Test");
-//			user.setLastName("User");
-//			user.setCredentials(Arrays.asList(credential));
-//			kc.realm("test").users().create(user);
-//			user.setEnabled(true);		
-		}
-		
-		
-		public void stop() {
-			server.stop();
-		}
+//		KeycloakServer server = null;		
+//		KServer() throws Throwable {	
+//		    server = KeycloakServer.bootstrapKeycloakServer(
+//		    	new String[] {"-b","localhost","-p","8895"});		
+//			assertNotNull(server);		
+//			RealmRepresentation representation = KeycloakServer.loadJson(
+//			    new FileInputStream("src/test/resources/testRealm.json"), 
+//				    RealmRepresentation.class);
+//			KeycloakSession session = server.getSessionFactory().create();
+//	        session.getTransactionManager().begin();
+//	        try {
+//	        	
+//	            RealmManager manager = new RealmManager(session);
+//	            assertNull(manager.getRealmByName("test"));
+//	            //manager.setContextPath(representation.getClients().get(0).getBaseUrl());
+//	            RealmModel realm = manager.importRealm(representation);
+//	            System.out.println("Imported realm " + realm.getName());
+//	            session.getTransactionManager().commit();
+//	        } finally {
+//	            session.close();
+//	        }
+//	        
+////			Keycloak kc = Keycloak.getInstance("http://localhost:8080/sensinact.auth", 
+////			    "test", "testRealmAdmin", "testRealmAdminPassword", "testClient", "testClient");
+////			CredentialRepresentation credential = new CredentialRepresentation();
+////			credential.setType(CredentialRepresentation.PASSWORD);
+////			credential.setValue("test123");
+////			UserRepresentation user = new UserRepresentation();
+////			user.setUsername("testuser");
+////			user.setFirstName("Test");
+////			user.setLastName("User");
+////			user.setCredentials(Arrays.asList(credential));
+////			kc.realm("test").users().create(user);
+////			user.setEnabled(true);		
+//		}
+//		
+//		
+//		public void stop() {
+//			server.stop();
+//		}
 	}
 	
     KServer s;
@@ -77,7 +77,7 @@ public class SecurityFilterTest {
 
     @AfterEach
     public void after() throws Throwable {
-    	s.stop();
+//    	s.stop();
     }
     
     /**
@@ -154,7 +154,7 @@ public class SecurityFilterTest {
 //		and anonymousTester users to test oAuth2 security handling	 
 //		wait 10mns 	   
 		Thread.sleep(600000);
-		s.stop();
+//		s.stop();
 		Thread.sleep(2000);
 	}
 

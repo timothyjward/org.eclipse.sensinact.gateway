@@ -15,38 +15,37 @@ import java.io.FileOutputStream;
 import java.net.URL;
 import java.util.Set;
 
-import javax.inject.Inject;
-
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.sensinact.gateway.core.Core;
 import org.eclipse.sensinact.gateway.core.Session;
+import org.eclipse.sensinact.gateway.core.message.Recipient;
 import org.eclipse.sensinact.gateway.core.message.SnaMessage;
 import org.eclipse.sensinact.gateway.core.method.SubscribeResponse;
-import org.eclipse.sensinact.gateway.core.message.Recipient;
 import org.eclipse.sensinact.gateway.device.mqtt.lite.it.util.MqttTestITAbstract;
 import org.eclipse.sensinact.gateway.util.IOUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.ops4j.pax.exam.junit.PaxExam;
-import org.ops4j.pax.exam.spi.reactors.ExamReactorStrategy;
-import org.ops4j.pax.exam.spi.reactors.PerMethod;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.osgi.framework.BundleContext;
+import org.osgi.test.common.annotation.InjectBundleContext;
+import org.osgi.test.common.annotation.InjectService;
+import org.osgi.test.junit5.context.BundleContextExtension;
+import org.osgi.test.junit5.service.ServiceExtension;
 import org.sensinact.mqtt.server.MQTTServerService;
 
-@RunWith(PaxExam.class)
-@ExamReactorStrategy(PerMethod.class)
+@ExtendWith(BundleContextExtension.class)
+@ExtendWith(ServiceExtension.class)
 public class MqttBridgeTest extends MqttTestITAbstract {
 
-    @Inject
+    @InjectBundleContext
     BundleContext bc;
 
-    @Inject
+    @InjectService
     MQTTServerService mqttServerService;
 
     private Core sensinactCore;
@@ -105,7 +104,7 @@ public class MqttBridgeTest extends MqttTestITAbstract {
         JSONArray providers = obj.getJSONArray("providers");
         System.out.println("-->"+providers.toString());
         final Set<String> providersSet = parseJSONArrayIntoSet(providers);
-        Assert.assertTrue("Provider was not created, or at least is not shown via REST api", providersSet.contains("myprovider"));
+        Assertions.assertTrue(providersSet.contains("myprovider"),"Provider was not created, or at least is not shown via REST api");
     	
     }
     
@@ -129,7 +128,7 @@ public class MqttBridgeTest extends MqttTestITAbstract {
             Thread.sleep(500);
         }
         String value =jsonResponse.getJSONObject("response").getString("value");
-        Assert.assertEquals("Value should be updated on new message arrival, and was not the case", messageString1,value);
+        Assertions.assertEquals("Value should be updated on new message arrival, and was not the case", messageString1,value);
     }
     
     @Test
@@ -139,7 +138,7 @@ public class MqttBridgeTest extends MqttTestITAbstract {
         JSONObject obj = new JSONObject(sensinactSession.getProviders().getJSON());
         JSONArray providers = obj.getJSONArray("providers");
         final Set<String> providersSetNo = parseJSONArrayIntoSet(providers);
-        Assert.assertTrue("Provider was removed",!providersSetNo.contains("myprovider"));
+        Assertions.assertTrue(!providersSetNo.contains("myprovider"),"Provider was removed");
     }
     
     @Test
@@ -149,7 +148,7 @@ public class MqttBridgeTest extends MqttTestITAbstract {
         JSONArray services = obj.getJSONArray("services");
         System.out.println("-->"+services.toString());
         final Set<String> servicesSet = parseJSONArrayIntoSet(services);
-        Assert.assertTrue("Service was not created, or at least is not shown via REST api",servicesSet.contains("info"));
+        Assertions.assertTrue(servicesSet.contains("info"),"Service was not created, or at least is not shown via REST api");
     }
     
     @Test
@@ -159,14 +158,14 @@ public class MqttBridgeTest extends MqttTestITAbstract {
         JSONObject obj = new JSONObject(sensinactSession.getResources("myprovider", "info").getJSON());
         JSONArray resources = obj.getJSONArray("resources");
         final Set<String> resourcesSet = parseJSONArrayIntoSet(resources);
-        Assert.assertTrue("Resource was not created, or at least is not shown via REST api", resourcesSet.contains("value"));
+        Assertions.assertTrue( resourcesSet.contains("value"),"Resource was not created, or at least is not shown via REST api");
     }
     
     @Test
     public void resourceValueQuery() throws Exception {  
         resourceCreation();
         Object value = sensinactSession.get("myprovider", "info", "value", "value").getResponse("value");
-        Assert.assertEquals("Initial Resource value should be empty ",JSONObject.NULL, value);
+        Assertions.assertEquals(JSONObject.NULL, value,"Initial Resource value should be empty ");
     }
     
     @Test
@@ -182,7 +181,7 @@ public class MqttBridgeTest extends MqttTestITAbstract {
         waitForCallbackNotification();
         String value = invokeRestAPI("sensinact/providers/myprovider/services/info/resources/value/GET")
                 .getJSONObject("response").getString("value");
-        Assert.assertEquals("Value should be updated on new message arrival, and was not the case", messageString1,value);
+        Assertions.assertEquals( messageString1,value,"Value should be updated on new message arrival, and was not the case");
         final String messageString2=new Double(Math.random()).toString();
         MqttMessage message2=new MqttMessage(messageString2.getBytes());
         message2.setQos(0);
@@ -190,7 +189,7 @@ public class MqttBridgeTest extends MqttTestITAbstract {
         waitForCallbackNotification();
         Thread.yield();
         String value2=sensinactSession.get("myprovider", "info", "value", "value").getResponse(String.class,"value");
-        Assert.assertEquals("Value should be updated on new message arrival, and was not the case", messageString2,value2);
+        Assertions.assertEquals( messageString2,value2,"Value should be updated on new message arrival, and was not the case");
   
     }
     
@@ -206,15 +205,15 @@ public class MqttBridgeTest extends MqttTestITAbstract {
         message1.setQos(0);
         mqttClient.publish("/myresource", message1 );
         waitForCallbackNotification();
-        Assert.assertEquals("Sensinact Core did not dispatch any notification message for the subscription", 1,rtc.getMessages().length);
-        Assert.assertEquals("The notification value does not correspond to the value sent", messageString1,new JSONObject(rtc.getMessages()[0].getJSON()).getJSONObject("notification").getString("value"));
+        Assertions.assertEquals( 1,rtc.getMessages().length,"Sensinact Core did not dispatch any notification message for the subscription");
+        Assertions.assertEquals( messageString1,new JSONObject(rtc.getMessages()[0].getJSON()).getJSONObject("notification").getString("value"),"The notification value does not correspond to the value sent");
         final String messageString2=new Double(Math.random()).toString();
         MqttMessage message2=new MqttMessage(messageString2.getBytes());
         message2.setQos(0);
         mqttClient.publish("/myresource",message2 );
         waitForCallbackNotification();
-        Assert.assertEquals("Sensinact Core did not dispatch any notification message for the subscription", 1,rtc.getMessages().length);
-        Assert.assertEquals("The notification value does not correspond to the value sent", messageString2,new JSONObject(rtc.getMessages()[0].getJSON()).getJSONObject("notification").getString("value"));
+        Assertions.assertEquals( 1,rtc.getMessages().length,"Sensinact Core did not dispatch any notification message for the subscription");
+        Assertions.assertEquals( messageString2,new JSONObject(rtc.getMessages()[0].getJSON()).getJSONObject("notification").getString("value"),"The notification value does not correspond to the value sent");
     }
 
     private void waitForCallbackNotification() throws InterruptedException {
@@ -236,7 +235,7 @@ public class MqttBridgeTest extends MqttTestITAbstract {
                 MqttBridgeTest.this.notify();
             }
         }
-        @Override
+        
         public String getJSON() {
             return "{}";
         }

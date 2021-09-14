@@ -802,17 +802,6 @@
 				<artifactId>h2</artifactId>
 				<version>${com.h2database.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.powermock</groupId>
-				<artifactId>powermock-api-mockito</artifactId>
-				<version>${powermock-api-mockito.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.powermock</groupId>
-				<artifactId>powermock-module-junit4</artifactId>
-				<version>${powermock-module-junit4.version}</version>
-			</dependency>
-
 
 			<!-- Apache Aries -->
 
@@ -1023,16 +1012,7 @@
 				<artifactId>sqlite-jdbc</artifactId>
 				<version>${org.xerial.sqlite-jdbc.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>org.keycloak</groupId>
-				<artifactId>keycloak-testsuite-utils</artifactId>
-				<version>${keycloak.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.keycloak</groupId>
-				<artifactId>keycloak-admin-client</artifactId>
-				<version>${keycloak.version}</version>
-			</dependency>
+
 <!-- 			<dependency> -->
 <!-- 				<groupId>io.moquette</groupId> -->
 <!-- 				<artifactId>moquette-broker</artifactId> -->
