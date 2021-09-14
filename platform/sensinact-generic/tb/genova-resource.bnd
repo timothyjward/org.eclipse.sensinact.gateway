@@ -1,3 +1,3 @@
--privatepackage: org.eclipse.sensinact.gateway.generic.test.moke
-Bundle-Activator: org.eclipse.sensinact.gateway.generic.test.moke.Activator
+-privatepackage: org.eclipse.sensinact.gateway.generic.test.tb.moke
+Bundle-Activator: org.eclipse.sensinact.gateway.generic.test.moke.tb.Activator
 -includeresource: ${.}/genova-resource

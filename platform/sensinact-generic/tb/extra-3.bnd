@@ -1,4 +1,4 @@
--privatepackage: org.eclipse.sensinact.gateway.generic.test.moke3
-Bundle-Activator: org.eclipse.sensinact.gateway.generic.test.moke3.Activator
+-privatepackage: org.eclipse.sensinact.gateway.generic.test.tb.moke3
+Bundle-Activator: org.eclipse.sensinact.gateway.generic.test.tb.moke3.Activator
 -includeresource: ${.}/extra-3
 

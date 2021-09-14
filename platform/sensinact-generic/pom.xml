@@ -82,10 +82,7 @@
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>biz.aQute.bnd</groupId>
-				<artifactId>bnd-maven-plugin</artifactId>
-			</plugin>
+
 			<plugin>
 				<groupId>biz.aQute.bnd</groupId>
 				<artifactId>bnd-resolver-maven-plugin</artifactId>
@@ -93,6 +90,26 @@
 			<plugin>
 				<groupId>biz.aQute.bnd</groupId>
 				<artifactId>bnd-testing-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>test-jar</id>
+						<phase>package</phase>
+						<goals>
+							<goal>test-jar</goal>
+						</goals>
+						<configuration>
+							<archive>
+								<manifestFile>${project.build.testOutputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+							</archive>
+							<excludes>
+								<exclude>org/eclipse/sensinact/gateway/generic/test/tb/**</exclude>
+							</excludes>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

@@ -1,18 +1,21 @@
-#-make: (*).(jar); type=bnd; recipe="${.}/tb/$1.bnd"
+-make: (*).(jar); type=bnd; recipe="${.}/tb/$1.bnd"
 
-#-includeresource:\
-#		-test-resource.jar,\
-#		-temperature-resource.jar,\
-#		-st-resource.jar,\
-#		-genova-resource.jar,\
-#		-extra-2.jar,\
-#		-extra-3.jar,\
-#		-extra-4.jar,\
-#		-extra-5.jar,\
-#		-extra-6.jar
-
-
-Private-Package: \
-	org.eclipse.sensinact.gateway.generic.test,\
+-privatepackage: \
 	org.skyscreamer.*,\
-	!*
+	org.eclipse.sensinact.gateway.generic.test
+	
+
+-includeresource:\
+		test-resource.jar,\
+		temperature-resource.jar,\
+		st-resource.jar,\
+		genova-resource.jar,\
+		extra-2.jar,\
+		extra-3.jar,\
+		extra-4.jar,\
+		extra-5.jar,\
+		extra-6.jar
+
+-privatepackage: \
+	org.skyscreamer.*,\
+	org.eclipse.sensinact.gateway.generic.test
