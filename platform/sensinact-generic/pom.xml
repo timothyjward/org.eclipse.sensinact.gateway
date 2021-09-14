@@ -34,6 +34,12 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.eclipse.sensinact.gateway</groupId>
+			<artifactId>sensinact-security-none</artifactId>
+			<version>${project.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
 			<groupId>org.eclipse.sensinact.gateway.tools</groupId>
 			<artifactId>sensinact-test</artifactId>
 			<version>${project.version}</version>
