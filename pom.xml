@@ -83,7 +83,6 @@
 
 
 		<!-- Tests -->
-		<servicemix.junit.version>4.13.2_1</servicemix.junit.version>
 		<jsonassert.version>1.5.0</jsonassert.version>
 		<com.h2database.version>1.4.200</com.h2database.version>
 		<com.puppycrawl.tools.checkstyle.version>8.28</com.puppycrawl.tools.checkstyle.version>
@@ -687,21 +686,10 @@
 				<scope>test</scope>
 			</dependency>
 			<dependency>
-				<groupId>org.apache.servicemix.bundles</groupId>
-				<artifactId>org.apache.servicemix.bundles.junit</artifactId>
-				<version>${servicemix.junit.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
 				<groupId>biz.aQute.bnd</groupId>
 				<artifactId>biz.aQute.tester.junit-platform</artifactId>
 				<version>5.3.0</version>
 				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>junit</groupId>
-				<artifactId>junit</artifactId>
-				<version>${junit.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.skyscreamer</groupId>

@@ -10,13 +10,6 @@
  */
 package org.eclipse.sensinact.gateway.test;
 
-import org.eclipse.sensinact.gateway.util.IOUtils;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.osgi.framework.Bundle;
-import org.osgi.framework.BundleContext;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -31,6 +24,15 @@ import java.util.Stack;
 import java.util.jar.JarOutputStream;
 import java.util.jar.Manifest;
 import java.util.zip.ZipEntry;
+
+import org.eclipse.sensinact.gateway.util.IOUtils;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.BundleContext;
 
 public abstract class MidOSGiTestBak implements BundleContextProvider {
     /**
@@ -219,7 +221,7 @@ public abstract class MidOSGiTestBak implements BundleContextProvider {
     /**
      * @throws Exception
      */
-    @After
+    @AfterAll
     public void tearDown() throws Exception {
         long start = System.currentTimeMillis();
         frameworkClass.getDeclaredMethod(FRAMEWORK_STOP).invoke(felix);
@@ -259,7 +261,7 @@ public abstract class MidOSGiTestBak implements BundleContextProvider {
      * @throws Exception
      */
     @SuppressWarnings({"unchecked", "rawtypes", "serial"})
-    @Before
+    @BeforeAll
     public void init() throws Exception {
         final Map configuration = new HashMap();
         if (System.getSecurityManager() == null) {
@@ -312,8 +314,8 @@ public abstract class MidOSGiTestBak implements BundleContextProvider {
         autoProcessorClass.getDeclaredMethod("process", new Class<?>[]{Map.class, BundleContext.class}).invoke(null, new Object[]{configuration, context});
         frameworkClass.getDeclaredMethod(FRAMEWORK_START).invoke(felix);
 
-        Assert.assertTrue(bundleClass == Bundle.class);
-        Assert.assertTrue(((Integer) bundleClass.getDeclaredMethod(BUNDLE_STATE).invoke(felix)) == Bundle.ACTIVE);
+        Assertions.assertTrue(bundleClass == Bundle.class);
+        Assertions.assertTrue(((Integer) bundleClass.getDeclaredMethod(BUNDLE_STATE).invoke(felix)) == Bundle.ACTIVE);
         //let the environment initialize
         Thread.sleep(5000);
     }
