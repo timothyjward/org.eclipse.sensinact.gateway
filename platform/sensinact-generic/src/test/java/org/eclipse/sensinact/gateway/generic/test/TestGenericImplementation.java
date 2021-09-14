@@ -268,8 +268,8 @@ public class TestGenericImplementation {
     @Test
     public void testExtraCatalogs(
     		@InjectInstalledBundle(start = true, value = "extra-4.jar") Bundle bundle4,
-    		@InjectInstalledBundle(start = true, value = "extra-5.jar") Bundle bundle5,
-    		@InjectInstalledBundle(start = true, value = "extra-6.jar") Bundle bundle6,
+    		@InjectInstalledBundle( value = "extra-5.jar") Bundle bundle5,// do not start its a fragment
+    		@InjectInstalledBundle( value = "extra-6.jar") Bundle bundle6,// do not start its a fragment
     		@InjectService(timeout = 500) Core core
     		) throws Throwable {
     	String all = "{"+

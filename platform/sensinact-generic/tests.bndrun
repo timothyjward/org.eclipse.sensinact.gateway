@@ -13,7 +13,7 @@
 	bnd.identity;id='${project.artifactId}-tests'
 	
 -runvm.test: \
-	-Dorg.eclipse.sensinact.gateway.security.jks.filename=${.}/../cert/keystore.jks, \
+	-Dorg.eclipse.sensinact.gateway.security.jks.filename=${.}/../sensinact-security/cert/keystore.jks, \
 	-Dorg.eclipse.sensinact.gateway.security.jks.password=sensiNact_team, \
 	-Dorg.eclipse.sensinact.gateway.security.signer.password=sensiNact_team
 	

@@ -1,3 +1,4 @@
 -privatepackage: org.eclipse.sensinact.gateway.generic.test.tb.bundle
 Bundle-Activator: org.eclipse.sensinact.gateway.generic.test.tb.bundle.Activator
 -includeresource: ${.}/extra-2
+
