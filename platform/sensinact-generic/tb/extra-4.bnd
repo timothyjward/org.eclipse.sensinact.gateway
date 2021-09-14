@@ -1,1 +1,2 @@
 -privatepackage: org.eclipse.sensinact.gateway.generic.test.moke4
+Bundle-Activator: org.eclipse.sensinact.gateway.generic.test.moke4.Activator

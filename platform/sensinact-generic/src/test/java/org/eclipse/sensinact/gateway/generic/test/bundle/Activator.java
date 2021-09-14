@@ -27,7 +27,6 @@ import java.util.Collections;
 /**
  *
  */
-@Header(name = Constants.BUNDLE_ACTIVATOR, value = "${@class}")
 public class Activator<C extends ExtModelConfiguration, I extends ExtModelInstance<C>> extends AbstractActivator<Mediator> {
     ExtModelConfiguration manager = null;
     LocalProtocolStackEndpoint<GenericTestPacket> connector = null;
