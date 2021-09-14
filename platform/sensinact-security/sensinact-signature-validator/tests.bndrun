@@ -38,5 +38,6 @@
 	org.osgi.util.pushstream;version='[1.0.1,1.0.2)',\
 	sensinact-common;version='[2.0.0,2.0.1)',\
 	sensinact-signature-validator;version='[2.0.0,2.0.1)',\
-	sensinact-utils;version='[2.0.0,2.0.1)'
+	sensinact-utils;version='[2.0.0,2.0.1)',\
+	json;version='[20190722.0.0,20190722.0.1)'
 
