@@ -66,7 +66,7 @@ public class CallbackFactory {
     private String appearingKey;
     private String disappearingKey;
 
-    private Map<String, ServiceRegistration> registrations;
+    private Map<String, ServiceRegistration<?>> registrations;
 
     private final AtomicBoolean running;
 
@@ -81,7 +81,7 @@ public class CallbackFactory {
     		findJettyClassLoader(mediator.getContext());
     	}
         this.mediator = mediator;
-        this.registrations = Collections.synchronizedMap(new HashMap<String, ServiceRegistration>());
+        this.registrations = Collections.synchronizedMap(new HashMap<String, ServiceRegistration<?>>());
         this.running = new AtomicBoolean(false);
     }
 
@@ -274,7 +274,7 @@ public class CallbackFactory {
         if (!endpoint.startsWith("/")) {
             endpoint = "/".concat(endpoint);
         }
-        ServiceRegistration registration = this.registrations.get(endpoint);
+        ServiceRegistration<?> registration = this.registrations.remove(endpoint);
     	if(registration != null) {
     		try {
     			registration.unregister();
@@ -285,7 +285,7 @@ public class CallbackFactory {
     		registration = null;
     	}
     	if(!endpoint.startsWith("/ws/")) {
-	    	registration = this.registrations.get("/ws".concat(endpoint));
+	    	registration = this.registrations.remove("/ws".concat(endpoint));
 	    	if(registration != null) {
 	    		try {
 	    			registration.unregister();
