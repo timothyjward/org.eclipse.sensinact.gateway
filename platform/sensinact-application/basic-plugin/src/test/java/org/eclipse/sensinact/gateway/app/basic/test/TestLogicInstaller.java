@@ -22,18 +22,13 @@ import org.eclipse.sensinact.gateway.app.manager.json.AppFunction;
 import org.eclipse.sensinact.gateway.app.manager.json.AppJsonConstant;
 import org.json.JSONObject;
 import org.junit.Before;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.component.ComponentContext;
-import org.powermock.modules.junit4.PowerMockRunner;
 
 import junit.framework.TestCase;
 
-@RunWith(PowerMockRunner.class)
 public class TestLogicInstaller extends TestCase {
 
     private ComponentContext context;

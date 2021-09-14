@@ -97,6 +97,12 @@
 			<version>${project.version}</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+		    <groupId>com.jayway.jsonpath</groupId>
+		    <artifactId>json-path</artifactId>
+		    <version>2.6.0</version>
+		</dependency>
+				
 		<!-- dirty trick to avoid to change the global settings.xml file-->
 		<!--
 		<dependency>		
@@ -108,55 +114,56 @@
 
 	<build>
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-scm-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>checkout-jpath</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>checkout</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<checkoutDirectory>${tmp.repository}/JsonPath</checkoutDirectory>
-					<connectionType>connection</connectionType>
-					<excludes>
-						.git,
-						json-provider-gson,
-						json-provider-jsonsmart,
-						json-provider-tapestry,
-						json-provider-jettison,
-						json-provider-jackson,
-						jpath-web-test,
-						jpath-assert
-					</excludes>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.fortasoft</groupId>
-				<artifactId>gradle-maven-plugin</artifactId>
-				<configuration>
-					<tasks>
-						<task>:jpath:compileJava</task>
-						<task>:jpath:assemble</task>
-						<task>:json-provider-jsonorg:compileJava</task>
-						<task>:json-provider-jsonorg:assemble</task>
-					</tasks>
-					<gradleProjectDirectory>${tmp.repository}/JsonPath</gradleProjectDirectory>
-				</configuration>
-				<executions>
-					<execution>
-						<id>jpath-build-libs</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>invoke</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+		
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 				<artifactId>maven-scm-plugin</artifactId> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<id>checkout-jpath</id> -->
+<!-- 						<phase>validate</phase> -->
+<!-- 						<goals> -->
+<!-- 							<goal>checkout</goal> -->
+<!-- 						</goals> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 				<configuration> -->
+<!-- 					<checkoutDirectory>${tmp.repository}/JsonPath</checkoutDirectory> -->
+<!-- 					<connectionType>connection</connectionType> -->
+<!-- 					<excludes> -->
+<!-- 						.git, -->
+<!-- 						json-provider-gson, -->
+<!-- 						json-provider-jsonsmart, -->
+<!-- 						json-provider-tapestry, -->
+<!-- 						json-provider-jettison, -->
+<!-- 						json-provider-jackson, -->
+<!-- 						jpath-web-test, -->
+<!-- 						jpath-assert -->
+<!-- 					</excludes> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.fortasoft</groupId> -->
+<!-- 				<artifactId>gradle-maven-plugin</artifactId> -->
+<!-- 				<configuration> -->
+<!-- 					<tasks> -->
+<!-- 						<task>:jpath:compileJava</task> -->
+<!-- 						<task>:jpath:assemble</task> -->
+<!-- 						<task>:json-provider-jsonorg:compileJava</task> -->
+<!-- 						<task>:json-provider-jsonorg:assemble</task> -->
+<!-- 					</tasks> -->
+<!-- 					<gradleProjectDirectory>${tmp.repository}/JsonPath</gradleProjectDirectory> -->
+<!-- 				</configuration> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<id>jpath-build-libs</id> -->
+<!-- 						<phase>validate</phase> -->
+<!-- 						<goals> -->
+<!-- 							<goal>invoke</goal> -->
+<!-- 						</goals> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 			</plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>

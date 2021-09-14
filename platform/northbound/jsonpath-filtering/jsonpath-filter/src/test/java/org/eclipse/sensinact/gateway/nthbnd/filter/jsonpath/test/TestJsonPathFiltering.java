@@ -23,7 +23,7 @@ import org.eclipse.sensinact.gateway.nthbnd.filter.jsonpath.ws.test.WsServiceTes
 import org.eclipse.sensinact.gateway.test.MidOSGiTest;
 import org.eclipse.sensinact.gateway.util.IOUtils;
 import org.json.JSONObject;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 
 /**

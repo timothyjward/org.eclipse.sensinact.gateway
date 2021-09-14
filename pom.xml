@@ -1445,6 +1445,21 @@
 							<pluginExecutions>
 								<pluginExecution>
 									<pluginExecutionFilter>
+										<groupId>org.commonjava.maven.plugins</groupId>
+										<artifactId>directory-maven-plugin</artifactId>
+										<versionRange>0.3.1</versionRange>
+										<goals>
+											<goal>highest-basedir</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<execute>
+											<runOnIncremental>false</runOnIncremental>
+										</execute>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
 										<groupId>org.codehaus.gmaven</groupId>
 										<artifactId>groovy-maven-plugin</artifactId>
 										<versionRange>2.0</versionRange>
@@ -1471,26 +1486,27 @@
 										<ignore />
 									</action>
 								</pluginExecution>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>org.commonjava.maven.plugins</groupId>
-										<artifactId>directory-maven-plugin</artifactId>
-										<versionRange>0.3.1</versionRange>
-										<goals>
-											<goal>execution-root</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<execute>
-											<runOnIncremental>false</runOnIncremental>
-										</execute>
-									</action>
-								</pluginExecution>
 							</pluginExecutions>
 						</lifecycleMappingMetadata>
 					</configuration>
 				</plugin>
-
+		      <plugin>
+					<groupId>org.commonjava.maven.plugins</groupId>
+					<artifactId>directory-maven-plugin</artifactId>
+					<version>0.3.1</version>
+					<executions>
+						<execution>
+							<id>directories</id>
+							<goals>
+								<goal>highest-basedir</goal>
+							</goals>
+							<phase>initialize</phase>
+							<configuration>
+								<property>sensinact.root.dir</property>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
 				<!-- BUILD: org.apache.maven.plugins -->
 
 				<plugin>
@@ -1513,8 +1529,8 @@
 							<id>validate</id>
 							<phase>validate</phase>
 							<configuration>
-								<configLocation>${maven.multiModuleProjectDirectory}/checkstyle-sun.xml</configLocation>
-								<suppressionsLocation>${maven.multiModuleProjectDirectory}/checkstyle-suppressions.xml</suppressionsLocation>
+								<configLocation>${sensinact.root.dir}/checkstyle-sun.xml</configLocation>
+								<suppressionsLocation>${sensinact.root.dir}/checkstyle-suppressions.xml</suppressionsLocation>
 								<encoding>UTF-8</encoding>
 								<consoleOutput>false</consoleOutput>
 								<failsOnError>false</failsOnError>
@@ -1694,7 +1710,7 @@
 					</dependencies>
 					<configuration>
 						<driver>org.sqlite.JDBC</driver>
-						<url>jdbc:sqlite:${maven.multiModuleProjectDirectory}/platform/sensinact-security/sensinact-security-core/src/test/resources/sensinact.sqlite</url>
+						<url>jdbc:sqlite:${sensinact.root.dir}/platform/sensinact-security/sensinact-security-core/src/test/resources/sensinact.sqlite</url>
 						<autocommit>true</autocommit>
 						<printResultSet>true</printResultSet>
 						<delimiter>;</delimiter>
@@ -1706,31 +1722,30 @@
 					<artifactId>versions-maven-plugin</artifactId>
 					<version>${mojo-versions-maven-plugin.version}</version>
 				</plugin>
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>xml-maven-plugin</artifactId>
-					<version>${mojo-xml-maven-plugin.version}</version>
-					<executions>
-						<execution>
-							<goals>
-								<goal>validate</goal>
-							</goals>
-						</execution>
-					</executions>
-					<configuration>
-						<validationSets>
-							<validationSet>
-								<dir>src/main/resources/</dir>
-								<includes>
-									<include>resources.xml</include>
-									<include>*-resource.xml</include>
-								</includes>
-								<systemId>${maven.multiModuleProjectDirectory}/platform/sensinact-generic/src/main/resources/sensinact-resource.xsd</systemId>
-							</validationSet>
-						</validationSets>
-					</configuration>
-				</plugin>
-
+<!-- 				<plugin> -->
+<!-- 					<groupId>org.codehaus.mojo</groupId> -->
+<!-- 					<artifactId>xml-maven-plugin</artifactId> -->
+<!-- 					<version>${mojo-xml-maven-plugin.version}</version> -->
+<!-- 					<executions> -->
+<!-- 						<execution> -->
+<!-- 							<goals> -->
+<!-- 								<goal>validate</goal> -->
+<!-- 							</goals> -->
+<!-- 						</execution> -->
+<!-- 					</executions> -->
+<!-- 					<configuration> -->
+<!-- 						<validationSets> -->
+<!-- 							<validationSet> -->
+<!-- 								<dir>src/main/resources/</dir> -->
+<!-- 								<includes> -->
+<!-- 									<include>resources.xml</include> -->
+<!-- 									<include>*-resource.xml</include> -->
+<!-- 								</includes> -->
+<!-- 								<systemId>file:${sensinact.root.dir}/platform/sensinact-generic/src/main/resources/sensinact-resource.xsd</systemId> -->
+<!-- 							</validationSet> -->
+<!-- 						</validationSets> -->
+<!-- 					</configuration> -->
+<!-- 				</plugin> -->
 	
 				<!-- BUILD: Other plugins -->
 			
@@ -1864,7 +1879,7 @@ jarsigner: ${if;${isfile;${jarsigner2}};\
 				${jarsigner2};\
 				${osfile;${java.home}/../bin;${findfile;${java.home}/../bin;jarsigner*}}\
 			}
--plugin.sign: aQute.bnd.signing.JartoolSigner;alias="selfsigned";path=${jarsigner};keystore="${maven.multiModuleProjectDirectory}/platform/sensinact-security/cert/keystore.jks";storepass="sensiNact_team"
+-plugin.sign: aQute.bnd.signing.JartoolSigner;alias="selfsigned";path=${jarsigner};keystore="${sensinact.root.dir}/platform/sensinact-security/cert/keystore.jks";storepass="sensiNact_team"
 -sign: selfsigned
 -verbose: true
 							]]></bnd>
@@ -1977,7 +1992,7 @@ Bundle-Vendor: Eclipse
 							</execution>
 						</executions>
 						<configuration>
-							<keystore>${maven.multiModuleProjectDirectory}/platform/sensinact-security/cert/keystore.jks</keystore>
+							<keystore>${sensinact.root.dir}/platform/sensinact-security/cert/keystore.jks</keystore>
 							<alias>Sensinact Keystore</alias>
 							<storepass>sensiNact_team</storepass>
 						</configuration>
@@ -2024,7 +2039,7 @@ Bundle-Vendor: Eclipse
 <!-- 							<_nouses>true</_nouses> -->
 <!-- 							<_include>-bnd.bnd</_include> -->
 <!-- 							<_snapshot>${maven.build.timestamp}</_snapshot> -->
-<!-- 							<_plugin>aQute.bnd.signing.JartoolSigner;alias="selfsigned";path="${signer.path}";keystore="${maven.multiModuleProjectDirectory}/platform/sensinact-security/cert/keystore.jks";storepass="sensiNact_team"</_plugin> -->
+<!-- 							<_plugin>aQute.bnd.signing.JartoolSigner;alias="selfsigned";path="${signer.path}";keystore="${sensinact.root.dir}/platform/sensinact-security/cert/keystore.jks";storepass="sensiNact_team"</_plugin> -->
 <!-- 							<_sign>selfsigned</_sign> -->
 <!-- 							<_failok>true</_failok> -->
 <!-- 							<_exportcontents> *, !*.internal, !*.internal.*, !${private.package} -->  
@@ -2041,14 +2056,18 @@ Bundle-Vendor: Eclipse
 		</pluginManagement>
 
 		<plugins>
+		      <plugin>
+					<groupId>org.commonjava.maven.plugins</groupId>
+					<artifactId>directory-maven-plugin</artifactId>
+					</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-enforcer-plugin</artifactId>
 			</plugin>
-			<plugin>
-				<groupId>org.codehaus.gmaven</groupId>
-				<artifactId>groovy-maven-plugin</artifactId>
-			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.codehaus.gmaven</groupId> -->
+<!-- 				<artifactId>groovy-maven-plugin</artifactId> -->
+<!-- 			</plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
@@ -2061,6 +2080,7 @@ Bundle-Vendor: Eclipse
                 <groupId>biz.aQute.bnd</groupId>
             	<artifactId>bnd-maven-plugin</artifactId>
             </plugin>
+
 		</plugins>
 	</build>
 
@@ -2072,6 +2092,8 @@ Bundle-Vendor: Eclipse
 				<activeByDefault>true</activeByDefault>
 			</activation>
 		</profile>
+
+
 		<profile>
 			<id>sonar</id>
 			<build>

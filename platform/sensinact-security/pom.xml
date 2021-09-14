@@ -35,10 +35,11 @@
 		<module>sensinact-framework-extension</module>
 		<module>sensinact-security-none</module>
 		<module>sensinact-mail-connector</module>
-		<module>sensinact-signature-validator</module>
 		<module>sensinact-security-core</module>
-		<module>mock-signature-validator</module>
 		<module>sensinact-security-oauth2</module>
+		<module>sensinact-signature-validator-api</module>
+		<module>sensinact-signature-validator-mock</module>
+		<module>sensinact-signature-validator-secure</module>
 	</modules>
 
 </project>

@@ -27,9 +27,7 @@
 
 	<name>sensiNact IoT AppManager - Parent</name>
 
-	<properties>
-		<cert.path>../../sensinact-security/cert/keystore.jks</cert.path>
-	</properties>
+
 
 	<modules>
 		<module>application-manager</module>

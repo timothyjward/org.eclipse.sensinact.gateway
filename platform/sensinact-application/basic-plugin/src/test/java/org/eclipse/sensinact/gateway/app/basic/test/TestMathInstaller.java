@@ -10,6 +10,8 @@
  */
 package org.eclipse.sensinact.gateway.app.basic.test;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.io.IOException;
 import java.nio.charset.Charset;
 
@@ -24,17 +26,12 @@ import org.eclipse.sensinact.gateway.app.manager.json.AppFunction;
 import org.eclipse.sensinact.gateway.app.manager.json.AppJsonConstant;
 import org.json.JSONObject;
 import org.junit.Before;
-import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.component.ComponentContext;
-import org.powermock.modules.junit4.PowerMockRunner;
 
-import junit.framework.TestCase;
-
-@RunWith(PowerMockRunner.class)
-public class TestMathInstaller extends TestCase {
+public class TestMathInstaller  {
 
     private ComponentContext context;
     private BundleContext bundleContext;

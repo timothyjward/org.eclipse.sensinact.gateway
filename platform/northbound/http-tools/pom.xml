@@ -52,9 +52,15 @@
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.sensinact.gateway</groupId>
-			<artifactId>mock-signature-validator</artifactId>
+			<artifactId>sensinact-signature-validator-api</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.eclipse.sensinact.gateway</groupId>
+			<artifactId>sensinact-signature-validator-mock</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.eclipse.sensinact.gateway</groupId>
 			<artifactId>sensinact-core</artifactId>

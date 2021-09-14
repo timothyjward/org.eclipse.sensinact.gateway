@@ -37,7 +37,6 @@
 	junit-platform-engine;version='[1.7.2,1.7.3)',\
 	junit-platform-launcher;version='[1.7.2,1.7.3)',\
 	log4j;version='[1.2.17,1.2.18)',\
-	mock-signature-validator;version='[2.0.0,2.0.1)',\
 	org.apache.felix.scr;version='[2.1.16,2.1.17)',\
 	org.apache.servicemix.bundles.junit;version='[4.13.2,4.13.3)',\
 	org.opentest4j;version='[1.2.0,1.2.1)',\
@@ -59,4 +58,6 @@
 	sensinact-utils;version='[2.0.0,2.0.1)',\
 	slf4j.api;version='[1.7.30,1.7.31)',\
 	ch.qos.logback.classic;version='[1.2.3,1.2.4)',\
-	json;version='[20190722.0.0,20190722.0.1)'
+	json;version='[20190722.0.0,20190722.0.1)',\
+	sensinact-signature-validator-api;version='[2.0.0,2.0.1)',\
+	sensinact-signature-validator-mock;version='[2.0.0,2.0.1)'
