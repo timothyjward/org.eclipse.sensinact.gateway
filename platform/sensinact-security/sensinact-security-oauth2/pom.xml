@@ -26,6 +26,7 @@
 
 	<name>sensiNact IoT Gateway - oAuth2 Security</name>
 
+
 	<dependencies>
 		<dependency>
 			<groupId>org.eclipse.sensinact.gateway.protocol</groupId>
@@ -72,16 +73,18 @@
 			<artifactId>json</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.keycloak</groupId>
-			<artifactId>keycloak-testsuite-utils</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.keycloak</groupId>
-			<artifactId>keycloak-admin-client</artifactId>
-			<scope>test</scope>
-		</dependency>
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.keycloak</groupId> -->
+<!-- 			<artifactId>keycloak-testsuite-utils</artifactId> -->
+<!-- 			<version>${keycloak.version}</version> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.keycloak</groupId> -->
+<!-- 			<artifactId>keycloak-admin-client</artifactId> -->
+<!-- 			<version>${keycloak.version}</version> -->
+<!-- 			<scope>test</scope> -->
+<!-- 		</dependency> -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>

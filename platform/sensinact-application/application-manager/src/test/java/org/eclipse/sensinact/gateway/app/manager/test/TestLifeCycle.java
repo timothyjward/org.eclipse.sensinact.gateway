@@ -10,7 +10,8 @@
  */
 package org.eclipse.sensinact.gateway.app.manager.test;
 
-import junit.framework.TestCase;
+import static org.mockito.Mockito.mock;
+
 import org.eclipse.sensinact.gateway.app.api.lifecycle.ApplicationStatus;
 import org.eclipse.sensinact.gateway.app.manager.AppConstant;
 import org.eclipse.sensinact.gateway.app.manager.application.AppLifecycleTrigger;
@@ -24,21 +25,19 @@ import org.eclipse.sensinact.gateway.core.method.AccessMethodResponse.Status;
 import org.eclipse.sensinact.gateway.core.method.AccessMethodResponseBuilder;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
-import org.powermock.modules.junit4.PowerMockRunner;
 
-@RunWith(PowerMockRunner.class)
+import junit.framework.TestCase;
+
 public class TestLifeCycle extends TestCase {
     private ApplicationStatus status;
-    @Mock
-    private AppServiceMediator mediator;
-    @Mock
-    private ApplicationService service;
+    
+    private AppServiceMediator mediator=mock(AppServiceMediator.class);
+    
+    private ApplicationService service=mock(ApplicationService.class);
 
     @Before
     public void init() throws Exception {
