@@ -44,7 +44,6 @@ import org.skyscreamer.jsonassert.JSONAssert;
 @ExtendWith(BundleContextExtension.class)
 @ExtendWith(ServiceExtension.class)
 @ExtendWith(InstalledBundleExtension.class)
-@Disabled
 public class TestGenericImplementation {
 
 
