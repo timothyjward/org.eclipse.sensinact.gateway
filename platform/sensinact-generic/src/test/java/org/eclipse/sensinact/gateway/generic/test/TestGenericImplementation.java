@@ -14,6 +14,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.Map;
 
 import org.eclipse.sensinact.gateway.common.primitive.Description;
@@ -36,25 +37,28 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.osgi.framework.Bundle;
 import org.osgi.test.common.annotation.InjectInstalledBundle;
 import org.osgi.test.common.annotation.InjectService;
+import org.osgi.test.common.service.ServiceAware;
 import org.osgi.test.junit5.context.BundleContextExtension;
 import org.osgi.test.junit5.context.InstalledBundleExtension;
 import org.osgi.test.junit5.service.ServiceExtension;
 import org.skyscreamer.jsonassert.JSONAssert;
 
+@ExtendWith(InstalledBundleExtension.class)
 @ExtendWith(BundleContextExtension.class)
 @ExtendWith(ServiceExtension.class)
-@ExtendWith(InstalledBundleExtension.class)
 public class TestGenericImplementation {
 
 
     @Test
     public void testActionResourceModel(
-    		@InjectService(timeout = 500) StarterService starter, 
+    		@InjectService(cardinality = 0) ServiceAware<StarterService> starterServiceAware, 
     		@InjectService(timeout = 500) Core core,
     		@InjectInstalledBundle(start = true, value = "st-resource.jar") Bundle bundle
     		) throws Throwable {
 
-        starter.start("SmartPlug");
+    	StarterService starterService = starterServiceAware.waitForService(500);
+    	
+        starterService.start("SmartPlug");
         Thread.sleep(2000);
 
         Session session = core.getAnonymousSession();
@@ -96,12 +100,14 @@ public class TestGenericImplementation {
 
     @Test
     public void testConstrainedResourceModel(
-    		@InjectService(timeout = 500) StarterService starter, 
+    		@InjectService(cardinality = 0) ServiceAware<StarterService> starterServiceAware, 
     		@InjectService(timeout = 500) Core core,
     		@InjectInstalledBundle(start = true, value = "temperature-resource.jar") Bundle bundle
     		) throws Throwable {
 
-    	starter.start("TestForSensiNactGateway");
+    	StarterService starterService = starterServiceAware.waitForService(500);
+    	
+    	starterService.start("TestForSensiNactGateway");
         Thread.sleep(2000);
         
         Session session = core.getAnonymousSession();
@@ -127,12 +133,14 @@ public class TestGenericImplementation {
 
     @Test
     public void testResourceModel(
-    		@InjectService(timeout = 500) StarterService starter, 
+    		@InjectService(cardinality = 0) ServiceAware<StarterService> starterServiceAware, 
     		@InjectService(timeout = 500) Core core,
     		@InjectInstalledBundle(start = true, value = "genova-resource.jar") Bundle bundle
     		) throws Throwable {
         
-        starter.start("weather_5");        
+    	StarterService starterService = starterServiceAware.waitForService(500);
+    	
+        starterService.start("weather_5");        
         Thread.sleep(2000);
         
         Session session = core.getAnonymousSession();
@@ -142,16 +150,17 @@ public class TestGenericImplementation {
         JSONObject jsonObject = new JSONObject(description.getJSON());
         core.close();
     }
-
+    
     @Test
     public void testFactory(
-    		@InjectService(timeout = 500) ProcessorService processor, 
+    		@InjectService(cardinality = 0) ServiceAware<ProcessorService> processorAware, 
     		@InjectService(timeout = 500) Core core,
     		@InjectInstalledBundle(start = true, value = "test-resource.jar") Bundle bundle
     		) throws Throwable {
         
+    	ProcessorService processor = processorAware.waitForService(500);
+    	
         processor.process("device1");
-        
         Thread.sleep(2000);
         
         Session session = core.getAnonymousSession();
@@ -227,12 +236,15 @@ public class TestGenericImplementation {
 
     @Test
     public void testAnnotatedPacket(
-    		@InjectService(timeout = 500) StarterService starterService, 
-    		@InjectService(timeout = 500) ProcessorService processorService, 
+    		@InjectService(cardinality = 0) ServiceAware<StarterService> starterServiceAware, 
+    		@InjectService(cardinality = 0) ServiceAware<ProcessorService> processorServiceAware, 
     		@InjectService(timeout = 500) Core core,
     		@InjectInstalledBundle(start = true, value = "extra-3.jar") Bundle bundle
     		) throws Throwable {
-        Session session = core.getAnonymousSession();
+
+    	StarterService starterService = starterServiceAware.waitForService(500);
+    	
+    	Session session = core.getAnonymousSession();
         starterService.start("weather_7");
         Thread.sleep(2000);
         ServiceProvider provider = session.serviceProvider("weather_7");
@@ -252,6 +264,8 @@ public class TestGenericImplementation {
 //
 //        ProcessorService processorService = processor.buildProxy();
 
+        ProcessorService processorService = processorServiceAware.waitForService(500);
+        
         processorService.process("weather_7,null,admin,location,45.900002:6.11667");
         
 //        message = (SnaMessage) midResource.toOSGi(getMethod, new Object[]{"value", null});
@@ -526,8 +540,17 @@ public class TestGenericImplementation {
     			   "\"statusCode\": 200"+
     			 "}";
     	
+    	
+    	Arrays.asList(bundle4.getBundleContext().getBundles())
+    		.stream().forEach(b -> {
+    			
+    			System.err.println(b.getSymbolicName() + " - " + b.getState());
+    		});
+    	
         Session session = core.getAnonymousSession();
         DescribeResponse<String> response = session.getAll();
+        
+        System.err.println(response.getJSON());
         
         JSONAssert.assertEquals(all, response.getJSON(), false);
         core.close();

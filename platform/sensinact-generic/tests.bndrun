@@ -22,7 +22,7 @@
 	org.eclipse.sensinact.security.oauth2.config=${.}/src/test/resources/sensinact-security-oauth2.config,\
 	org.eclipse.sensinact.gateway.security.jks.filename=${.}/../sensinact-security/cert/keystore.jks,\
     org.eclipse.sensinact.gateway.security.jks.password=sensiNact_team,\
-    "org.eclipse.sensinact.http.corsheader", false
+    org.eclipse.sensinact.http.corsheader=false,\
     org.eclipse.sensinact.gateway.location.latitude=45.2d,\
     org.eclipse.sensinact.gateway.location.longitude=5.7d,\
     org.osgi.service.http.port=8899,\
@@ -61,3 +61,5 @@
 	sensinact-signature-validator-api;version='[2.0.0,2.0.1)',\
 	sensinact-signature-validator-mock;version='[2.0.0,2.0.1)',\
 	slf4j.log4j12;version='[1.7.25,1.7.26)'
+	
+-runtrace: true
