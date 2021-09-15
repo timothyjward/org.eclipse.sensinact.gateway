@@ -15,7 +15,3 @@
 		extra-4.jar,\
 		extra-5.jar,\
 		extra-6.jar
-
--privatepackage: \
-	org.skyscreamer.*,\
-	org.eclipse.sensinact.gateway.generic.test

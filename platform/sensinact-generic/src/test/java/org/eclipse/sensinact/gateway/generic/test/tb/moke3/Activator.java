@@ -25,6 +25,7 @@ import org.osgi.framework.ServiceRegistration;
 
 import java.util.Collections;
 
+@Header(name = Constants.BUNDLE_ACTIVATOR, value = "${@class}")
 public class Activator extends AbstractActivator<Mediator> {
     private ExtModelConfiguration manager;
     private MokeStack endpoint;

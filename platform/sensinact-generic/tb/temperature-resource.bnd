@@ -1,3 +1,2 @@
 -privatepackage: org.eclipse.sensinact.gateway.generic.test.tb.moke
-Bundle-Activator: org.eclipse.sensinact.gateway.generic.test.tb.moke.Activator
 -includeresource: ${.}/temperature-resource

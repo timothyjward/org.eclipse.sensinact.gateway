@@ -1900,7 +1900,6 @@ Bundle-Vendor: Eclipse
 -verbose: true
 ]]></bnd>
                                     <testCases>junit5</testCases>
-                                    
                                 </configuration>
                             </execution>
                         </executions>
