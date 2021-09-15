@@ -1748,7 +1748,6 @@
 <!-- 				</plugin> -->
 	
 				<!-- BUILD: Other plugins -->
-			
 				<plugin>
 					<groupId>org.apache.servicemix.tooling</groupId>
 					<artifactId>depends-maven-plugin</artifactId>
