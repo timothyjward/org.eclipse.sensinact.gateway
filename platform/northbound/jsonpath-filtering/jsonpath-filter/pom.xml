@@ -114,7 +114,10 @@
 
 	<build>
 		<plugins>
-		
+			<plugin>
+				<groupId>biz.aQute.bnd</groupId>
+				<artifactId>bnd-maven-plugin</artifactId>
+			</plugin>
 <!-- 			<plugin> -->
 <!-- 				<groupId>org.apache.maven.plugins</groupId> -->
 <!-- 				<artifactId>maven-scm-plugin</artifactId> -->
@@ -164,52 +167,48 @@
 <!-- 					</execution> -->
 <!-- 				</executions> -->
 <!-- 			</plugin> -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>keystoreCopy</id>
-						<phase>generate-test-resources</phase>
-						<configuration>
-							<target description="Copying keystore.jks">
-								<copy file="../../../sensinact-security/cert/keystore.jks"
-									tofile="${project.build.directory}/felix/bundle/keystore.jks" />
-							</target>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 				<artifactId>maven-antrun-plugin</artifactId> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<id>keystoreCopy</id> -->
+<!-- 						<phase>generate-test-resources</phase> -->
+<!-- 						<configuration> -->
+<!-- 							<target description="Copying keystore.jks"> -->
+<!-- 								<copy file="../../../sensinact-security/cert/keystore.jks" -->
+<!-- 									tofile="${project.build.directory}/felix/bundle/keystore.jks" /> -->
+<!-- 							</target> -->
+<!-- 						</configuration> -->
+<!-- 						<goals> -->
+<!-- 							<goal>run</goal> -->
+<!-- 						</goals> -->
+<!-- 					</execution> -->
 
-					<execution>
-						<id>copy-jpath-build-libs</id>
-						<phase>validate</phase>
-						<configuration>
-							<target>
-								<delete file="${project.build.directory}/jpath-1.0.0.jar" />
-								<copy todir="${project.build.directory}"
-									file="${tmp.repository}/JsonPath/jpath/build/libs/jpath-1.0.0.jar" />
-								<delete
-									file="${project.build.directory}/json-provider-jsonorg-1.0.0.jar" />
-								<copy todir="${project.build.directory}"
-									file="${tmp.repository}/JsonPath/json-provider-jsonorg/build/libs/json-provider-jsonorg-1.0.0.jar" />
-							</target>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>biz.aQute.bnd</groupId>
-				<artifactId>bnd-maven-plugin</artifactId>
-			</plugin>
+<!-- 					<execution> -->
+<!-- 						<id>copy-jpath-build-libs</id> -->
+<!-- 						<phase>validate</phase> -->
+<!-- 						<configuration> -->
+<!-- 							<target> -->
+<!-- 								<delete file="${project.build.directory}/jpath-1.0.0.jar" /> -->
+<!-- 								<copy todir="${project.build.directory}" -->
+<!-- 									file="${tmp.repository}/JsonPath/jpath/build/libs/jpath-1.0.0.jar" /> -->
+<!-- 								<delete -->
+<!-- 									file="${project.build.directory}/json-provider-jsonorg-1.0.0.jar" /> -->
+<!-- 								<copy todir="${project.build.directory}" -->
+<!-- 									file="${tmp.repository}/JsonPath/json-provider-jsonorg/build/libs/json-provider-jsonorg-1.0.0.jar" /> -->
+<!-- 							</target> -->
+<!-- 						</configuration> -->
+<!-- 						<goals> -->
+<!-- 							<goal>run</goal> -->
+<!-- 						</goals> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 			</plugin> -->
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 				<artifactId>maven-surefire-plugin</artifactId> -->
+<!-- 			</plugin> -->
 <!-- 			<plugin> -->
 <!-- 				<groupId>org.apache.felix</groupId> -->
 <!-- 				<artifactId>maven-bundle-plugin</artifactId> -->

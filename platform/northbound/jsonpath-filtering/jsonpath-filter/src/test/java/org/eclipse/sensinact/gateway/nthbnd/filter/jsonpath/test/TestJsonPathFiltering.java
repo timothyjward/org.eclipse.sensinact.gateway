@@ -17,10 +17,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
 
-import org.eclipse.sensinact.gateway.common.bundle.Mediator;
 import org.eclipse.sensinact.gateway.nthbnd.filter.jsonpath.http.test.HttpServiceTestClient;
 import org.eclipse.sensinact.gateway.nthbnd.filter.jsonpath.ws.test.WsServiceTestClient;
-import org.eclipse.sensinact.gateway.test.MidOSGiTest;
 import org.eclipse.sensinact.gateway.util.IOUtils;
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
@@ -29,7 +27,7 @@ import org.skyscreamer.jsonassert.JSONAssert;
 /**
  * @author <a href="mailto:christophe.munilla@cea.fr">Christophe Munilla</a>
  */
-public class TestJsonPathFiltering extends MidOSGiTest {
+public class TestJsonPathFiltering {
     //********************************************************************//
     //						NESTED DECLARATIONS			  			      //
     //********************************************************************//
@@ -70,7 +68,6 @@ public class TestJsonPathFiltering extends MidOSGiTest {
      * @inheritDoc
      * @see MidOSGiTest#doInit(java.util.Map)
      */
-    @Override
     @SuppressWarnings({"unchecked", "rawtypes"})
     protected void doInit(Map configuration) {
         configuration.put("felix.auto.start.1",  
