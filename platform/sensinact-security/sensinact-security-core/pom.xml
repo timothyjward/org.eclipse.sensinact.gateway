@@ -109,6 +109,26 @@
 			<plugin>	
 				<groupId>biz.aQute.bnd</groupId>
 				<artifactId>bnd-maven-plugin</artifactId>
+				<executions>
+                	<execution>
+                                <id>bnd-process-tests</id>
+                                <phase>process-test-classes</phase>
+                                <goals>
+                                    <goal>bnd-process-tests</goal>
+                                </goals>
+                                <configuration>
+                                	<bndfile>tests.bnd</bndfile>
+                                	<artifactFragment>false</artifactFragment>
+                                    <bnd><![CDATA[
+Bundle-Vendor: Eclipse
+-contract: *
+-includeresource.about: -about.html
+-verbose: true
+]]></bnd>
+                                    <testCases>junit5</testCases>
+                                </configuration>
+                            </execution>
+                        </executions>
 			</plugin>
 			<plugin>
 				<groupId>biz.aQute.bnd</groupId>

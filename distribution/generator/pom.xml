@@ -256,7 +256,12 @@
 								</artifactItem>
 								<artifactItem>
 									<groupId>org.eclipse.sensinact.gateway</groupId>
-									<artifactId>sensinact-signature-validator</artifactId>
+									<artifactId>sensinact-signature-validator-api</artifactId>
+									<version>${project.version}</version>
+								</artifactItem>
+								<artifactItem>
+									<groupId>org.eclipse.sensinact.gateway</groupId>
+									<artifactId>sensinact-signature-validator-secure</artifactId>
 									<version>${project.version}</version>
 								</artifactItem>
 								<artifactItem>

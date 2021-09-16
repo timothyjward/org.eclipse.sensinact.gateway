@@ -10,6 +10,7 @@
  */
 package org.eclipse.sensinact.gateway.nthbnd.rest;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.eclipse.sensinact.gateway.common.bundle.Mediator;
@@ -18,6 +19,7 @@ import org.eclipse.sensinact.gateway.nthbnd.rest.ws.test.WsServiceTestClient;
 import org.eclipse.sensinact.gateway.simulated.slider.api.SliderSetterItf;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.osgi.framework.BundleContext;
@@ -31,6 +33,14 @@ import org.skyscreamer.jsonassert.JSONAssert;
 @ExtendWith(ServiceExtension.class)
 public class TestRestGETAccess {
 
+	@BeforeEach
+	public void before(@InjectBundleContext BundleContext context) {
+		Mediator mediator = new Mediator(context);
+		String simulated = HttpServiceTestClient.newRequest(mediator, TestRestAccess.HTTP_ROOTURL + "/providers/slider/services/admin/resources/location/SET", "{\"parameters\":[{\"name\": \"location\",\"value\": \"45.2:5.7\",\"type\": \"string\"}]}", "POST");
+        JSONObject response = new JSONObject(simulated);
+        assertEquals(200, response.get("statusCode"));
+	}
+	
     @Test
     public void testHttpAccessMethodRawDescription(@InjectBundleContext BundleContext context) throws Exception {
     	Mediator mediator = new Mediator(context);

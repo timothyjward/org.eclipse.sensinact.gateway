@@ -695,6 +695,12 @@
 				<groupId>org.skyscreamer</groupId>
 				<artifactId>jsonassert</artifactId>
 				<version>${jsonassert.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>com.vaadin.external.google</groupId>
+   						<artifactId>android-json</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 			<dependency>
 				<groupId>com.h2database</groupId>

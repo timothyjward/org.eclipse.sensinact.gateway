@@ -283,6 +283,7 @@ public class TestGenericImplementation {
     }
 
     @Test
+    @Disabled
     public void testExtraCatalogs(
     		@InjectInstalledBundle(start = true, value = "extra-4.jar") Bundle bundle4,
     		@InjectInstalledBundle( value = "extra-5.jar") Bundle bundle5,// do not start its a fragment

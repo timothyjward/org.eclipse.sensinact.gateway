@@ -17,6 +17,7 @@ import org.eclipse.sensinact.gateway.common.bundle.Mediator;
 import org.eclipse.sensinact.gateway.nthbnd.rest.http.test.HttpServiceTestClient;
 import org.eclipse.sensinact.gateway.nthbnd.rest.ws.test.WsServiceTestClient;
 import org.json.JSONObject;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.osgi.framework.BundleContext;
@@ -26,6 +27,18 @@ import org.osgi.test.junit5.context.BundleContextExtension;
 @ExtendWith(BundleContextExtension.class)
 public class TestRestACTAccess {
 
+	@BeforeEach
+	public void before(@InjectBundleContext BundleContext context) {
+		Mediator mediator = new Mediator(context);
+		String simulated = HttpServiceTestClient.newRequest(mediator, TestRestAccess.HTTP_ROOTURL + "/providers/light/services/switch/resources/turn_off/ACT", null, "POST");
+		JSONObject response = new JSONObject(simulated);
+		assertTrue(response.get("statusCode").equals(200));
+		
+		simulated = HttpServiceTestClient.newRequest(mediator, TestRestAccess.HTTP_ROOTURL + "/providers/light/services/switch/resources/dim/ACT", "{\"parameters\":[{\"name\": \"brightness\",\"value\": 10,\"type\": \"int\"}]}", "POST");
+        response = new JSONObject(simulated);
+        assertEquals(200, response.get("statusCode"));
+	}
+	
     @Test
     public void testHttpACTWithoutParameters(@InjectBundleContext BundleContext context) throws Exception {
         Mediator mediator = new Mediator(context);
@@ -57,7 +70,7 @@ public class TestRestACTAccess {
         JSONObject response = new JSONObject(simulated);
         assertTrue(response.get("statusCode").equals(200));
         assertTrue(response.getString("uri").equals("/light/switch/status"));
-        assertTrue(response.getJSONObject("response").get("value").equals("OFF"));
+        assertEquals(response.getJSONObject("response").get("value"),"OFF");
         simulated = HttpServiceTestClient.newRequest(mediator, TestRestAccess.HTTP_ROOTURL + "/light/switch/turn_on/ACT", null, "POST");
         System.out.println(simulated);
         response = new JSONObject(simulated);
@@ -79,7 +92,7 @@ public class TestRestACTAccess {
         JSONObject response = new JSONObject(simulated);
         assertTrue(response.get("statusCode").equals(200));
         assertTrue(response.getString("uri").equals("/light/switch/brightness"));
-        assertTrue(response.getJSONObject("response").get("value").equals(10));
+        assertEquals(10, response.getJSONObject("response").get("value"));
         simulated = HttpServiceTestClient.newRequest(mediator, TestRestAccess.HTTP_ROOTURL + "/providers/light/services/switch/resources/dim/ACT", "{\"parameters\":[{\"name\": \"brightness\",\"value\": 5,\"type\": \"int\"}]}", "POST");
         System.out.println(simulated);
         
@@ -138,7 +151,7 @@ public class TestRestACTAccess {
         response = new JSONObject(simulated);
         assertTrue(response.get("statusCode").equals(200));
         assertTrue(response.getString("uri").equals("/light/switch/brightness"));
-        assertTrue(response.getJSONObject("response").get("value").equals(10));
+        assertEquals(10, response.getJSONObject("response").get("value"));
         simulated = this.synchronizedRequest(client, TestRestAccess.WS_ROOTURL + "/providers/light/services/switch/resources/dim/ACT", "[{\"name\": \"brightness\",\"value\": 5,\"type\": \"int\"}]");
 
         response = new JSONObject(simulated);
