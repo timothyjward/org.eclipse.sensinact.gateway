@@ -167,7 +167,10 @@ public class TestGenericImplementation {
 
         ServiceProvider provider = session.serviceProvider("device1");
         Service ldrService = provider.getService("ldr");
+        System.err.println("Resources");
+        ldrService.getResources().stream().forEach(r -> System.err.println(r.getName()));
         Resource ldrResource = ldrService.getResource("value");
+        
         Description response = ldrResource.getDescription();
         JSONObject responseDescription = new JSONObject(response.getJSONDescription());
 
@@ -186,6 +189,7 @@ public class TestGenericImplementation {
         }
         JSONAssert.assertEquals(new JSONObject("{\"name\":\"value\",\"type\":\"float\",\"metadata\":" + "[{\"name\":\"modifiable\",\"value\":" + "\"UPDATABLE\",\"type\":\"org.eclipse.sensinact.gateway.common.primitive.Modifiable\"}," + "{\"name\":\"nickname\",\"value\":\"value\",\"type\":\"string\"}," + "{\"name\":\"Description\",\"value\":" + "\"Detected light/darkness\",\"type\":\"string\"}," + "{\"name\":\"Unit\"," + "\"value\":\"LUX\",\"type\":\"string\"}]}"), valueDescription, false);
         core.close();
+        
     }
 
     @Test

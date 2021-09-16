@@ -3,6 +3,6 @@
 <properties>
 	<entry key="startAtInitializationTime">true</entry>
 	<entry key="pir">VALUE</entry>
-	<entry key="ldr">VALUE</entry>
+	<entry key="ldr2">VALUE</entry>
 	<entry key="gpr">VALUE</entry>
 </properties>
