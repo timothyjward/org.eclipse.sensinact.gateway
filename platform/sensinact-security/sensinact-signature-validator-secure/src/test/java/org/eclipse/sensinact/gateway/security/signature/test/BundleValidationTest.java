@@ -10,12 +10,10 @@
  */
 package org.eclipse.sensinact.gateway.security.signature.test;
 
-import java.util.Map;
-
 import org.assertj.core.api.Assertions;
 import org.eclipse.sensinact.gateway.security.signature.api.BundleValidation;
 import org.eclipse.sensinact.gateway.security.signature.api.SignatureValidatorConstants;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.osgi.framework.Bundle;
 import org.osgi.test.common.annotation.InjectInstalledBundle;

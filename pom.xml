@@ -638,12 +638,6 @@
 			</dependency>
 			<dependency>
 				<groupId>org.osgi</groupId>
-				<artifactId>org.osgi.test.junit4</artifactId>
-				<version>${osgi.test.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.osgi</groupId>
 				<artifactId>org.osgi.test.junit5</artifactId>
 				<version>${osgi.test.version}</version>
 				<scope>test</scope>
@@ -1014,11 +1008,7 @@
 			<artifactId>org.osgi.test.assertj.promise</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.test.junit4</artifactId>
-			<scope>test</scope>
-		</dependency>
+
 		<dependency>
 			<groupId>org.osgi</groupId>
 			<artifactId>org.osgi.test.junit5</artifactId>

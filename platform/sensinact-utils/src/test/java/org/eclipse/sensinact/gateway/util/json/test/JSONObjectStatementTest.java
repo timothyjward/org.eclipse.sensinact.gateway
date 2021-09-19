@@ -13,7 +13,7 @@ package org.eclipse.sensinact.gateway.util.json.test;
 import org.eclipse.sensinact.gateway.util.json.JSONObjectStatement;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 
 public class JSONObjectStatementTest {
