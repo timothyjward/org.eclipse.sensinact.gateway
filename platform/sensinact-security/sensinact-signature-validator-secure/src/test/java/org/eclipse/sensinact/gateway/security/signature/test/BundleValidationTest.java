@@ -14,6 +14,7 @@ import java.util.Map;
 
 import org.assertj.core.api.Assertions;
 import org.eclipse.sensinact.gateway.security.signature.api.BundleValidation;
+import org.eclipse.sensinact.gateway.security.signature.api.SignatureValidatorConstants;
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.osgi.framework.Bundle;
@@ -32,7 +33,7 @@ import org.osgi.test.junit5.service.ServiceExtension;
 @ExtendWith(ServiceExtension.class)
 public class BundleValidationTest{
 	
-	@InjectService(timeout = 500, filter = "(type=secure)")
+	@InjectService(timeout = 500, filter =  "("+SignatureValidatorConstants.PREFIX_+"type=secure)")
 	BundleValidation jval;
 
 	@Test
