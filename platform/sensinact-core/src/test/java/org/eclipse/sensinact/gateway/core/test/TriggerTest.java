@@ -21,8 +21,8 @@ import org.eclipse.sensinact.gateway.core.method.trigger.AccessMethodTrigger;
 import org.eclipse.sensinact.gateway.core.method.trigger.AccessMethodTriggerFactory;
 import org.eclipse.sensinact.gateway.core.method.trigger.TriggerArgumentBuilder;
 import org.json.JSONObject;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
@@ -64,7 +64,7 @@ public class TriggerTest {
 
 	private Mediator mediator;
 
-	@Before
+	@BeforeEach
 	public void init() throws InvalidSyntaxException {
 		Filter filter = Mockito.mock(Filter.class);
 		Mockito.when(filter.toString()).thenReturn(LOG_FILTER);

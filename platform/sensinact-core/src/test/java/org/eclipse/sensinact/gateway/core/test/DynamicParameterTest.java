@@ -18,8 +18,8 @@ import org.eclipse.sensinact.gateway.common.execution.Executable;
 import org.eclipse.sensinact.gateway.core.method.DynamicParameterValue;
 import org.eclipse.sensinact.gateway.core.method.builder.DynamicParameterValueFactory;
 import org.json.JSONObject;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
@@ -59,7 +59,7 @@ public class DynamicParameterTest {
 
 	private Mediator mediator;
 
-	@Before
+	@BeforeEach
 	public void init() throws InvalidSyntaxException {
 		Filter filter = Mockito.mock(Filter.class);
 		Mockito.when(filter.toString()).thenReturn(LOG_FILTER);
