@@ -5,3 +5,4 @@
 	
 -runee: JavaSE-1.8
 -runfw: org.apache.felix.framework
+-runsystempackages: com.sun.net.httpserver

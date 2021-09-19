@@ -1,3 +1,4 @@
+-include: ${sensinact.root.dir}/bnd/default.bnd.bnd
 DynamicImport-Package: org.eclipse.sensinact.gateway.core.security.impl
 Require-Capability: \
 	org.eclipse.sensinact.security,\

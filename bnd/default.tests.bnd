@@ -1,0 +1,7 @@
+Bundle-SymbolicName: ${project.groupId}.${project.artifactId}-tests
+Fragment-Host: ${project.groupId}.${project.artifactId}
+Bundle-Vendor: Eclipse
+-contract: *
+-includeresource.about: -${sensinact.root.dir}/bnd/about.html
+-verbose: true
+about.html

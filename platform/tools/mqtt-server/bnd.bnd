@@ -1,3 +1,4 @@
+-include: ${sensinact.root.dir}/bnd/default.bnd.bnd
 -includeresource.impl:\
  	@hazelcast-*.jar!/*,\
  	@mapdb-*.jar!/*,\

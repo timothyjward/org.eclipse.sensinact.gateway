@@ -1476,25 +1476,7 @@
                                     <goal>bnd-process</goal>
                                 </goals>
                                 <configuration>
-                                    <bnd><![CDATA[
-Bundle-SymbolicName: ${project.groupId}.${project.artifactId}
-Bundle-Vendor: Eclipse
--contract: *
--includeresource.about: -about.html
-jarsigner1: ${osfile;${env;JAVA_HOME}/../bin;${findfile;${env;JAVA_HOME}/../bin;jarsigner*}}
-jarsigner2: ${if;${isfile;${jarsigner1}};\
-				${jarsigner1};\
-				${osfile;${env;JAVA_HOME}/bin;${findfile;${env;JAVA_HOME}/bin;jarsigner*}}\
-			}
-jarsigner: ${if;${isfile;${jarsigner2}};\
-				${jarsigner2};\
-				${osfile;${java.home}/../bin;${findfile;${java.home}/../bin;jarsigner*}}\
-			}
--plugin.sign: aQute.bnd.signing.JartoolSigner;alias="selfsigned";path=${jarsigner};keystore="${sensinact.root.dir}/platform/sensinact-security/cert/keystore.jks";storepass="sensiNact_team"
--sign: selfsigned
--verbose: true
-Foo: bar
-							]]></bnd>
+									<bndfile>bnd.bnd</bndfile>
                                 </configuration>
                             </execution>
                             <execution>
@@ -1506,14 +1488,6 @@ Foo: bar
                                 <configuration>
                                 	<bndfile>tests.bnd</bndfile>
                                 	<artifactFragment>true</artifactFragment>
-                                    <bnd><![CDATA[
-Bundle-SymbolicName: ${project.groupId}.${project.artifactId}-tests
-Fragment-Host: ${project.groupId}.${project.artifactId}
-Bundle-Vendor: Eclipse
--contract: *
--includeresource.about: -about.html
--verbose: true
-]]></bnd>
                                     <testCases>junit5</testCases>
                                 </configuration>
                             </execution>

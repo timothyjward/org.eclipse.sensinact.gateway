@@ -19,8 +19,6 @@
 	org.osgi.util.function;version='[1.1.0,1.1.1)',\
 	org.osgi.util.promise;version='[1.1.1,1.1.2)',\
 	org.osgi.util.pushstream;version='[1.0.1,1.0.2)',\
-	sensinact-common;version='[2.0.0,2.0.1)',\
-	sensinact-utils;version='[2.0.0,2.0.1)',\
 	org.apache.servicemix.bundles.junit;version='[4.13.2,4.13.3)',\
 	junit-platform-commons;version='[1.7.2,1.7.3)',\
 	junit-jupiter-api;version='[5.7.2,5.7.3)',\
@@ -30,7 +28,6 @@
 	org.opentest4j;version='[1.2.0,1.2.1)',\
 	org.apache.felix.scr;version='[2.1.16,2.1.17)',\
 	ch.qos.logback.core;version='[1.2.3,1.2.4)',\
-	http;version='[2.0.0,2.0.1)',\
 	json;version='[20190722.0.0,20190722.0.1)',\
 	log4j;version='[1.2.17,1.2.18)',\
 	net.bytebuddy.byte-buddy;version='[1.11.3,1.11.4)',\
@@ -38,16 +35,19 @@
 	org.mockito.mockito-core;version='[3.11.2,3.11.3)',\
 	org.objenesis;version='[3.2.0,3.2.1)',\
 	org.osgi.service.component;version='[1.4.0,1.4.1)',\
-	sensinact-core;version='[2.0.0,2.0.1)',\
-	sensinact-datastore-api;version='[2.0.0,2.0.1)',\
-	sensinact-security-core;version='[2.0.0,2.0.1)',\
-	sensinact-security-core-tests;version='[2.0.0,2.0.1)',\
-	sensinact-security-none;version='[2.0.0,2.0.1)',\
-	sensinact-signature-validator-api;version='[2.0.0,2.0.1)',\
-	sensinact-signature-validator-mock;version='[2.0.0,2.0.1)',\
-	sensinact-sqlite-connector;version='[2.0.0,2.0.1)',\
 	slf4j.api;version='[1.7.30,1.7.31)',\
-	slf4j.log4j12;version='[1.7.25,1.7.26)'
+	ch.qos.logback.classic;version='[1.2.3,1.2.4)',\
+	org.eclipse.sensinact.gateway.protocol.http;version='[2.0.0,2.0.1)',\
+	org.eclipse.sensinact.gateway.sensinact-common;version='[2.0.0,2.0.1)',\
+	org.eclipse.sensinact.gateway.sensinact-core;version='[2.0.0,2.0.1)',\
+	org.eclipse.sensinact.gateway.sensinact-datastore-api;version='[2.0.0,2.0.1)',\
+	org.eclipse.sensinact.gateway.sensinact-security-core;version='[2.0.0,2.0.1)',\
+	org.eclipse.sensinact.gateway.sensinact-security-core-tests;version='[2.0.0,2.0.1)',\
+	org.eclipse.sensinact.gateway.sensinact-security-none;version='[2.0.0,2.0.1)',\
+	org.eclipse.sensinact.gateway.sensinact-signature-validator-api;version='[2.0.0,2.0.1)',\
+	org.eclipse.sensinact.gateway.sensinact-signature-validator-mock;version='[2.0.0,2.0.1)',\
+	org.eclipse.sensinact.gateway.sensinact-sqlite-connector;version='[2.0.0,2.0.1)',\
+	org.eclipse.sensinact.gateway.sensinact-utils;version='[2.0.0,2.0.1)'
 	
 -runvm.test: \
 	-Dorg.eclipse.sensinact.gateway.security.jks.filename=${.}/../cert/keystore.jks\n\
