@@ -1,0 +1,7 @@
+-runrequires: \
+	bnd.identity;id='org.eclipse.sensinact.gateway.protocol.http',\
+	bnd.identity;id='org.eclipse.sensinact.gateway.sthbnd.http.http-device',\
+	bnd.identity;id='org.eclipse.sensinact.gateway.nthbnd.http-tools'
+	
+-runee: JavaSE-1.8
+-runfw: org.apache.felix.framework
