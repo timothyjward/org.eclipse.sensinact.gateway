@@ -10,15 +10,6 @@
  */
 package org.eclipse.sensinact.gateway.security.signature.internal;
 
-import org.eclipse.sensinact.gateway.common.bundle.Mediator;
-import org.eclipse.sensinact.gateway.security.signature.api.BundleValidation;
-import org.eclipse.sensinact.gateway.security.signature.exception.BundleValidationException;
-import org.osgi.annotation.bundle.Capability;
-import org.osgi.framework.Bundle;
-import org.osgi.framework.BundleContext;
-import org.osgi.service.component.annotations.Activate;
-import org.osgi.service.component.annotations.Component;
-
 import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.security.cert.Certificate;
@@ -29,11 +20,18 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.sensinact.gateway.common.bundle.Mediator;
+import org.eclipse.sensinact.gateway.security.signature.api.BundleValidation;
+import org.eclipse.sensinact.gateway.security.signature.api.SignatureValidator;
+import org.eclipse.sensinact.gateway.security.signature.exception.BundleValidationException;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.BundleContext;
+import org.osgi.service.component.annotations.Activate;
+
 /**
  * An implementation of the BundleValidation service
  */
-@Capability(namespace = "org.eclipse.sensinact.signature.validator")
-@Component(immediate = true, property = {"type=secure"})
+@SignatureValidator(type = "secure")
 public class BundleValidationImpl implements BundleValidation {
     // ********************************************************************//
     // 						NESTED DECLARATIONS 						   //

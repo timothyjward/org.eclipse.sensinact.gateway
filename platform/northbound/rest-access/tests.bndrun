@@ -13,7 +13,9 @@
 	bnd.identity;id=junit-platform-launcher,\
 	bnd.identity;id='${project.groupId}.${project.artifactId}-tests',\
 	bnd.identity;id='org.eclipse.sensinact.gateway.simulated.devices.slider',\
-	bnd.identity;id='org.eclipse.sensinact.gateway.simulated.devices.light'
+	bnd.identity;id='org.eclipse.sensinact.gateway.simulated.devices.light',\
+	bnd.identity;id=org.eclipse.sensinact.gateway.sensinact-security-none,\
+	bnd.identity;id=org.eclipse.sensinact.gateway.sensinact-signature-validator-mock
 	
 -runproperties: \
 	org.eclipse.sensinact.gateway.security.jks.filename=${.}/../../sensinact-security/cert/keystore.jks,\
@@ -57,9 +59,9 @@
 	org.eclipse.sensinact.gateway.sensinact-core;version='[2.0.0,2.0.1)',\
 	org.eclipse.sensinact.gateway.sensinact-datastore-api;version='[2.0.0,2.0.1)',\
 	org.eclipse.sensinact.gateway.sensinact-generic;version='[2.0.0,2.0.1)',\
-	org.eclipse.sensinact.gateway.sensinact-security-none;version='[2.0.0,2.0.1)',\
 	org.eclipse.sensinact.gateway.sensinact-signature-validator-api;version='[2.0.0,2.0.1)',\
-	org.eclipse.sensinact.gateway.sensinact-signature-validator-mock;version='[2.0.0,2.0.1)',\
 	org.eclipse.sensinact.gateway.sensinact-utils;version='[2.0.0,2.0.1)',\
 	org.eclipse.sensinact.gateway.simulated.devices.light;version='[2.0.0,2.0.1)',\
-	org.eclipse.sensinact.gateway.simulated.devices.slider;version='[2.0.0,2.0.1)'
+	org.eclipse.sensinact.gateway.simulated.devices.slider;version='[2.0.0,2.0.1)',\
+	org.eclipse.sensinact.gateway.sensinact-security-none;version='[2.0.0,2.0.1)',\
+	org.eclipse.sensinact.gateway.sensinact-signature-validator-mock;version='[2.0.0,2.0.1)'

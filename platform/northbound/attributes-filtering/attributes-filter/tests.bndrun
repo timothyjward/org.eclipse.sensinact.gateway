@@ -11,7 +11,9 @@
 -runrequires: \
 	bnd.identity;id=junit-jupiter-engine,\
 	bnd.identity;id=junit-platform-launcher,\
-	bnd.identity;id='${project.groupId}.${project.artifactId}-tests'
+	bnd.identity;id='${project.groupId}.${project.artifactId}-tests',\
+	bnd.identity;id=org.eclipse.sensinact.gateway.sensinact-security-none
+	
 
 
 	
@@ -31,7 +33,6 @@
     org.apache.felix.http.whiteboardEnabled=true
 -runbundles: \
 	ch.qos.logback.core;version='[1.2.3,1.2.4)',\
-	com.sun.mail.javax.mail;version='[1.6.2,1.6.3)',\
 	json;version='[20190722.0.0,20190722.0.1)',\
 	junit-jupiter-api;version='[5.7.2,5.7.3)',\
 	junit-jupiter-engine;version='[5.7.2,5.7.3)',\
@@ -54,14 +55,12 @@
 	org.osgi.util.pushstream;version='[1.0.1,1.0.2)',\
 	slf4j.api;version='[1.7.30,1.7.31)',\
 	ch.qos.logback.classic;version='[1.2.3,1.2.4)',\
-	javax.mail-api;version='[1.6.2,1.6.3)',\
 	org.eclipse.sensinact.gateway.nthbnd.attributes-filter;version='[2.0.0,2.0.1)',\
 	org.eclipse.sensinact.gateway.nthbnd.attributes-filter-tests;version='[2.0.0,2.0.1)',\
 	org.eclipse.sensinact.gateway.protocol.http;version='[2.0.0,2.0.1)',\
 	org.eclipse.sensinact.gateway.sensinact-common;version='[2.0.0,2.0.1)',\
 	org.eclipse.sensinact.gateway.sensinact-core;version='[2.0.0,2.0.1)',\
 	org.eclipse.sensinact.gateway.sensinact-datastore-api;version='[2.0.0,2.0.1)',\
-	org.eclipse.sensinact.gateway.sensinact-security-none;version='[2.0.0,2.0.1)',\
 	org.eclipse.sensinact.gateway.sensinact-signature-validator-api;version='[2.0.0,2.0.1)',\
-	org.eclipse.sensinact.gateway.sensinact-signature-validator-secure;version='[2.0.0,2.0.1)',\
-	org.eclipse.sensinact.gateway.sensinact-utils;version='[2.0.0,2.0.1)'
+	org.eclipse.sensinact.gateway.sensinact-utils;version='[2.0.0,2.0.1)',\
+	org.eclipse.sensinact.gateway.sensinact-security-none;version='[2.0.0,2.0.1)'
