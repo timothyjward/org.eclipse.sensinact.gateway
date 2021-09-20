@@ -18,8 +18,8 @@ import org.eclipse.sensinact.gateway.nthbnd.rest.server.JettyTestServer;
 import org.eclipse.sensinact.gateway.nthbnd.rest.ws.test.WsServiceTestClient;
 import org.eclipse.sensinact.gateway.simulated.slider.api.SliderSetterItf;
 import org.json.JSONObject;
-import org.junit.Assert;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -83,29 +83,29 @@ public class TestRestSUBSCRIBE_UNSUBSCRIBEAccess{
         Thread.sleep(5000);
         slider.move(2);
         String message = waitForAvailableMessage(10000);
-        Assert.assertNotNull(message);
+        Assertions.assertNotNull(message);
         response = new JSONObject(message);
         response = response.getJSONArray("messages").getJSONObject(0);
-        Assert.assertEquals(2, response.getJSONObject("notification").getInt("value"));
+        Assertions.assertEquals(2, response.getJSONObject("notification").getInt("value"));
         
         server.setAvailable(false);   
         Thread.sleep(5000);
         slider.move(0);
         message = waitForAvailableMessage(10000);
         System.out.println(message);
-        Assert.assertNotNull(message);
+        Assertions.assertNotNull(message);
         response = new JSONObject(message);
         response = response.getJSONArray("messages").getJSONObject(0);
-        Assert.assertEquals(0, response.getJSONObject("notification").getInt("value"));
+        Assertions.assertEquals(0, response.getJSONObject("notification").getInt("value"));
         
         server.setAvailable(false); 
         Thread.sleep(5000);
         slider.move(100);
         message = waitForAvailableMessage(10000);
-        Assert.assertNotNull(message);
+        Assertions.assertNotNull(message);
         response = new JSONObject(message);
         response = response.getJSONArray("messages").getJSONObject(0);
-        Assert.assertEquals(100, response.getJSONObject("notification").getInt("value"));
+        Assertions.assertEquals(100, response.getJSONObject("notification").getInt("value"));
 
         simulated = HttpServiceTestClient.newRequest(mediator, TestRestAccess.HTTP_ROOTURL + "/providers/slider/services/cursor/resources/position/UNSUBSCRIBE", "{\"parameters\" : [{\"name\":\"subscriptionId\", \"type\":\"string\", \"value\":\"" + subscriptionId + "\"}]}", "POST");
 
@@ -117,7 +117,7 @@ public class TestRestSUBSCRIBE_UNSUBSCRIBEAccess{
         Thread.sleep(5000);
         slider.move(150);
         message = waitForAvailableMessage(10000);
-        Assert.assertNull(message);
+        Assertions.assertNull(message);
     }
 
     @Test
@@ -142,28 +142,28 @@ public class TestRestSUBSCRIBE_UNSUBSCRIBEAccess{
 
         response = new JSONObject(message);
         response = response.getJSONArray("messages").getJSONObject(0);
-        Assert.assertEquals(2, response.getJSONObject("notification").getInt("value"));
+        Assertions.assertEquals(2, response.getJSONObject("notification").getInt("value"));
         server.setAvailable(false);
         slider.move(200);
         message = waitForAvailableMessage(10000);
-        Assert.assertNull(message);
+        Assertions.assertNull(message);
 
         server.setAvailable(false);
         slider.move(199);
         message = waitForAvailableMessage(10000);
         response = new JSONObject(message);
         response = response.getJSONArray("messages").getJSONObject(0);
-        Assert.assertEquals(199, response.getJSONObject("notification").getInt("value"));
+        Assertions.assertEquals(199, response.getJSONObject("notification").getInt("value"));
         server.setAvailable(false);
         slider.move(201);
         message = waitForAvailableMessage(10000);
-        Assert.assertNull(message);
+        Assertions.assertNull(message);
         server.setAvailable(false);
         slider.move(185);
         message = waitForAvailableMessage(10000);
         response = new JSONObject(message);
         response = response.getJSONArray("messages").getJSONObject(0);
-        Assert.assertEquals(185, response.getJSONObject("notification").getInt("value"));
+        Assertions.assertEquals(185, response.getJSONObject("notification").getInt("value"));
 
         simulated = HttpServiceTestClient.newRequest(mediator, TestRestAccess.HTTP_ROOTURL + "/providers/slider/services/cursor/resources/position/UNSUBSCRIBE", "{\"parameters\" : [{\"name\":\"subscriptionId\", \"type\":\"string\", \"value\":\"" + subscriptionId + "\"}]}", "POST");
 
@@ -175,7 +175,7 @@ public class TestRestSUBSCRIBE_UNSUBSCRIBEAccess{
         server.setAvailable(false);
         slider.move(150);
         message = waitForAvailableMessage(10000);
-        Assert.assertNull(message);
+        Assertions.assertNull(message);
     }
 
     @Test
@@ -200,19 +200,19 @@ public class TestRestSUBSCRIBE_UNSUBSCRIBEAccess{
         response = new JSONObject(message);
         response = response.getJSONArray("messages").getJSONObject(0);
 
-        Assert.assertEquals(2, response.getJSONObject("notification").getInt("value"));
+        Assertions.assertEquals(2, response.getJSONObject("notification").getInt("value"));
         client.setAvailable(false);
         slider.move(0);
         message = waitForAvailableMessage(client, 1000);
         response = new JSONObject(message);
         response = response.getJSONArray("messages").getJSONObject(0);
-        Assert.assertEquals(0, response.getJSONObject("notification").getInt("value"));
+        Assertions.assertEquals(0, response.getJSONObject("notification").getInt("value"));
         client.setAvailable(false);
         slider.move(125);
         message = waitForAvailableMessage(client, 1000);
         response = new JSONObject(message);
         response = response.getJSONArray("messages").getJSONObject(0);
-        Assert.assertEquals(125, response.getJSONObject("notification").getInt("value"));
+        Assertions.assertEquals(125, response.getJSONObject("notification").getInt("value"));
 
         simulated = this.synchronizedRequest(client, TestRestAccess.WS_ROOTURL + "/providers/slider/services/cursor/resources/position/UNSUBSCRIBE", "[{\"name\":\"subscriptionId\", \"type\":\"string\", \"value\":\"" + subscriptionId + "\"}]");
 
@@ -224,7 +224,7 @@ public class TestRestSUBSCRIBE_UNSUBSCRIBEAccess{
         client.setAvailable(false);
         slider.move(150);
         message = waitForAvailableMessage(client, 1000);
-        Assert.assertNull(message);
+        Assertions.assertNull(message);
     }
 
     @Test
@@ -250,28 +250,28 @@ public class TestRestSUBSCRIBE_UNSUBSCRIBEAccess{
         String message = waitForAvailableMessage(client, 1000);
         response = new JSONObject(message);
         response = response.getJSONArray("messages").getJSONObject(0);
-        Assert.assertEquals(2, response.getJSONObject("notification").getInt("value"));
+        Assertions.assertEquals(2, response.getJSONObject("notification").getInt("value"));
         client.setAvailable(false);
         slider.move(200);
         message = waitForAvailableMessage(client, 1000);
-        Assert.assertNull(message);
+        Assertions.assertNull(message);
 
         client.setAvailable(false);
         slider.move(199);
         message = waitForAvailableMessage(client, 1000);
         response = new JSONObject(message);
         response = response.getJSONArray("messages").getJSONObject(0);
-        Assert.assertEquals(199, response.getJSONObject("notification").getInt("value"));
+        Assertions.assertEquals(199, response.getJSONObject("notification").getInt("value"));
         client.setAvailable(false);
         slider.move(201);
         message = waitForAvailableMessage(client, 1000);
-        Assert.assertNull(message);
+        Assertions.assertNull(message);
         client.setAvailable(false);
         slider.move(185);
         message = waitForAvailableMessage(client, 1000);
         response = new JSONObject(message);
         response = response.getJSONArray("messages").getJSONObject(0);
-        Assert.assertEquals(185, response.getJSONObject("notification").getInt("value"));
+        Assertions.assertEquals(185, response.getJSONObject("notification").getInt("value"));
 
         simulated = this.synchronizedRequest(client, TestRestAccess.WS_ROOTURL + "/providers/slider/services/cursor/resources/position/UNSUBSCRIBE", "[{\"name\":\"subscriptionId\", \"type\":\"string\", \"value\":\"" + subscriptionId + "\"}]");
 
@@ -283,7 +283,7 @@ public class TestRestSUBSCRIBE_UNSUBSCRIBEAccess{
         client.setAvailable(false);
         slider.move(150);
         message = waitForAvailableMessage(client, 1000);
-        Assert.assertNull(message);
+        Assertions.assertNull(message);
     }
 
     private String waitForAvailableMessage(long delay) {

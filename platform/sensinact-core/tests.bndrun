@@ -1,6 +1,6 @@
 -tester: biz.aQute.tester.junit-platform
 
--runsystempackages: com.sun.net.httpserver
+-runsystempackages: com.sun.net.httpserver,sun.reflect
 
 -runee: JavaSE-1.8
 -runvm: ${def;argLine}
