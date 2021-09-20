@@ -57,7 +57,7 @@ import org.eclipse.sensinact.gateway.core.security.SecuredAccess;
 import org.eclipse.sensinact.gateway.security.signature.api.BundleValidation;
 import org.eclipse.sensinact.gateway.security.signature.exception.BundleValidationException;
 import org.json.JSONObject;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
@@ -82,7 +82,7 @@ public class TestSnaFunction{
     private PropertyResource dimResource;
 
     @SuppressWarnings("unchecked")
-    @Before
+    @BeforeEach
     public void init() throws Exception {
         AuthorizationService authorization = Mockito.mock(AuthorizationService.class);
         SecuredAccess securedAccess = Mockito.mock(SecuredAccess.class);

@@ -10,6 +10,7 @@
  */
 package org.eclipse.sensinact.gateway.app.manager.test;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 
 import org.eclipse.sensinact.gateway.app.api.lifecycle.ApplicationStatus;
@@ -30,9 +31,9 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
-import junit.framework.TestCase;
 
-public class TestLifeCycle extends TestCase {
+
+public class TestLifeCycle {
     private ApplicationStatus status;
     
     private AppServiceMediator mediator=mock(AppServiceMediator.class);

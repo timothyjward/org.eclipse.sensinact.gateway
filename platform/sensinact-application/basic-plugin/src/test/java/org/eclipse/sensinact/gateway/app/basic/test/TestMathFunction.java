@@ -25,7 +25,7 @@ import org.eclipse.sensinact.gateway.app.basic.math.MultiplicationFunction;
 import org.eclipse.sensinact.gateway.app.basic.math.SubtractionFunction;
 import org.eclipse.sensinact.gateway.app.manager.component.data.ConstantData;
 import org.eclipse.sensinact.gateway.common.bundle.Mediator;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
@@ -36,7 +36,7 @@ public class TestMathFunction  {
     
     private FunctionUpdateListener listener=Mockito.mock(FunctionUpdateListener.class);
 
-    @Before
+    @BeforeEach
     public void init() throws Exception {
         MockitoAnnotations.initMocks(this);
         Mockito.when(mediator.isDebugLoggable()).thenReturn(false);

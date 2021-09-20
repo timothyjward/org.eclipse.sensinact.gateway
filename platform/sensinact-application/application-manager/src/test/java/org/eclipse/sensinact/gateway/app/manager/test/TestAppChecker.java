@@ -10,6 +10,8 @@
  */
 package org.eclipse.sensinact.gateway.app.manager.test;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
 import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.Charset;
@@ -26,8 +28,7 @@ import org.eclipse.sensinact.gateway.app.manager.json.AppJsonConstant;
 import org.eclipse.sensinact.gateway.app.manager.osgi.AppServiceMediator;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.junit.Before;
-import org.junit.Ignore;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -38,13 +39,12 @@ import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
-import junit.framework.TestCase;
 
-public class TestAppChecker extends TestCase {
+public class TestAppChecker {
     
     private AppServiceMediator mediator=Mockito.mock(AppServiceMediator.class);
 
-    @Before
+    @BeforeEach
     public void init() throws Exception {
         MockitoAnnotations.initMocks(this);
         ServiceReference serviceReference = Mockito.mock(ServiceReference.class);
@@ -133,7 +133,7 @@ public class TestAppChecker extends TestCase {
         }
 
     @Test
-    @Ignore
+    @Disabled
     public void testValidJSONComponents() throws Exception {
         String content = null;
         try {

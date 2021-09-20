@@ -10,7 +10,7 @@
  */
 package org.eclipse.sensinact.gateway.util.json.test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.eclipse.sensinact.gateway.util.PropertyUtils;
 import org.junit.jupiter.api.BeforeEach;

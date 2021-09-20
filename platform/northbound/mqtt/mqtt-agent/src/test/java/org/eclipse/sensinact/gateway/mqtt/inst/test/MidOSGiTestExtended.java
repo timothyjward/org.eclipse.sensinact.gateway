@@ -51,7 +51,7 @@ public class MidOSGiTestExtended {
 //    /**
 //     * @throws Exception
 //     */
-//    @Before
+//    @BeforeEach
 //    @Override
 //    @SuppressWarnings({"unchecked", "rawtypes", "serial"})
 //    public void init() throws Exception {

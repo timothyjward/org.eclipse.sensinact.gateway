@@ -20,7 +20,7 @@ import org.eclipse.sensinact.gateway.app.basic.logic.DoubleConditionFunction;
 import org.eclipse.sensinact.gateway.app.basic.logic.SimpleConditionFunction;
 import org.eclipse.sensinact.gateway.app.manager.component.data.ConstantData;
 import org.eclipse.sensinact.gateway.common.bundle.Mediator;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
@@ -30,7 +30,7 @@ public class TestLogicFunction {
     
     private FunctionUpdateListener listener=Mockito.mock(FunctionUpdateListener.class);
 
-    @Before
+    @BeforeEach
     public void init() throws Exception {
         MockitoAnnotations.initMocks(this);
     }

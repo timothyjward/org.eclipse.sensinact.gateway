@@ -1,6 +1,6 @@
 package org.eclipse.sensinact.gateway.nthbnd.endpoint.test;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Arrays;
 import java.util.Dictionary;

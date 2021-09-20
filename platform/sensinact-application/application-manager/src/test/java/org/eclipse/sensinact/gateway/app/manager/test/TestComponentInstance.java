@@ -10,6 +10,7 @@
  */
 package org.eclipse.sensinact.gateway.app.manager.test;
 
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.mock;
 
 import java.io.IOException;
@@ -59,7 +60,7 @@ import org.eclipse.sensinact.gateway.core.method.SubscribeResponse;
 import org.eclipse.sensinact.gateway.util.UriUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -70,9 +71,9 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 import org.osgi.framework.ServiceRegistration;
 
-import junit.framework.TestCase;
 
-public class TestComponentInstance extends TestCase implements TestResult {
+
+public class TestComponentInstance implements TestResult {
     @Mock
     private AppModelInstance modelInstance=mock(AppModelInstance.class);
     @Mock
@@ -92,7 +93,7 @@ public class TestComponentInstance extends TestCase implements TestResult {
     private int result;
     private Map<String, DataProviderItf> mockedRegistry;
 
-    @Before
+    @BeforeEach
     public void init() throws Exception {
         MockitoAnnotations.initMocks(this);
         mockedRegistry = new HashMap<String, DataProviderItf>();
@@ -234,14 +235,14 @@ public class TestComponentInstance extends TestCase implements TestResult {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            assertNotNull(service);
+            org.junit.jupiter.api.Assertions.assertNotNull(service);
             Application application = null;
             try {
                 application = ApplicationFactory.createApplication(mediator, container, service);
             } catch (ApplicationFactoryException e) {
                 e.printStackTrace();
             }
-            assertNotNull(application);
+            assertNull(application);
             try {
                 service.createSnaService(container, application);
             } catch (InvalidResourceException e) {
@@ -261,7 +262,7 @@ public class TestComponentInstance extends TestCase implements TestResult {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            assertTrue(result == 2);
+            org.junit.jupiter.api.Assertions.assertTrue(result == 2);
             application.stop();
         }
     }

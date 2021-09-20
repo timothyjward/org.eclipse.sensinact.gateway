@@ -43,7 +43,7 @@ import java.lang.reflect.Proxy;
 import java.net.URL;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SuppressWarnings({"unchecked", "rawtypes"})
 @ExtendWith(InstalledBundleExtension.class)

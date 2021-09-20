@@ -27,7 +27,6 @@ import org.eclipse.sensinact.gateway.util.IOUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.After;
-import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -52,7 +51,7 @@ public class MqttBridgeTest extends MqttTestITAbstract {
     
     private Session sensinactSession;
 
-    @Before
+    @BeforeEach
     public void before() throws Exception {  
         mqttServerService.startService(MQTT_HOST,MQTT_PORT.toString());
     	try {

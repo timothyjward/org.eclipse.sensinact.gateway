@@ -75,8 +75,6 @@ import org.eclipse.sensinact.gateway.core.security.SecuredAccessException;
 import org.eclipse.sensinact.gateway.datastore.api.DataStoreException;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -255,12 +253,12 @@ public class TestResourceBuilder<R extends ModelInstance> {
 		assertEquals(2, this.testContext.getCallbackCount());
 
 		String filter = "/serviceProvider/testService/TestProperty2/value";
-		org.junit.Assert.assertEquals(1,
+		Assertions.assertEquals(1,
 				((MyModelInstance) this.testContext.getModelInstance()).getHandler().count(filter));
 
 		session.unsubscribe("serviceProvider", "testService", "TestProperty2", subId);
 
-		org.junit.Assert.assertEquals(0,
+		Assertions.assertEquals(0,
 				((MyModelInstance) this.testContext.getModelInstance()).getHandler().count(filter));
 
 		Service proxy = service.<Service>getProxy(this.tree);
@@ -393,10 +391,10 @@ public class TestResourceBuilder<R extends ModelInstance> {
 		assertEquals(2, this.testContext.getCallbackCount());
 
 		String filter = "/serviceProvider/testService/TestProperty2/value";
-		org.junit.Assert.assertEquals(1,
+		Assertions.assertEquals(1,
 				((MyModelInstance) this.testContext.getModelInstance()).getHandler().count(filter));
 		r2.unsubscribe(subId);
-		org.junit.Assert.assertEquals(0,
+		Assertions.assertEquals(0,
 				((MyModelInstance) this.testContext.getModelInstance()).getHandler().count(filter));
 
 		Service proxy = service.<Service>getProxy(this.tree);

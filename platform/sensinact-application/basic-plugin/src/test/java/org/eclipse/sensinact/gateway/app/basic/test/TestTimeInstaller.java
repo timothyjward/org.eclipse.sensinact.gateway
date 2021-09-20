@@ -21,7 +21,6 @@ import org.eclipse.sensinact.gateway.app.basic.time.SleepFunction;
 import org.eclipse.sensinact.gateway.app.manager.json.AppFunction;
 import org.eclipse.sensinact.gateway.app.manager.json.AppJsonConstant;
 import org.json.JSONObject;
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeAll;
 import org.mockito.Mockito;
 import org.osgi.framework.Bundle;
