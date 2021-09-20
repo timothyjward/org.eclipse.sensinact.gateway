@@ -10,11 +10,11 @@
  */
 package org.eclipse.sensinact.gateway.core.test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.lang.reflect.Method;
 import java.util.Dictionary;
@@ -76,9 +76,11 @@ import org.eclipse.sensinact.gateway.datastore.api.DataStoreException;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
@@ -101,7 +103,7 @@ public class TestResourceBuilder<R extends ModelInstance> {
 	private final BundleContext context = Mockito.mock(BundleContext.class);
 	private final Bundle bundle = Mockito.mock(Bundle.class);
 
-	@Before
+	@BeforeEach
 	public void init() throws InvalidServiceProviderException, InvalidSyntaxException, SecuredAccessException,
 			DataStoreException, BundleException {
 		try {
@@ -112,7 +114,7 @@ public class TestResourceBuilder<R extends ModelInstance> {
 		}
 	}
 
-	@After
+	@AfterEach
 	public void tearDown() {
 		this.testContext.stop();
 	}
@@ -128,8 +130,8 @@ public class TestResourceBuilder<R extends ModelInstance> {
 		PropertyResource r1 = r1impl.<PropertyResource>getProxy(this.tree);
 
 		// test shortcut
-		Assert.assertEquals("TestProperty", r1.getName());
-		Assert.assertEquals(Resource.Type.PROPERTY, r1.getType());
+		Assertions.assertEquals("TestProperty", r1.getName());
+		Assertions.assertEquals(Resource.Type.PROPERTY, r1.getType());
 
 		String get1 = session.get("serviceProvider", "testService", "TestProperty", DataResource.VALUE).getJSON();
 
@@ -162,7 +164,7 @@ public class TestResourceBuilder<R extends ModelInstance> {
 
 		Thread.sleep(500);
 
-		Assert.assertEquals(1, this.testContext.getExtraCallbackCount());
+		Assertions.assertEquals(1, this.testContext.getExtraCallbackCount());
 
 		ResourceImpl r2impl = service.addDataResource(PropertyResource.class, "TestProperty2", String.class, null);
 
@@ -236,7 +238,7 @@ public class TestResourceBuilder<R extends ModelInstance> {
 		JSONObject set1 = session.set("serviceProvider", "testService", "TestProperty2", null, "property3").getResponse();
 		Thread.sleep(250);
 		JSONObject set2 = session.set("serviceProvider", "testService", "TestProperty2", DataResource.VALUE, "property3").getResponse();
-		Assert.assertEquals(set1.get(DataResource.VALUE), set2.get(DataResource.VALUE));
+		Assertions.assertEquals(set1.get(DataResource.VALUE), set2.get(DataResource.VALUE));
 		JSONObject set3 = session.set("serviceProvider", "testService", "TestProperty", DataResource.VALUE, "TEST LINKED SUBSCRIPTION").getResponse();
 
 		Thread.sleep(250);
@@ -245,7 +247,7 @@ public class TestResourceBuilder<R extends ModelInstance> {
 		long time2 = (Long) set2.get(Metadata.TIMESTAMP);
 
 		Thread.sleep(500);
-		Assert.assertTrue(time1 != time2);
+		Assertions.assertTrue(time1 != time2);
 		assertEquals(1, this.testContext.getCallbackCount());
 
 		session.set("serviceProvider", "testService", "TestProperty2", null, "property5");
@@ -276,8 +278,8 @@ public class TestResourceBuilder<R extends ModelInstance> {
 		PropertyResource r1 = r1impl.<PropertyResource>getProxy(this.tree);
 
 		// test shortcut
-		Assert.assertEquals("TestProperty", r1.getName());
-		Assert.assertEquals(Resource.Type.PROPERTY, r1.getType());
+		Assertions.assertEquals("TestProperty", r1.getName());
+		Assertions.assertEquals(Resource.Type.PROPERTY, r1.getType());
 
 		String get1 = r1.get(DataResource.VALUE).getJSON();		
 		String get2 = r1.get().getJSON();
@@ -302,8 +304,7 @@ public class TestResourceBuilder<R extends ModelInstance> {
 		r1.set("hello");
 		Thread.sleep(500);
 
-		Assert.assertTrue("the message should have been processed even if the value has not changed",
-				1 == this.testContext.getExtraCallbackCount());
+		Assertions.assertTrue(				1 == this.testContext.getExtraCallbackCount(),"the message should have been processed even if the value has not changed");
 
 		ResourceImpl r2impl = service.addDataResource(PropertyResource.class, "TestProperty2", String.class, null);
 
@@ -375,7 +376,7 @@ public class TestResourceBuilder<R extends ModelInstance> {
 
 		JSONObject set2 = r2.set("value", "property3").getResponse();
 
-		Assert.assertEquals(set1.get(DataResource.VALUE), set2.get(DataResource.VALUE));
+		Assertions.assertEquals(set1.get(DataResource.VALUE), set2.get(DataResource.VALUE));
 
 		JSONObject set3 = r1.set("value", "TEST LINKED SUBSCRIPTION").getResponse();
 		Thread.sleep(250);
@@ -384,7 +385,7 @@ public class TestResourceBuilder<R extends ModelInstance> {
 		long time2 = (Long) set2.get(Metadata.TIMESTAMP);
 
 		Thread.sleep(500);
-		Assert.assertTrue(time1 != time2);
+		Assertions.assertTrue(time1 != time2);
 		assertEquals(1, this.testContext.getCallbackCount());
 
 		r2.set("value", "property5").getJSON();
@@ -532,7 +533,7 @@ public class TestResourceBuilder<R extends ModelInstance> {
 
 		Resource r4 = session.resource("serviceProvider", "testService", "location");
 
-		Assert.assertNotNull(r4);
+		Assertions.assertNotNull(r4);
 
 		StringBuilder buffer = new StringBuilder();
 		buffer.append(attributeValue);
@@ -548,7 +549,7 @@ public class TestResourceBuilder<R extends ModelInstance> {
 		assertFalse(buffer.toString().equals(value));
 	}
 
-	@Test(expected = InvalidValueException.class)
+	@Test
 	public void testConstrained() throws Exception {
 		ServiceImpl service = this.testContext.getModelInstance().getRootElement().addService("testService");
 
@@ -570,7 +571,10 @@ public class TestResourceBuilder<R extends ModelInstance> {
 			fail("should have complied constraints");
 		}
 		assertEquals("not much", extractor.execute(null));
-		valueAttribute.setValue("too much characters");
+		
+		org.assertj.core.api.Assertions.assertThatThrownBy(
+				()->{
+		valueAttribute.setValue("too much characters");}).isInstanceOf(InvalidValueException.class);
 		fail("MaxLength constraint fails");
 	}
 
@@ -581,12 +585,12 @@ public class TestResourceBuilder<R extends ModelInstance> {
 		ServiceProvider proxy = this.testContext.getModelInstance().getRootElement().getProxy(this.tree);
 
 		List<Service> services = proxy.getServices();
-		Assert.assertEquals(2, services.size());
+		Assertions.assertEquals(2, services.size());
 
 		this.testContext.getModelInstance().getRootElement().addService("dynamicService");
 
 		services = proxy.getServices();
-		Assert.assertEquals(3, services.size());
+		Assertions.assertEquals(3, services.size());
 
 		service.addDataResource(PropertyResource.class, "dynamicResource", String.class, "dynamic");
 		assertNotNull(proxy.getService("testService").getResource("dynamicResource"));
