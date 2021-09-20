@@ -64,4 +64,5 @@
 	org.eclipse.sensinact.gateway.sensinact-datastore-api;version='[2.0.0,2.0.1)',\
 	org.eclipse.sensinact.gateway.sensinact-signature-validator-api;version='[2.0.0,2.0.1)',\
 	org.eclipse.sensinact.gateway.sensinact-utils;version='[2.0.0,2.0.1)',\
-	org.eclipse.sensinact.gateway.sensinact-security-none;version='[2.0.0,2.0.1)'
+	org.eclipse.sensinact.gateway.sensinact-security-none;version='[2.0.0,2.0.1)',\
+	org.eclipse.sensinact.gateway.sensinact-signature-validator-mock;version='[2.0.0,2.0.1)'
