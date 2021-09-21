@@ -366,7 +366,7 @@
 							<goal>resolve</goal>
 						</goals>
 						<configuration>
-							<writeOnChanges>true</writeOnChanges>
+							<writeOnChanges>false</writeOnChanges>
 							<bndruns>
 								<include>*.bndrun</include>
 							</bndruns>
@@ -389,10 +389,8 @@
 				<artifactId>bnd-export-maven-plugin</artifactId>
 				<version>${bnd-maven-plugin.version}</version>
 				<configuration>
-					<failOnChanges>false</failOnChanges>
 					<useMavenDependencies>true</useMavenDependencies>
 					<includeDependencyManagement>true</includeDependencyManagement>
-					<resolve>true</resolve>
 					<reportOptional>false</reportOptional>
 					<bndruns>
 						<include>*.bndrun</include>

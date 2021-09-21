@@ -1,4 +1,8 @@
-src: extra-src
+-privatepackage: \
+	org.eclipse.sensinact.gateway.simulated.button.internal,\
+	org.eclipse.sensinact.gateway.simulated.button.osgi
+
+Export-Package: org.eclipse.sensinact.gateway.simulated.button.api
 
 jarsigner1: ${osfile;${env;JAVA_HOME}/../bin;${findfile;${env;JAVA_HOME}/../bin;jarsigner*}}
 jarsigner2: ${if;${isfile;${jarsigner1}};\

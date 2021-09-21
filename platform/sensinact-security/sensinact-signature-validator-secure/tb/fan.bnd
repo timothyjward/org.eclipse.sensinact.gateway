@@ -1,4 +1,8 @@
-src: extra-src2
+-privatepackage: \
+	org.eclipse.sensinact.gateway.simulated.fan.internal,\
+	org.eclipse.sensinact.gateway.simulated.fan.osgi
+
+Export-Package: org.eclipse.sensinact.gateway.simulated.fan.api
 
 jarsigner1: ${osfile;${env;JAVA_HOME}/../bin;${findfile;${env;JAVA_HOME}/../bin;jarsigner*}}
 jarsigner2: ${if;${isfile;${jarsigner1}};\

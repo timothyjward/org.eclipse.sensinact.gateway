@@ -14,11 +14,11 @@ import org.eclipse.sensinact.gateway.common.bundle.AbstractActivator;
 import org.eclipse.sensinact.gateway.common.bundle.Mediator;
 import org.eclipse.sensinact.gateway.simulated.fan.internal.FanConfig;
 import org.eclipse.sensinact.gateway.simulated.fan.swing.FanPanel;
+import org.osgi.annotation.bundle.Header;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.Constants;
 
-import java.util.Collections;
-
-
+@Header(name = Constants.BUNDLE_ACTIVATOR, value = "${@class}")
 public class Activator extends AbstractActivator<Mediator> {
     private static final String GUI_ENABLED = "org.eclipse.sensinact.simulated.gui.enabled";
     private FanConfig config;

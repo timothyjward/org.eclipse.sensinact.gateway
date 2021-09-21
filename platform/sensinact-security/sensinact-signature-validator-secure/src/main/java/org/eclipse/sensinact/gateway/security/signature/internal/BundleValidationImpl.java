@@ -27,10 +27,12 @@ import org.eclipse.sensinact.gateway.security.signature.exception.BundleValidati
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
 
 /**
  * An implementation of the BundleValidation service
  */
+@Component
 @SignatureValidator(type = "secure")
 public class BundleValidationImpl implements BundleValidation {
     // ********************************************************************//
