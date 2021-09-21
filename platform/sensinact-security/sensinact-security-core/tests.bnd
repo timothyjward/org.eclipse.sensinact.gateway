@@ -1,4 +1,6 @@
 -make: (*).(jar); type=bnd; recipe="${.}/tb/$1.bnd"
 
+-privatepackage: org.eclipse.sensinact.gateway.core.security.test
+
 -includeresource:\
 		tb.jar

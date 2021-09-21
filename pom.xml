@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!--
-  ~ Copyright (c) 2020 Kentyou.
-  ~ All rights reserved. This program and the accompanying materials
-  ~ are made available under the terms of the Eclipse Public License v1.0
-  ~ which accompanies this distribution, and is available at
-  ~ http://www.eclipse.org/legal/epl-v10.html
-  ~
-  ~ Contributors:
-*    Kentyou - initial API and implementation
-  -->
-  <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<!-- ~ Copyright (c) 2020 Kentyou. ~ All rights reserved. This program and 
+	the accompanying materials ~ are made available under the terms of the Eclipse 
+	Public License v1.0 ~ which accompanies this distribution, and is available 
+	at ~ http://www.eclipse.org/legal/epl-v10.html ~ ~ Contributors: * Kentyou 
+	- initial API and implementation -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>org.eclipse.sensinact</groupId>
 	<artifactId>gateway</artifactId>
@@ -18,12 +15,12 @@
 
 	<packaging>pom</packaging>
 	<name>sensiNact IoT Gateway - Gateway Project</name>
-	
+
 	<!-- ================================================================== -->
-	<!-- MAVEN GOALS                                                        -->
+	<!-- MAVEN GOALS -->
 	<!-- ================================================================== -->
-	<!-- versions:display-dependency-updates                                -->
-	<!-- versions:display-plugin-updates                                    -->
+	<!-- versions:display-dependency-updates -->
+	<!-- versions:display-plugin-updates -->
 	<!-- ================================================================== -->
 
 	<properties>
@@ -92,7 +89,7 @@
 		<junit-platform.version>1.7.2</junit-platform.version>
 		<assertj.version>3.20.2</assertj.version>
 		<osgi.test.version>1.0.1</osgi.test.version>
-		
+
 		<!-- Apache Aries -->
 		<org.fusesource.hawtbuf.version>1.11</org.fusesource.hawtbuf.version>
 		<org.fusesource.hawtdispatch.version>1.22</org.fusesource.hawtdispatch.version>
@@ -141,7 +138,7 @@
 		<maven-install-plugin.version>3.0.0-M1</maven-install-plugin.version>
 		<maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
 		<maven-javadoc-plugin.version>3.1.1</maven-javadoc-plugin.version>
-		<maven-resources-plugin.version>3.1.0</maven-resources-plugin.version> 
+		<maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
 		<org.apache.maven.shared.maven-filtering.version>3.1.1</org.apache.maven.shared.maven-filtering.version>
 		<maven-scm-plugin.version>1.11.2</maven-scm-plugin.version>
 		<maven-site-plugin.version>3.8.2</maven-site-plugin.version>
@@ -157,14 +154,14 @@
 		<mojo-versions-maven-plugin.version>2.7</mojo-versions-maven-plugin.version>
 		<mojo-xml-maven-plugin.version>1.0.2</mojo-xml-maven-plugin.version>
 		<directory-maven-plugin.version>0.3.1</directory-maven-plugin.version>
-		
+
 		<!-- BUILD: other plugins -->
 		<depends-maven-plugin.version>1.4.0</depends-maven-plugin.version>
 		<download-maven-plugin>1.5.0</download-maven-plugin>
 		<gradle-maven-plugin.version>1.0.8</gradle-maven-plugin.version>
 		<groovy-maven-plugin.version>2.0</groovy-maven-plugin.version>
 		<gradle-tooling-api.version>2.13</gradle-tooling-api.version>
-<!-- 		<org.apache.maven.surefire.junit48.version>2.22.2</org.apache.maven.surefire.junit48.version> -->
+		<!-- <org.apache.maven.surefire.junit48.version>2.22.2</org.apache.maven.surefire.junit48.version> -->
 		<org.jacoco.maven-plugin.version>0.8.5</org.jacoco.maven-plugin.version>
 		<sonar-maven-plugin.version>3.7.0.1746</sonar-maven-plugin.version>
 
@@ -175,8 +172,8 @@
 		<checkstyle.suppressions.file>checkstyle-suppressions.xml</checkstyle.suppressions.file>
 		<checkstyle.header.file>checkstyle-sun.xml</checkstyle.header.file>
 		<timestamp>${maven.build.timestamp}</timestamp>
-		
-		<!--  Connectors -->
+
+		<!-- Connectors -->
 		<mongodb.driver.version>3.12.0</mongodb.driver.version>
 		<influxdb.driver.version>2.15</influxdb.driver.version>
 	</properties>
@@ -195,27 +192,27 @@
 		</repository>
 		<!-- provides moquette -->
 		<!-- bintray is deprecated and does not server anything anymore -->
-<!-- 		<repository> -->
-<!-- 			<id>andsel</id> -->
-<!-- 			<url>https://dl.bintray.com/andsel/maven/</url> -->
-<!-- 			<releases> -->
-<!-- 				<enabled>true</enabled> -->
-<!-- 			</releases> -->
-<!-- 			<snapshots> -->
-<!-- 				<enabled>false</enabled> -->
-<!-- 			</snapshots> -->
-<!-- 		</repository> -->
-<!-- 		<repository> -->
-<!-- 			<id>jboss-ea</id> -->
-<!-- 			<url>https://repository.jboss.org/nexus/content/repositories/ea</url> -->
-<!-- 			<name>jboss repository ea</name> -->
-<!-- 			<releases> -->
-<!-- 				<enabled>true</enabled> -->
-<!-- 			</releases> -->
-<!-- 			<snapshots> -->
-<!-- 				<enabled>true</enabled> -->
-<!-- 			</snapshots> -->
-<!-- 		</repository> -->
+		<!-- <repository> -->
+		<!-- <id>andsel</id> -->
+		<!-- <url>https://dl.bintray.com/andsel/maven/</url> -->
+		<!-- <releases> -->
+		<!-- <enabled>true</enabled> -->
+		<!-- </releases> -->
+		<!-- <snapshots> -->
+		<!-- <enabled>false</enabled> -->
+		<!-- </snapshots> -->
+		<!-- </repository> -->
+		<!-- <repository> -->
+		<!-- <id>jboss-ea</id> -->
+		<!-- <url>https://repository.jboss.org/nexus/content/repositories/ea</url> -->
+		<!-- <name>jboss repository ea</name> -->
+		<!-- <releases> -->
+		<!-- <enabled>true</enabled> -->
+		<!-- </releases> -->
+		<!-- <snapshots> -->
+		<!-- <enabled>true</enabled> -->
+		<!-- </snapshots> -->
+		<!-- </repository> -->
 		<repository>
 			<id>jbosss-staging</id>
 			<url>https://repository.jboss.org/nexus/content/groups/staging</url>
@@ -228,10 +225,10 @@
 			</snapshots>
 		</repository>
 		<!-- provides gradle-tooling-api -->
-<!-- 		<repository> -->
-<!-- 			<id>gradle</id> -->
-<!-- 			<url>https://repo.gradle.org/gradle/libs-releases-local/</url> -->
-<!-- 		</repository> -->
+		<!-- <repository> -->
+		<!-- <id>gradle</id> -->
+		<!-- <url>https://repo.gradle.org/gradle/libs-releases-local/</url> -->
+		<!-- </repository> -->
 	</repositories>
 
 	<pluginRepositories>
@@ -281,7 +278,7 @@
 				<role>Developer</role>
 				<role>Documentation</role>
 			</roles>
-		</developer>	
+		</developer>
 		<developer>
 			<id>cmunilla</id>
 			<name>Christophe Munilla</name>
@@ -291,7 +288,7 @@
 				<role>Developer</role>
 				<role>Documentation</role>
 			</roles>
-		</developer>	
+		</developer>
 		<developer>
 			<id>rdruilhe</id>
 			<name>Remi Druilhe</name>
@@ -453,11 +450,11 @@
 				<artifactId>org.apache.felix.framework</artifactId>
 				<version>${org.apache.felix.version}</version>
 			</dependency>
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.apache.felix</groupId> -->
-<!-- 				<artifactId>org.apache.felix.main</artifactId> -->
-<!-- 				<version>${org.apache.felix.version}</version> -->
-<!-- 			</dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.apache.felix</groupId> -->
+			<!-- <artifactId>org.apache.felix.main</artifactId> -->
+			<!-- <version>${org.apache.felix.version}</version> -->
+			<!-- </dependency> -->
 			<dependency>
 				<groupId>org.apache.felix</groupId>
 				<artifactId>org.apache.felix.main.distribution</artifactId>
@@ -536,7 +533,7 @@
 				<groupId>org.apache.felix</groupId>
 				<artifactId>org.apache.felix.http.jetty</artifactId>
 				<version>${org.apache.felix.http.jetty.version}</version>
-<!-- 				<classifier>light</classifier> -->
+				<!-- <classifier>light</classifier> -->
 			</dependency>
 			<dependency>
 				<groupId>org.eclipse.jetty</groupId>
@@ -583,8 +580,8 @@
 				<version>${slf4j.simple.version}</version>
 			</dependency>
 			<dependency>
-			    <groupId>org.slf4j</groupId>
-			    <artifactId>osgi-over-slf4j</artifactId>
+				<groupId>org.slf4j</groupId>
+				<artifactId>osgi-over-slf4j</artifactId>
 				<version>${slf4j.version}</version>
 			</dependency>
 			<dependency>
@@ -698,7 +695,7 @@
 				<exclusions>
 					<exclusion>
 						<groupId>com.vaadin.external.google</groupId>
-   						<artifactId>android-json</artifactId>
+						<artifactId>android-json</artifactId>
 					</exclusion>
 				</exclusions>
 			</dependency>
@@ -804,13 +801,13 @@
 
 			<dependency>
 				<groupId>biz.aQute.bnd</groupId>
-  				<artifactId>biz.aQute.bndlib</artifactId>
+				<artifactId>biz.aQute.bndlib</artifactId>
 				<version>${bnd.lib.version}</version>
 			</dependency>
 			<dependency>
-			  <groupId>biz.aQute.bnd</groupId>
-			  <artifactId>biz.aQute.bnd.annotation</artifactId>
-			  <version>${bnd-maven-plugin.version}</version>
+				<groupId>biz.aQute.bnd</groupId>
+				<artifactId>biz.aQute.bnd.annotation</artifactId>
+				<version>${bnd-maven-plugin.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.hazelcast</groupId>
@@ -850,7 +847,7 @@
 			<dependency>
 				<groupId>org.eclipse.paho</groupId>
 				<artifactId>org.eclipse.paho.client.mqttv3</artifactId>
-				<version>${org.eclipse.paho.client.mqttv3.version}</version>			
+				<version>${org.eclipse.paho.client.mqttv3.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.fusesource.jansi</groupId>
@@ -878,16 +875,16 @@
 				<version>${org.xerial.sqlite-jdbc.version}</version>
 			</dependency>
 
-<!-- 			<dependency> -->
-<!-- 				<groupId>io.moquette</groupId> -->
-<!-- 				<artifactId>moquette-broker</artifactId> -->
-<!-- 				<version>${io.moquette.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>io.moquette</groupId> -->
-<!-- 				<artifactId>moquette-netty-parser</artifactId> -->
-<!-- 				<version>${io.moquette.version}</version> -->
-<!-- 			</dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>io.moquette</groupId> -->
+			<!-- <artifactId>moquette-broker</artifactId> -->
+			<!-- <version>${io.moquette.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>io.moquette</groupId> -->
+			<!-- <artifactId>moquette-netty-parser</artifactId> -->
+			<!-- <version>${io.moquette.version}</version> -->
+			<!-- </dependency> -->
 			<!-- Specific subproducts used are netty-transport,netty-common,netty-buffer,netty-handler,netty-codec -->
 			<dependency>
 				<groupId>io.netty</groupId>
@@ -914,454 +911,454 @@
 				<artifactId>biz.aQute.gogo.commands.provider</artifactId>
 				<version>${biz.aQute.gogo.commands.provider.verion}</version>
 			</dependency>
-			
-			<!--  Gradle  -->
+
+			<!-- Gradle -->
 			<!-- dirty trick to avoid to change the settings.xml file -->
-			<!-- @see  jsonpath-filtering:jsonpath-filter module      -->
-<!-- 			<dependency>		 -->
-<!-- 				<groupId>org.gradle</groupId> -->
-<!-- 				<artifactId>gradle-tooling-api</artifactId> -->
-<!-- 				<version>${gradle-tooling-api.version}</version> -->
-<!-- 			</dependency> -->
-			
-			<!--  Connectors -->
-			
+			<!-- @see jsonpath-filtering:jsonpath-filter module -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.gradle</groupId> -->
+			<!-- <artifactId>gradle-tooling-api</artifactId> -->
+			<!-- <version>${gradle-tooling-api.version}</version> -->
+			<!-- </dependency> -->
+
+			<!-- Connectors -->
+
 			<dependency>
-			    <groupId>org.mongodb</groupId>
-			    <artifactId>mongo-java-driver</artifactId>
-			    <version>${mongodb.driver.version}</version>
+				<groupId>org.mongodb</groupId>
+				<artifactId>mongo-java-driver</artifactId>
+				<version>${mongodb.driver.version}</version>
 			</dependency>
 			<dependency>
-	            <groupId>org.influxdb</groupId>
-	            <artifactId>influxdb-java</artifactId>
-	            <version>${influxdb.driver.version}</version>
-	        </dependency>
+				<groupId>org.influxdb</groupId>
+				<artifactId>influxdb-java</artifactId>
+				<version>${influxdb.driver.version}</version>
+			</dependency>
 			<!-- ===================== -->
 			<!-- Internal dependencies -->
 			<!-- ===================== -->
 
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact</groupId> -->
-<!-- 				<artifactId>gateway</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact</groupId> -->
+			<!-- <artifactId>gateway</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
 
 
 			<!-- org.eclipse.sensinact.gateway -->
 
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway</groupId> -->
-<!-- 				<artifactId>parent</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway</groupId> -->
-<!-- 				<artifactId>mock-signature-validator</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway</groupId> -->
-<!-- 				<artifactId>sensinact-shell</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency>	 -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway</groupId> -->
-<!-- 				<artifactId>sensinact-system</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway</groupId> -->
-<!-- 				<artifactId>sensinact-historic-api</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway</groupId> -->
-<!-- 				<artifactId>sensinact-historic-manager</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway</groupId> -->
-<!-- 				<artifactId>application-manager</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway</groupId> -->
-<!-- 				<artifactId>basic-plugin</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway</groupId> -->
-<!-- 				<artifactId>sensinact-application</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway</groupId> -->
-<!-- 				<artifactId>sensinact-common</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway</groupId> -->
-<!-- 				<artifactId>sensinact-core</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway</groupId> -->
-<!-- 				<artifactId>sensinact-datastore-api</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway</groupId> -->
-<!-- 				<artifactId>sensinact-framework-extension</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway</groupId> -->
-<!-- 				<artifactId>sensinact-generic</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway</groupId> -->
-<!-- 				<artifactId>sensinact-remote-osgi</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway</groupId> -->
-<!-- 				<artifactId>sensinact-security-none</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway</groupId> -->
-<!-- 				<artifactId>sensinact-security-oauth2</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway</groupId> -->
-<!-- 				<artifactId>sensinact-signature-validator</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway</groupId> -->
-<!-- 				<artifactId>sensinact-sqlite-connector</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway</groupId> -->
-<!-- 				<artifactId>sensinact-utils</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway</groupId> -->
+			<!-- <artifactId>parent</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway</groupId> -->
+			<!-- <artifactId>mock-signature-validator</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway</groupId> -->
+			<!-- <artifactId>sensinact-shell</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway</groupId> -->
+			<!-- <artifactId>sensinact-system</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway</groupId> -->
+			<!-- <artifactId>sensinact-historic-api</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway</groupId> -->
+			<!-- <artifactId>sensinact-historic-manager</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway</groupId> -->
+			<!-- <artifactId>application-manager</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway</groupId> -->
+			<!-- <artifactId>basic-plugin</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway</groupId> -->
+			<!-- <artifactId>sensinact-application</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway</groupId> -->
+			<!-- <artifactId>sensinact-common</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway</groupId> -->
+			<!-- <artifactId>sensinact-core</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway</groupId> -->
+			<!-- <artifactId>sensinact-datastore-api</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway</groupId> -->
+			<!-- <artifactId>sensinact-framework-extension</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway</groupId> -->
+			<!-- <artifactId>sensinact-generic</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway</groupId> -->
+			<!-- <artifactId>sensinact-remote-osgi</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway</groupId> -->
+			<!-- <artifactId>sensinact-security-none</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway</groupId> -->
+			<!-- <artifactId>sensinact-security-oauth2</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway</groupId> -->
+			<!-- <artifactId>sensinact-signature-validator</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway</groupId> -->
+			<!-- <artifactId>sensinact-sqlite-connector</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway</groupId> -->
+			<!-- <artifactId>sensinact-utils</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
 
 
 			<!-- org.eclipse.sensinact.gateway.tools -->
 
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.tools</groupId> -->
-<!-- 				<artifactId>platform.tools</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.tools</groupId> -->
-<!-- 				<artifactId>mqtt-server</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.tools</groupId> -->
-<!-- 				<artifactId>sensinact-test</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.tools</groupId> -->
-<!-- 				<artifactId>sensinact-test-configuration</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.tools</groupId> -->
-<!-- 				<artifactId>swagger</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.tools</groupId> -->
-<!-- 				<artifactId>influxdb-connector</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.tools</groupId> -->
-<!-- 				<artifactId>mongodb-connector</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.tools</groupId> -->
-<!-- 				<artifactId>mixed-osgi-over-slf4j</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.tools</groupId> -->
+			<!-- <artifactId>platform.tools</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.tools</groupId> -->
+			<!-- <artifactId>mqtt-server</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.tools</groupId> -->
+			<!-- <artifactId>sensinact-test</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.tools</groupId> -->
+			<!-- <artifactId>sensinact-test-configuration</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.tools</groupId> -->
+			<!-- <artifactId>swagger</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.tools</groupId> -->
+			<!-- <artifactId>influxdb-connector</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.tools</groupId> -->
+			<!-- <artifactId>mongodb-connector</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.tools</groupId> -->
+			<!-- <artifactId>mixed-osgi-over-slf4j</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
 
-			<!-- protocol --> 
+			<!-- protocol -->
 
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.protocol</groupId> -->
-<!-- 				<artifactId>parent</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.protocol</groupId> -->
-<!-- 				<artifactId>ssdp</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.protocol</groupId> -->
-<!-- 				<artifactId>http</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.protocol</groupId> -->
+			<!-- <artifactId>parent</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.protocol</groupId> -->
+			<!-- <artifactId>ssdp</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.protocol</groupId> -->
+			<!-- <artifactId>http</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
 
 
 			<!-- org.eclipse.sensinact.gateway.nthbnd -->
 
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
-<!-- 				<artifactId>parent</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
-<!-- 				<artifactId>geo-filtering</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
-<!-- 				<artifactId>ldap-filtering</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
-<!-- 				<artifactId>mqtt</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
-<!-- 				<artifactId>jsonpath-filtering</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
-<!-- 				<artifactId>http-tools</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
-<!-- 				<artifactId>mqtt-generic-agent</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
-<!-- 				<artifactId>rest-access</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
-<!-- 				<artifactId>sensinact-northbound-access</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
-<!-- 				<artifactId>http-onem2m-agent</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
-<!-- 				<artifactId>attributes-filter</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
-<!-- 				<artifactId>jsonpath-filter</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
-<!-- 				<artifactId>geojson-filter</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
-<!-- 				<artifactId>ldap-filter</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
-<!-- 				<artifactId>mqtt-agent</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
-<!-- 				<artifactId>mqtt-onem2m-agent</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
-<!-- 				<artifactId>generic-storage-agent</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
-<!-- 				<artifactId>http-storage-agent</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
-<!-- 				<artifactId>influxdb-storage-agent</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
+			<!-- <artifactId>parent</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
+			<!-- <artifactId>geo-filtering</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
+			<!-- <artifactId>ldap-filtering</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
+			<!-- <artifactId>mqtt</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
+			<!-- <artifactId>jsonpath-filtering</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
+			<!-- <artifactId>http-tools</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
+			<!-- <artifactId>mqtt-generic-agent</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
+			<!-- <artifactId>rest-access</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
+			<!-- <artifactId>sensinact-northbound-access</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
+			<!-- <artifactId>http-onem2m-agent</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
+			<!-- <artifactId>attributes-filter</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
+			<!-- <artifactId>jsonpath-filter</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
+			<!-- <artifactId>geojson-filter</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
+			<!-- <artifactId>ldap-filter</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
+			<!-- <artifactId>mqtt-agent</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
+			<!-- <artifactId>mqtt-onem2m-agent</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
+			<!-- <artifactId>generic-storage-agent</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
+			<!-- <artifactId>http-storage-agent</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.nthbnd</groupId> -->
+			<!-- <artifactId>influxdb-storage-agent</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
 
 
 			<!-- org.eclipse.sensinact.gateway.sthbnd -->
 
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.sthbnd</groupId> -->
-<!-- 				<artifactId>parent</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.sthbnd</groupId> -->
-<!-- 				<artifactId>sensinact-openhab</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.sthbnd.http</groupId> -->
-<!-- 				<artifactId>parent</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.sthbnd.http</groupId> -->
-<!-- 				<artifactId>http-device</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.sthbnd.http</groupId> -->
-<!-- 				<artifactId>http-android</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.sthbnd.http</groupId> -->
-<!-- 				<artifactId>free-sms-service</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.sthbnd.http</groupId> -->
-<!-- 				<artifactId>kodi-device</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.sthbnd.http</groupId> -->
-<!-- 				<artifactId>onem2m-device</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.sthbnd.http</groupId> -->
-<!-- 				<artifactId>openweather-device</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.sthbnd.mqtt</groupId> -->
-<!-- 				<artifactId>parent</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.sthbnd.mqtt</groupId> -->
-<!-- 				<artifactId>mqtt-device</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.sthbnd.mqtt</groupId> -->
-<!-- 				<artifactId>mqtt-utils</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.sthbnd.mqtt</groupId> -->
-<!-- 				<artifactId>smart-topic-device</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.sthbnd.mqtt</groupId> -->
-<!-- 				<artifactId>thethingsnetwork-device</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.sthbnd.inovallee</groupId> -->
-<!-- 				<artifactId>sensinact-inovallee</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.sthbnd</groupId> -->
+			<!-- <artifactId>parent</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.sthbnd</groupId> -->
+			<!-- <artifactId>sensinact-openhab</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.sthbnd.http</groupId> -->
+			<!-- <artifactId>parent</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.sthbnd.http</groupId> -->
+			<!-- <artifactId>http-device</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.sthbnd.http</groupId> -->
+			<!-- <artifactId>http-android</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.sthbnd.http</groupId> -->
+			<!-- <artifactId>free-sms-service</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.sthbnd.http</groupId> -->
+			<!-- <artifactId>kodi-device</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.sthbnd.http</groupId> -->
+			<!-- <artifactId>onem2m-device</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.sthbnd.http</groupId> -->
+			<!-- <artifactId>openweather-device</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.sthbnd.mqtt</groupId> -->
+			<!-- <artifactId>parent</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.sthbnd.mqtt</groupId> -->
+			<!-- <artifactId>mqtt-device</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.sthbnd.mqtt</groupId> -->
+			<!-- <artifactId>mqtt-utils</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.sthbnd.mqtt</groupId> -->
+			<!-- <artifactId>smart-topic-device</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.sthbnd.mqtt</groupId> -->
+			<!-- <artifactId>thethingsnetwork-device</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.sthbnd.inovallee</groupId> -->
+			<!-- <artifactId>sensinact-inovallee</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
 
 			<!-- org.eclipse.sensinact.gateway.distribution -->
 
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.distribution</groupId> -->
-<!-- 				<artifactId>parent</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.distribution</groupId> -->
-<!-- 				<artifactId>profile</artifactId> -->
-<!-- 				<type>pom</type> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.distribution</groupId> -->
-<!-- 				<artifactId>sensinact-distribution-generator</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.distribution</groupId> -->
-<!-- 				<artifactId>sensinact-distribution-template</artifactId> -->
-<!-- 				<type>pom</type> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.distribution</groupId> -->
+			<!-- <artifactId>parent</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.distribution</groupId> -->
+			<!-- <artifactId>profile</artifactId> -->
+			<!-- <type>pom</type> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.distribution</groupId> -->
+			<!-- <artifactId>sensinact-distribution-generator</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.distribution</groupId> -->
+			<!-- <artifactId>sensinact-distribution-template</artifactId> -->
+			<!-- <type>pom</type> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
 
 
 			<!-- org.eclipse.sensinact.gateway.simulated.devices -->
 
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.simulated.devices</groupId> -->
-<!-- 				<artifactId>simulated-devices</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.simulated.devices</groupId> -->
-<!-- 				<artifactId>light</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.simulated.devices</groupId> -->
-<!-- 				<artifactId>slider</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.simulated.devices</groupId> -->
-<!-- 				<artifactId>billboard</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.simulated.devices</groupId> -->
-<!-- 				<artifactId>button</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.simulated.devices</groupId> -->
-<!-- 				<artifactId>fan</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.gateway.simulated.devices</groupId> -->
-<!-- 				<artifactId>temperatures-generator</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.simulated.devices</groupId> -->
+			<!-- <artifactId>simulated-devices</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.simulated.devices</groupId> -->
+			<!-- <artifactId>light</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.simulated.devices</groupId> -->
+			<!-- <artifactId>slider</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.simulated.devices</groupId> -->
+			<!-- <artifactId>billboard</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.simulated.devices</groupId> -->
+			<!-- <artifactId>button</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.simulated.devices</groupId> -->
+			<!-- <artifactId>fan</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.gateway.simulated.devices</groupId> -->
+			<!-- <artifactId>temperatures-generator</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
 
 
 			<!-- Misc -->
 
-<!-- 			<dependency> -->
-<!-- 				<groupId>org.eclipse.sensinact.integration.tests</groupId> -->
-<!-- 				<artifactId>integration-tests</artifactId> -->
-<!-- 				<version>${project.version}</version> -->
-<!-- 			</dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.eclipse.sensinact.integration.tests</groupId> -->
+			<!-- <artifactId>integration-tests</artifactId> -->
+			<!-- <version>${project.version}</version> -->
+			<!-- </dependency> -->
 
 		</dependencies>
 	</dependencyManagement>
@@ -1434,6 +1431,10 @@
 			<artifactId>mockito-core</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>biz.aQute.bnd</groupId>
+			<artifactId>biz.aQute.bnd.annotation</artifactId>
+		</dependency>
 	</dependencies>
 
 
@@ -1441,7 +1442,8 @@
 		<pluginManagement>
 			<plugins>
 
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
@@ -1496,7 +1498,7 @@
 						</lifecycleMappingMetadata>
 					</configuration>
 				</plugin>
-		      <plugin>
+				<plugin>
 					<groupId>org.commonjava.maven.plugins</groupId>
 					<artifactId>directory-maven-plugin</artifactId>
 					<version>0.3.1</version>
@@ -1530,22 +1532,11 @@
 					<artifactId>maven-checkstyle-plugin</artifactId>
 					<version>${maven-checkstyle-plugin.version}</version>
 					<executions>
-<!--
-						<execution>
-							<id>validate</id>
-							<phase>validate</phase>
-							<configuration>
-								<configLocation>${sensinact.root.dir}/checkstyle-sun.xml</configLocation>
-								<suppressionsLocation>${sensinact.root.dir}/checkstyle-suppressions.xml</suppressionsLocation>
-								<encoding>UTF-8</encoding>
-								<consoleOutput>false</consoleOutput>
-								<failsOnError>false</failsOnError>
-							</configuration>
-							<goals>
-								<goal>check</goal>
-							</goals>
-						</execution>
--->
+						<!-- <execution> <id>validate</id> <phase>validate</phase> <configuration> 
+							<configLocation>${sensinact.root.dir}/checkstyle-sun.xml</configLocation> 
+							<suppressionsLocation>${sensinact.root.dir}/checkstyle-suppressions.xml</suppressionsLocation> 
+							<encoding>UTF-8</encoding> <consoleOutput>false</consoleOutput> <failsOnError>false</failsOnError> 
+							</configuration> <goals> <goal>check</goal> </goals> </execution> -->
 					</executions>
 					<dependencies>
 						<dependency>
@@ -1591,10 +1582,11 @@
 							</goals>
 							<configuration>
 								<rules>
-									<banDuplicatePomDependencyVersions/>
+									<banDuplicatePomDependencyVersions />
 									<requireMavenVersion>
 										<version>${minimum.maven.version}</version>
-										<message>INVALID MAVEN VERSION: It must be at least ${minimum.maven.version}</message>
+										<message>INVALID MAVEN VERSION: It must be at least
+											${minimum.maven.version}</message>
 									</requireMavenVersion>
 								</rules>
 							</configuration>
@@ -1644,7 +1636,8 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-resources-plugin</artifactId>
 					<version>${maven-resources-plugin.version}</version>
-					<!-- This maven-filtering has been added for maven-resources-plugin v2.7 -->
+					<!-- This maven-filtering has been added for maven-resources-plugin 
+						v2.7 -->
 					<dependencies>
 						<dependency>
 							<groupId>org.apache.maven.shared</groupId>
@@ -1672,23 +1665,23 @@
 						<skipTests>true</skipTests>
 					</configuration>
 				</plugin>
-<!-- 				<plugin> -->
-<!-- 					<groupId>org.apache.maven.plugins</groupId> -->
-<!-- 					<artifactId>maven-surefire-plugin</artifactId> -->
-<!-- 					<version>${maven-surefire-plugin.version}</version> -->
-<!-- 					<configuration> -->
-<!-- 						<classpathDependencyScopeExclude>provided</classpathDependencyScopeExclude> -->
-<!-- 						<forkCount>1</forkCount> -->
-<!-- 						<reuseForks>false</reuseForks> -->
-<!-- 					</configuration> -->
-<!-- 					<dependencies> -->
-<!-- 						<dependency> -->
-<!-- 							<groupId>org.apache.maven.surefire</groupId> -->
-<!-- 							<artifactId>common-junit48</artifactId> -->
-<!-- 							<version>${org.apache.maven.surefire.junit48.version}</version> -->
-<!-- 						</dependency> -->
-<!-- 					</dependencies> -->
-<!-- 				</plugin> -->
+				<!-- <plugin> -->
+				<!-- <groupId>org.apache.maven.plugins</groupId> -->
+				<!-- <artifactId>maven-surefire-plugin</artifactId> -->
+				<!-- <version>${maven-surefire-plugin.version}</version> -->
+				<!-- <configuration> -->
+				<!-- <classpathDependencyScopeExclude>provided</classpathDependencyScopeExclude> -->
+				<!-- <forkCount>1</forkCount> -->
+				<!-- <reuseForks>false</reuseForks> -->
+				<!-- </configuration> -->
+				<!-- <dependencies> -->
+				<!-- <dependency> -->
+				<!-- <groupId>org.apache.maven.surefire</groupId> -->
+				<!-- <artifactId>common-junit48</artifactId> -->
+				<!-- <version>${org.apache.maven.surefire.junit48.version}</version> -->
+				<!-- </dependency> -->
+				<!-- </dependencies> -->
+				<!-- </plugin> -->
 
 
 				<!-- BUILD: Mojos -->
@@ -1728,31 +1721,31 @@
 					<artifactId>versions-maven-plugin</artifactId>
 					<version>${mojo-versions-maven-plugin.version}</version>
 				</plugin>
-<!-- 				<plugin> -->
-<!-- 					<groupId>org.codehaus.mojo</groupId> -->
-<!-- 					<artifactId>xml-maven-plugin</artifactId> -->
-<!-- 					<version>${mojo-xml-maven-plugin.version}</version> -->
-<!-- 					<executions> -->
-<!-- 						<execution> -->
-<!-- 							<goals> -->
-<!-- 								<goal>validate</goal> -->
-<!-- 							</goals> -->
-<!-- 						</execution> -->
-<!-- 					</executions> -->
-<!-- 					<configuration> -->
-<!-- 						<validationSets> -->
-<!-- 							<validationSet> -->
-<!-- 								<dir>src/main/resources/</dir> -->
-<!-- 								<includes> -->
-<!-- 									<include>resources.xml</include> -->
-<!-- 									<include>*-resource.xml</include> -->
-<!-- 								</includes> -->
-<!-- 								<systemId>file:${sensinact.root.dir}/platform/sensinact-generic/src/main/resources/sensinact-resource.xsd</systemId> -->
-<!-- 							</validationSet> -->
-<!-- 						</validationSets> -->
-<!-- 					</configuration> -->
-<!-- 				</plugin> -->
-	
+				<!-- <plugin> -->
+				<!-- <groupId>org.codehaus.mojo</groupId> -->
+				<!-- <artifactId>xml-maven-plugin</artifactId> -->
+				<!-- <version>${mojo-xml-maven-plugin.version}</version> -->
+				<!-- <executions> -->
+				<!-- <execution> -->
+				<!-- <goals> -->
+				<!-- <goal>validate</goal> -->
+				<!-- </goals> -->
+				<!-- </execution> -->
+				<!-- </executions> -->
+				<!-- <configuration> -->
+				<!-- <validationSets> -->
+				<!-- <validationSet> -->
+				<!-- <dir>src/main/resources/</dir> -->
+				<!-- <includes> -->
+				<!-- <include>resources.xml</include> -->
+				<!-- <include>*-resource.xml</include> -->
+				<!-- </includes> -->
+				<!-- <systemId>file:${sensinact.root.dir}/platform/sensinact-generic/src/main/resources/sensinact-resource.xsd</systemId> -->
+				<!-- </validationSet> -->
+				<!-- </validationSets> -->
+				<!-- </configuration> -->
+				<!-- </plugin> -->
+
 				<!-- BUILD: Other plugins -->
 				<plugin>
 					<groupId>org.apache.servicemix.tooling</groupId>
@@ -1778,100 +1771,100 @@
 					<artifactId>gradle-maven-plugin</artifactId>
 					<version>${gradle-maven-plugin.version}</version>
 				</plugin>
-<!-- 	<plugin> -->
-<!-- 		<groupId>org.codehaus.gmaven</groupId> -->
-<!-- 		<artifactId>groovy-maven-plugin</artifactId> -->
-<!-- 		<version>${groovy-maven-plugin.version}</version> -->
-<!-- 		<executions> -->
-<!-- 			<execution> -->
-<!-- 				<id>search-root-clean</id> -->
-<!-- 				<phase>pre-clean</phase> -->
-<!-- 				<goals> -->
-<!-- 					<goal>execute</goal> -->
-<!-- 				</goals> -->
-<!-- 				<configuration> -->
-<!-- 					<defaults> -->
-<!-- 						<name>find-root</name> -->
-<!-- 					</defaults> -->
-<!-- 					<source> -->
-<!-- 						String basedir = project.basedir.absolutePath.replace('\\','/'); -->
-<!-- 						File projectFile = new File(basedir) -->
-<!-- 						File pomFile = null -->
-<!-- 						while((pomFile = new File(projectFile.getParentFile(),"pom.xml")).exists()) -->
-<!-- 						{ -->
-<!-- 						projectFile = projectFile.getParentFile() -->
-<!-- 						} -->
-<!-- 						project.properties.setProperty('sensinact.rootdir',projectFile.getAbsolutePath()) -->
-<!-- 						log.info('PATH: {}', projectFile.getAbsolutePath()) -->
-<!-- 					</source> -->
-<!-- 				</configuration> -->
-<!-- 			</execution> -->
-<!-- 			<execution> -->
-<!-- 				<id>search-root-validate</id> -->
-<!-- 				<phase>validate</phase> -->
-<!-- 				<goals> -->
-<!-- 					<goal>execute</goal> -->
-<!-- 				</goals> -->
-<!-- 				<configuration> -->
-<!-- 					<defaults> -->
-<!-- 						<name>find-root</name> -->
-<!-- 					</defaults> -->
-<!-- 					<source> -->
-<!-- 						String basedir = project.basedir.absolutePath.replace('\\','/'); -->
-<!-- 						File projectFile = new File(basedir) -->
-<!-- 						File pomFile = null -->
-<!-- 						while((pomFile = new File(projectFile.getParentFile(),"pom.xml")).exists()) -->
-<!-- 						{ -->
-<!-- 						projectFile = projectFile.getParentFile() -->
-<!-- 						} -->
-<!-- 						project.properties.setProperty('sensinact.rootdir',projectFile.getAbsolutePath()) -->
-<!-- 						log.info('PATH: {}', projectFile.getAbsolutePath()) -->
-<!-- 					</source> -->
-<!-- 				</configuration> -->
-<!-- 			</execution> -->
-<!-- 			<execution> -->
-<!-- 				<id>search-sha</id> -->
-<!-- 				<phase>install</phase> -->
-<!-- 				<goals> -->
-<!-- 					<goal>execute</goal> -->
-<!-- 				</goals> -->
-<!-- 				<configuration> -->
-<!-- 					<defaults> -->
-<!-- 						<name>extract-sha</name> -->
-<!-- 					</defaults> -->
-<!-- 					<source> -->
-<!-- 						File basedir = new -->
-<!-- 						File(project.basedir.absolutePath.replace('\\','/')); -->
-<!-- 						File signature = new File(basedir, -->
-<!-- 						"/target/classes/META-INF/SELFSIGN.SF") -->
+				<!-- <plugin> -->
+				<!-- <groupId>org.codehaus.gmaven</groupId> -->
+				<!-- <artifactId>groovy-maven-plugin</artifactId> -->
+				<!-- <version>${groovy-maven-plugin.version}</version> -->
+				<!-- <executions> -->
+				<!-- <execution> -->
+				<!-- <id>search-root-clean</id> -->
+				<!-- <phase>pre-clean</phase> -->
+				<!-- <goals> -->
+				<!-- <goal>execute</goal> -->
+				<!-- </goals> -->
+				<!-- <configuration> -->
+				<!-- <defaults> -->
+				<!-- <name>find-root</name> -->
+				<!-- </defaults> -->
+				<!-- <source> -->
+				<!-- String basedir = project.basedir.absolutePath.replace('\\','/'); -->
+				<!-- File projectFile = new File(basedir) -->
+				<!-- File pomFile = null -->
+				<!-- while((pomFile = new File(projectFile.getParentFile(),"pom.xml")).exists()) -->
+				<!-- { -->
+				<!-- projectFile = projectFile.getParentFile() -->
+				<!-- } -->
+				<!-- project.properties.setProperty('sensinact.rootdir',projectFile.getAbsolutePath()) -->
+				<!-- log.info('PATH: {}', projectFile.getAbsolutePath()) -->
+				<!-- </source> -->
+				<!-- </configuration> -->
+				<!-- </execution> -->
+				<!-- <execution> -->
+				<!-- <id>search-root-validate</id> -->
+				<!-- <phase>validate</phase> -->
+				<!-- <goals> -->
+				<!-- <goal>execute</goal> -->
+				<!-- </goals> -->
+				<!-- <configuration> -->
+				<!-- <defaults> -->
+				<!-- <name>find-root</name> -->
+				<!-- </defaults> -->
+				<!-- <source> -->
+				<!-- String basedir = project.basedir.absolutePath.replace('\\','/'); -->
+				<!-- File projectFile = new File(basedir) -->
+				<!-- File pomFile = null -->
+				<!-- while((pomFile = new File(projectFile.getParentFile(),"pom.xml")).exists()) -->
+				<!-- { -->
+				<!-- projectFile = projectFile.getParentFile() -->
+				<!-- } -->
+				<!-- project.properties.setProperty('sensinact.rootdir',projectFile.getAbsolutePath()) -->
+				<!-- log.info('PATH: {}', projectFile.getAbsolutePath()) -->
+				<!-- </source> -->
+				<!-- </configuration> -->
+				<!-- </execution> -->
+				<!-- <execution> -->
+				<!-- <id>search-sha</id> -->
+				<!-- <phase>install</phase> -->
+				<!-- <goals> -->
+				<!-- <goal>execute</goal> -->
+				<!-- </goals> -->
+				<!-- <configuration> -->
+				<!-- <defaults> -->
+				<!-- <name>extract-sha</name> -->
+				<!-- </defaults> -->
+				<!-- <source> -->
+				<!-- File basedir = new -->
+				<!-- File(project.basedir.absolutePath.replace('\\','/')); -->
+				<!-- File signature = new File(basedir, -->
+				<!-- "/target/classes/META-INF/SELFSIGN.SF") -->
 
-<!-- 						if(signature.exists()) -->
-<!-- 						{ -->
-<!-- 						String fileContents = signature.getText('UTF-8') -->
-<!-- 						matcher = (fileContents =~ -->
-<!-- 						/(?s)SHA(1|-256)-Digest-Manifest\s*:\s*([^\s]+)\s*$?/) -->
+				<!-- if(signature.exists()) -->
+				<!-- { -->
+				<!-- String fileContents = signature.getText('UTF-8') -->
+				<!-- matcher = (fileContents =~ -->
+				<!-- /(?s)SHA(1|-256)-Digest-Manifest\s*:\s*([^\s]+)\s*$?/) -->
 
-<!-- 						String sha = matcher.getAt(0).getAt(2) -->
-<!-- 						log.info('SHA: {}', sha) -->
-<!-- 						project.properties.setProperty('sha',sha) -->
-<!-- 						} -->
-<!-- 					</source> -->
-<!-- 				</configuration> -->
-<!-- 			</execution> -->
-<!-- 		</executions> -->
-<!-- 	</plugin> -->
-				
-                <plugin>
-                        <groupId>biz.aQute.bnd</groupId>
-                        <artifactId>bnd-maven-plugin</artifactId>
-                        <version>${bnd-maven-plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <goals>
-                                    <goal>bnd-process</goal>
-                                </goals>
-                                <configuration>
-                                    <bnd><![CDATA[
+				<!-- String sha = matcher.getAt(0).getAt(2) -->
+				<!-- log.info('SHA: {}', sha) -->
+				<!-- project.properties.setProperty('sha',sha) -->
+				<!-- } -->
+				<!-- </source> -->
+				<!-- </configuration> -->
+				<!-- </execution> -->
+				<!-- </executions> -->
+				<!-- </plugin> -->
+
+				<plugin>
+					<groupId>biz.aQute.bnd</groupId>
+					<artifactId>bnd-maven-plugin</artifactId>
+					<version>${bnd-maven-plugin.version}</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>bnd-process</goal>
+							</goals>
+							<configuration>
+								<bnd><![CDATA[
 Bundle-Vendor: Eclipse
 -contract: *
 -includeresource.about: -about.html
@@ -1888,73 +1881,73 @@ jarsigner: ${if;${isfile;${jarsigner2}};\
 -sign: selfsigned
 -verbose: true
 							]]></bnd>
-                                </configuration>
-                            </execution>
-                            <execution>
-                                <id>bnd-process-tests</id>
-                                <phase>process-test-classes</phase>
-                                <goals>
-                                    <goal>bnd-process-tests</goal>
-                                </goals>
-                                <configuration>
-                                	<bndfile>tests.bnd</bndfile>
-                                	<artifactFragment>true</artifactFragment>
-                                    <bnd><![CDATA[
+							</configuration>
+						</execution>
+						<execution>
+							<id>bnd-process-tests</id>
+							<phase>process-test-classes</phase>
+							<goals>
+								<goal>bnd-process-tests</goal>
+							</goals>
+							<configuration>
+								<bndfile>tests.bnd</bndfile>
+								<artifactFragment>true</artifactFragment>
+								<bnd><![CDATA[
 Bundle-Vendor: Eclipse
 -contract: *
 -includeresource.about: -about.html
 -verbose: true
 ]]></bnd>
-                                    <testCases>junit5</testCases>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                     <!-- This dynamically calculates all the things we need to run our code. -->
-                    <plugin>
-						<groupId>biz.aQute.bnd</groupId>
-						<artifactId>bnd-testing-maven-plugin</artifactId>
-						<version>${bnd-maven-plugin.version}</version>
-						<executions>
-							<!-- OSGi integration tests execution -->
-							<execution>
-								<id>testing</id>
-								<goals>
-									<goal>testing</goal>
-								</goals>
-								<configuration>
-									<bndruns>
-										<bndrun>tests.bndrun</bndrun>
-									</bndruns>
-									<bundles>
-										<bundle>${project.build.directory}/${project.build.finalName}-tests.jar</bundle>
-									</bundles>
-									<failOnChanges>false</failOnChanges>
-									<includeDependencyManagement>true</includeDependencyManagement>
-									<useMavenDependencies>true</useMavenDependencies>
-									<resolve>true</resolve>
-									<scopes>
-										<scope>compile</scope>
-										<scope>runtime</scope>
-										<scope>test</scope>
-										<scope>provided</scope>
-									</scopes>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-					 <!-- This dynamically calculates all the things we need to run our code. -->
-                    <plugin>
-                        <groupId>biz.aQute.bnd</groupId>
-                        <artifactId>bnd-resolver-maven-plugin</artifactId>
-                        <version>${bnd-maven-plugin.version}</version>
-                        <executions>
+								<testCases>junit5</testCases>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<!-- This dynamically calculates all the things we need to run our code. -->
+				<plugin>
+					<groupId>biz.aQute.bnd</groupId>
+					<artifactId>bnd-testing-maven-plugin</artifactId>
+					<version>${bnd-maven-plugin.version}</version>
+					<executions>
+						<!-- OSGi integration tests execution -->
+						<execution>
+							<id>testing</id>
+							<goals>
+								<goal>testing</goal>
+							</goals>
+							<configuration>
+								<bndruns>
+									<bndrun>tests.bndrun</bndrun>
+								</bndruns>
+								<bundles>
+									<bundle>${project.build.directory}/${project.build.finalName}-tests.jar</bundle>
+								</bundles>
+								<failOnChanges>false</failOnChanges>
+								<includeDependencyManagement>true</includeDependencyManagement>
+								<useMavenDependencies>true</useMavenDependencies>
+								<resolve>true</resolve>
+								<scopes>
+									<scope>compile</scope>
+									<scope>runtime</scope>
+									<scope>test</scope>
+									<scope>provided</scope>
+								</scopes>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<!-- This dynamically calculates all the things we need to run our code. -->
+				<plugin>
+					<groupId>biz.aQute.bnd</groupId>
+					<artifactId>bnd-resolver-maven-plugin</artifactId>
+					<version>${bnd-maven-plugin.version}</version>
+					<executions>
 						<!-- Integration Test Configuration -->
-			            <execution>
-			                <goals>
-			                    <goal>resolve</goal>
-			                </goals>
-			            </execution>
+						<execution>
+							<goals>
+								<goal>resolve</goal>
+							</goals>
+						</execution>
 						<execution>
 							<id>resolve-test</id>
 							<phase>pre-integration-test</phase>
@@ -1972,7 +1965,7 @@ Bundle-Vendor: Eclipse
 								<includeDependencyManagement>true</includeDependencyManagement>
 								<useMavenDependencies>true</useMavenDependencies>
 								<reportOptional>false</reportOptional>
-								
+
 								<scopes>
 									<scope>compile</scope>
 									<scope>runtime</scope>
@@ -1982,76 +1975,77 @@ Bundle-Vendor: Eclipse
 							</configuration>
 						</execution>
 					</executions>
-                    </plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-jarsigner-plugin</artifactId>
-						<version>3.0.0</version>
-						<executions>
-							<execution>
-								<id>sign</id>
-								<phase>prepare-package</phase>
-								<goals>
-									<goal>sign</goal>
-								</goals>
-							</execution>
-						</executions>
-						<configuration>
-							<keystore>${sensinact.root.dir}/platform/sensinact-security/cert/keystore.jks</keystore>
-							<alias>Sensinact Keystore</alias>
-							<storepass>sensiNact_team</storepass>
-						</configuration>
-					</plugin>
-                    <!-- Required to make the maven-jar-plugin pick up the bnd generated manifest. Also avoid packaging empty Jars -->
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-jar-plugin</artifactId>
-                        <version>${maven-jar-plugin.version}</version>
-                        <configuration>
-                            <archive>
-                                <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
-                            </archive>
-                            <skipIfEmpty>true</skipIfEmpty>
-                        </configuration>
-                        <executions>
-							<execution>
-								<id>test-jar</id>
-								<phase>package</phase>
-								<goals>
-									<goal>test-jar</goal>
-								</goals>
-								<configuration>
-									<archive>
-										<manifestFile>${project.build.testOutputDirectory}/META-INF/MANIFEST.MF</manifestFile>
-									</archive>
-								</configuration>
-							</execution>
-						</executions>
-                    </plugin>
-<!-- 				<plugin> -->
-<!-- 					<groupId>org.apache.felix</groupId> -->
-<!-- 					<artifactId>maven-bundle-plugin</artifactId> -->
-<!-- 					<version>${maven-bundle-plugin.version}</version> -->
-<!-- 					<extensions>true</extensions> -->
-<!-- 					<configuration> -->
-<!-- 						<unpackBundle>true</unpackBundle> -->
-<!-- 						<instructions> -->
-<!-- 							<Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName> -->
-<!-- 							<Bundle-Name>${project.name}</Bundle-Name> -->
-<!-- 							<Bundle-Vendor>Eclipse</Bundle-Vendor> -->
-<!-- 							<Build-By>Eclipse</Build-By> -->
-<!-- 							<Bundle-Description>${project.name}</Bundle-Description> -->
-<!-- 							<_nouses>true</_nouses> -->
-<!-- 							<_include>-bnd.bnd</_include> -->
-<!-- 							<_snapshot>${maven.build.timestamp}</_snapshot> -->
-<!-- 							<_plugin>aQute.bnd.signing.JartoolSigner;alias="selfsigned";path="${signer.path}";keystore="${sensinact.root.dir}/platform/sensinact-security/cert/keystore.jks";storepass="sensiNact_team"</_plugin> -->
-<!-- 							<_sign>selfsigned</_sign> -->
-<!-- 							<_failok>true</_failok> -->
-<!-- 							<_exportcontents> *, !*.internal, !*.internal.*, !${private.package} -->  
-<!--								</_exportcontents> -->
-<!-- 						</instructions> -->
-<!-- 					</configuration> -->
-<!-- 				</plugin> -->
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jarsigner-plugin</artifactId>
+					<version>3.0.0</version>
+					<executions>
+						<execution>
+							<id>sign</id>
+							<phase>prepare-package</phase>
+							<goals>
+								<goal>sign</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<keystore>${sensinact.root.dir}/platform/sensinact-security/cert/keystore.jks</keystore>
+						<alias>Sensinact Keystore</alias>
+						<storepass>sensiNact_team</storepass>
+					</configuration>
+				</plugin>
+				<!-- Required to make the maven-jar-plugin pick up the bnd generated 
+					manifest. Also avoid packaging empty Jars -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>${maven-jar-plugin.version}</version>
+					<configuration>
+						<archive>
+							<manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+						</archive>
+						<skipIfEmpty>true</skipIfEmpty>
+					</configuration>
+					<executions>
+						<execution>
+							<id>test-jar</id>
+							<phase>package</phase>
+							<goals>
+								<goal>test-jar</goal>
+							</goals>
+							<configuration>
+								<archive>
+									<manifestFile>${project.build.testOutputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+								</archive>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+				<!-- <plugin> -->
+				<!-- <groupId>org.apache.felix</groupId> -->
+				<!-- <artifactId>maven-bundle-plugin</artifactId> -->
+				<!-- <version>${maven-bundle-plugin.version}</version> -->
+				<!-- <extensions>true</extensions> -->
+				<!-- <configuration> -->
+				<!-- <unpackBundle>true</unpackBundle> -->
+				<!-- <instructions> -->
+				<!-- <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName> -->
+				<!-- <Bundle-Name>${project.name}</Bundle-Name> -->
+				<!-- <Bundle-Vendor>Eclipse</Bundle-Vendor> -->
+				<!-- <Build-By>Eclipse</Build-By> -->
+				<!-- <Bundle-Description>${project.name}</Bundle-Description> -->
+				<!-- <_nouses>true</_nouses> -->
+				<!-- <_include>-bnd.bnd</_include> -->
+				<!-- <_snapshot>${maven.build.timestamp}</_snapshot> -->
+				<!-- <_plugin>aQute.bnd.signing.JartoolSigner;alias="selfsigned";path="${signer.path}";keystore="${sensinact.root.dir}/platform/sensinact-security/cert/keystore.jks";storepass="sensiNact_team"</_plugin> -->
+				<!-- <_sign>selfsigned</_sign> -->
+				<!-- <_failok>true</_failok> -->
+				<!-- <_exportcontents> *, !*.internal, !*.internal.*, !${private.package} -->
+				<!-- </_exportcontents> -->
+				<!-- </instructions> -->
+				<!-- </configuration> -->
+				<!-- </plugin> -->
 				<plugin>
 					<groupId>org.sonarsource.scanner.maven</groupId>
 					<artifactId>sonar-maven-plugin</artifactId>
@@ -2061,18 +2055,18 @@ Bundle-Vendor: Eclipse
 		</pluginManagement>
 
 		<plugins>
-		      <plugin>
-					<groupId>org.commonjava.maven.plugins</groupId>
-					<artifactId>directory-maven-plugin</artifactId>
-					</plugin>
+			<plugin>
+				<groupId>org.commonjava.maven.plugins</groupId>
+				<artifactId>directory-maven-plugin</artifactId>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-enforcer-plugin</artifactId>
 			</plugin>
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.codehaus.gmaven</groupId> -->
-<!-- 				<artifactId>groovy-maven-plugin</artifactId> -->
-<!-- 			</plugin> -->
+			<!-- <plugin> -->
+			<!-- <groupId>org.codehaus.gmaven</groupId> -->
+			<!-- <artifactId>groovy-maven-plugin</artifactId> -->
+			<!-- </plugin> -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
@@ -2082,9 +2076,9 @@ Bundle-Vendor: Eclipse
 				<artifactId>versions-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-                <groupId>biz.aQute.bnd</groupId>
-            	<artifactId>bnd-maven-plugin</artifactId>
-            </plugin>
+				<groupId>biz.aQute.bnd</groupId>
+				<artifactId>bnd-maven-plugin</artifactId>
+			</plugin>
 
 		</plugins>
 	</build>
@@ -2102,27 +2096,27 @@ Bundle-Vendor: Eclipse
 		<profile>
 			<id>sonar</id>
 			<build>
-				<pluginManagement>			
-<!-- 					<plugins> -->
-<!-- 						<plugin> -->
-<!-- 							<groupId>org.apache.maven.plugins</groupId> -->
-<!-- 							<artifactId>maven-surefire-plugin</artifactId> -->
-<!-- 							<version>${maven-surefire-plugin.version}</version> -->
-<!-- 							<configuration> -->
-<!-- 								<argLine>${surefire.argLine} -XX:MaxPermSize=512m</argLine> -->
-<!-- 								<classpathDependencyScopeExclude>provided</classpathDependencyScopeExclude> -->
-<!-- 								<forkCount>1</forkCount> -->
-<!-- 								<reuseForks>false</reuseForks> -->
-<!-- 							</configuration> -->
-<!-- 							<dependencies> -->
-<!-- 								<dependency> -->
-<!-- 									<groupId>org.apache.maven.surefire</groupId> -->
-<!-- 									<artifactId>common-junit48</artifactId> -->
-<!-- 									<version>${org.apache.maven.surefire.junit48.version}</version> -->
-<!-- 								</dependency> -->
-<!-- 							</dependencies> -->
-<!-- 						</plugin> -->
-<!-- 					</plugins> -->
+				<pluginManagement>
+					<!-- <plugins> -->
+					<!-- <plugin> -->
+					<!-- <groupId>org.apache.maven.plugins</groupId> -->
+					<!-- <artifactId>maven-surefire-plugin</artifactId> -->
+					<!-- <version>${maven-surefire-plugin.version}</version> -->
+					<!-- <configuration> -->
+					<!-- <argLine>${surefire.argLine} -XX:MaxPermSize=512m</argLine> -->
+					<!-- <classpathDependencyScopeExclude>provided</classpathDependencyScopeExclude> -->
+					<!-- <forkCount>1</forkCount> -->
+					<!-- <reuseForks>false</reuseForks> -->
+					<!-- </configuration> -->
+					<!-- <dependencies> -->
+					<!-- <dependency> -->
+					<!-- <groupId>org.apache.maven.surefire</groupId> -->
+					<!-- <artifactId>common-junit48</artifactId> -->
+					<!-- <version>${org.apache.maven.surefire.junit48.version}</version> -->
+					<!-- </dependency> -->
+					<!-- </dependencies> -->
+					<!-- </plugin> -->
+					<!-- </plugins> -->
 				</pluginManagement>
 				<plugins>
 					<plugin>
@@ -2183,9 +2177,9 @@ Bundle-Vendor: Eclipse
 		<module>integration-tests</module>
 	</modules>
 
-	
+
 	<reporting>
-		<plugins>		
+		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
@@ -2199,5 +2193,5 @@ Bundle-Vendor: Eclipse
 			</plugin>
 		</plugins>
 	</reporting>
-	
+
 </project>
