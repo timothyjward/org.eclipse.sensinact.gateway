@@ -10,7 +10,7 @@
  */
 package org.eclipse.sensinact.gateway.nthbnd.forward.test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.File;
 import java.util.Map;

@@ -25,7 +25,7 @@ import org.eclipse.sensinact.gateway.app.basic.math.SubtractionFunction;
 import org.eclipse.sensinact.gateway.app.manager.json.AppFunction;
 import org.eclipse.sensinact.gateway.app.manager.json.AppJsonConstant;
 import org.json.JSONObject;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mockito;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
@@ -37,7 +37,7 @@ public class TestMathInstaller  {
     private BundleContext bundleContext;
     private Bundle bundle;
 
-    @Before
+    @BeforeEach
     public void init() throws Exception {
         context = Mockito.mock(ComponentContext.class);
         bundle = Mockito.mock(Bundle.class);

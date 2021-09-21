@@ -19,7 +19,7 @@ import org.eclipse.sensinact.gateway.app.basic.string.ConcatenateFunction;
 import org.eclipse.sensinact.gateway.app.basic.string.SubstringFunction;
 import org.eclipse.sensinact.gateway.app.manager.component.data.ConstantData;
 import org.eclipse.sensinact.gateway.common.bundle.Mediator;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mockito;
 
 public class TestStringFunction {
@@ -28,7 +28,7 @@ public class TestStringFunction {
     
     private FunctionUpdateListener listener=Mockito.mock(FunctionUpdateListener.class);
 
-    @Before
+    @BeforeEach
     public void init() throws Exception {
         Mockito.when(mediator.isDebugLoggable()).thenReturn(false);
     }

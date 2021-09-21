@@ -10,6 +10,7 @@
  */
 package org.eclipse.sensinact.gateway.app.manager.test;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 
 import org.eclipse.sensinact.gateway.app.api.lifecycle.ApplicationStatus;
@@ -23,23 +24,23 @@ import org.eclipse.sensinact.gateway.core.ResourceImpl;
 import org.eclipse.sensinact.gateway.core.method.AccessMethodResponse;
 import org.eclipse.sensinact.gateway.core.method.AccessMethodResponse.Status;
 import org.eclipse.sensinact.gateway.core.method.AccessMethodResponseBuilder;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.invocation.InvocationOnMock;
 import org.mockito.stubbing.Answer;
 
-import junit.framework.TestCase;
 
-public class TestLifeCycle extends TestCase {
+
+public class TestLifeCycle {
     private ApplicationStatus status;
     
     private AppServiceMediator mediator=mock(AppServiceMediator.class);
     
     private ApplicationService service=mock(ApplicationService.class);
 
-    @Before
+    @BeforeEach
     public void init() throws Exception {
         MockitoAnnotations.initMocks(this);
         ResourceImpl resource = Mockito.mock(ResourceImpl.class);

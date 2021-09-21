@@ -21,8 +21,7 @@ import java.security.cert.CertificateException;
 
 import org.eclipse.sensinact.gateway.security.signature.internal.CryptographicUtils;
 import org.eclipse.sensinact.gateway.util.crypto.Base64;
-import org.junit.Assert;
-import org.junit.Ignore;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -104,7 +103,7 @@ public class CryptographicUtilsTest {
         byte[] data = getData(fileName4hash);
         String trueHashValue = this.getTrueHashValue(data, defaultAlgo);
         boolean result = cutils.checkHashValue(data, trueHashValue, "SHA1-Digest");
-        Assert.assertTrue(result);
+        Assertions.assertTrue(result);
     }
 
     /**
@@ -117,7 +116,7 @@ public class CryptographicUtilsTest {
         byte[] data = getData(fileName4hash);
         boolean result = cutils.checkHashValue(data, falseHashValue, "SHA1-Digest");
         ;
-        Assert.assertFalse(result);
+        Assertions.assertFalse(result);
     }
 
     @Test
@@ -126,7 +125,7 @@ public class CryptographicUtilsTest {
         String trueHashValue = getTrueHashValue(data, defaultAlgo);
         String result = cutils.getHashValue(data, "SHA1-Digest");
         ;
-        Assert.assertTrue(result.equals(trueHashValue));
+        Assertions.assertTrue(result.equals(trueHashValue));
     }
 
     /**
@@ -138,20 +137,20 @@ public class CryptographicUtilsTest {
     public void testGetHashValueFalseAssertion() throws Exception {
         byte[] data = getData(fileName4hash);
         String result = cutils.getHashValue(data, "SHA1-Digest");
-        Assert.assertFalse(result.equals(falseHashValue));
+        Assertions.assertFalse(result.equals(falseHashValue));
     }
 
     /**
      * A method for verifying validity of a given CMS file
      */
-    @Ignore
+    @Disabled
     @Test
     public void testCheckCMSDataValidity() throws Exception {
         try {
             byte[] signatureFileData = this.getData(signatureFileName);
             byte[] signatureBlockData = this.getData(signatureBlockName);
             boolean res = cutils.checkCMSDataValidity(signatureFileData, signatureBlockData, "SHA1-Digest");
-            Assert.assertTrue(res);
+            Assertions.assertTrue(res);
         } catch (Exception e) {
             e.printStackTrace();
         } catch (Error e) {

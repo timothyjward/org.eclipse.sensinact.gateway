@@ -28,6 +28,7 @@
     <name>sensiNact IoT Gateway - Distribution</name>
 
     <modules>
+        <module>exports</module>
         <module>generator</module>
         <module>template</module>
         <module>archetypes</module>

@@ -1,3 +1,4 @@
+-include: ${sensinact.root.dir}/bnd/default.bnd.bnd
 Import-Package: \
 	org.eclipse.sensinact.gateway.core,\
 	org.eclipse.sensinact.gateway.core.message,\

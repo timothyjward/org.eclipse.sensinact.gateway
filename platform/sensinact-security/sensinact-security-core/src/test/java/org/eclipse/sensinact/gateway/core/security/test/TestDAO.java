@@ -11,10 +11,11 @@
 
 package org.eclipse.sensinact.gateway.core.security.test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.File;
 import java.net.URL;
@@ -23,21 +24,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-import org.eclipse.sensinact.gateway.core.InvalidServiceProviderException;
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.Mockito;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
-import org.osgi.framework.Bundle;
-import org.osgi.framework.BundleContext;
-import org.osgi.framework.Constants;
-import org.osgi.framework.Filter;
-import org.osgi.framework.InvalidSyntaxException;
-import org.osgi.framework.ServiceReference;
-import org.osgi.service.log.LogService;
-
 import org.eclipse.sensinact.gateway.common.bundle.Mediator;
+import org.eclipse.sensinact.gateway.core.InvalidServiceProviderException;
 import org.eclipse.sensinact.gateway.core.security.dao.AuthenticatedDAO;
 import org.eclipse.sensinact.gateway.core.security.dao.BundleDAO;
 import org.eclipse.sensinact.gateway.core.security.dao.DAOException;
@@ -54,6 +42,19 @@ import org.eclipse.sensinact.gateway.datastore.api.DataStoreService;
 import org.eclipse.sensinact.gateway.datastore.api.UnableToConnectToDataStoreException;
 import org.eclipse.sensinact.gateway.datastore.api.UnableToFindDataStoreException;
 import org.eclipse.sensinact.gateway.datastore.sqlite.SQLiteDataStoreService;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
+import org.osgi.framework.Bundle;
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.Constants;
+import org.osgi.framework.Filter;
+import org.osgi.framework.InvalidSyntaxException;
+import org.osgi.framework.ServiceReference;
+import org.osgi.service.log.LogService;
 
 /**
  *
@@ -95,7 +96,7 @@ public class TestDAO {
 	private DataStoreService dataStoreService;
 	private Mediator mediator;
 
-	@Before
+	@BeforeEach
 	public void init() throws InvalidServiceProviderException, UnableToFindDataStoreException,
 			UnableToConnectToDataStoreException, InvalidSyntaxException {
 		Filter filter = Mockito.mock(Filter.class);
@@ -286,30 +287,34 @@ public class TestDAO {
 		assertEquals(15, list.size());
 	}
 
-	@Test(expected = DAOException.class)
+	@Test
 	public void testImmutableCreate() throws DAOException {
 		ObjectAccessDAO objectAccessDAO = new ObjectAccessDAO(mediator, dataStoreService);
 		ObjectAccessEntity entity = new ObjectAccessEntity(mediator, "FAKE", 12);
+		
+		assertThrows(DAOException.class,()->{
+			
 		objectAccessDAO.create(entity);
-		fail("DAOException was expected");
+		});
 	}
 
-	@Test(expected = DAOException.class)
+	@Test
 	public void testImmutableDelete() throws DAOException, DataStoreException {
 		ObjectAccessDAO objectAccessDAO = new ObjectAccessDAO(mediator, dataStoreService);
 		ObjectAccessEntity entity = objectAccessDAO.find(1l);
-		objectAccessDAO.delete(entity);
-		fail("DAOException was expected");
-	}
+		assertThrows(DAOException.class,()->{
 
-	@Test(expected = DAOException.class)
+		objectAccessDAO.delete(entity);
+		});	}
+
+	@Test
 	public void testImmutableUpdate() throws DAOException, DataStoreException {
 		ObjectAccessDAO objectAccessDAO = new ObjectAccessDAO(mediator, dataStoreService);
 		ObjectAccessEntity entity = objectAccessDAO.find(1l);
 		entity.setLevel(10);
+		assertThrows(DAOException.class,()->{
 		objectAccessDAO.update(entity);
-		fail("DAOException was expected");
-	}
+		});	}
 
 	@Test
 	public void testImmutableSelect() throws DAOException, DataStoreException {

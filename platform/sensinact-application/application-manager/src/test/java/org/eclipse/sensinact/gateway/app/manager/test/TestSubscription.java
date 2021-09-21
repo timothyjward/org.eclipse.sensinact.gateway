@@ -61,8 +61,8 @@ import org.eclipse.sensinact.gateway.core.method.SubscribeResponse;
 import org.eclipse.sensinact.gateway.util.UriUtils;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.mockito.invocation.InvocationOnMock;
@@ -98,7 +98,7 @@ public class TestSubscription   implements TestResult {
     /**
      * @throws Exception
      */
-    @Before
+    @BeforeEach
     public void init() throws Exception {
         MockitoAnnotations.initMocks(this);
         mockedRegistry = new HashMap<String, DataProviderItf>();

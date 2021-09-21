@@ -1,1 +1,2 @@
-Fragment-Host: sensinact-core
+-include: ${sensinact.root.dir}/bnd/default.bnd.bnd
+Fragment-Host: org.eclipse.sensinact.gateway.sensinact-core

@@ -10,6 +10,8 @@
  */
 package org.eclipse.sensinact.gateway.app.basic.test;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import java.io.IOException;
 import java.nio.charset.Charset;
 
@@ -20,21 +22,19 @@ import org.eclipse.sensinact.gateway.app.basic.sna.SetActionFunction;
 import org.eclipse.sensinact.gateway.app.manager.json.AppFunction;
 import org.eclipse.sensinact.gateway.app.manager.json.AppJsonConstant;
 import org.json.JSONObject;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.mockito.Mockito;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.component.ComponentContext;
 
-import junit.framework.TestCase;
-
-public class TestSnaInstaller extends TestCase {
+public class TestSnaInstaller {
 
     private ComponentContext context;
     private BundleContext bundleContext;
     private Bundle bundle;
 
-    @Before
+    @BeforeEach
     public void init() throws Exception {
         context = Mockito.mock(ComponentContext.class);
         bundle = Mockito.mock(Bundle.class);

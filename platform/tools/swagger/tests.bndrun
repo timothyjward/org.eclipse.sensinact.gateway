@@ -9,7 +9,7 @@
 -resolve.effective: active
 
 -runrequires: \
-	bnd.identity;id='${project.artifactId}-tests',\
+	bnd.identity;id='${project.groupId}.${project.artifactId}-tests',\
 	bnd.identity;id=junit-jupiter-engine,\
 	bnd.identity;id=junit-platform-launcher
 -runbundles: \
@@ -25,7 +25,7 @@
 	org.opentest4j;version='[1.2.0,1.2.1)',\
 	org.osgi.util.function;version='[1.1.0,1.1.1)',\
 	org.osgi.util.promise;version='[1.1.1,1.1.2)',\
-	swagger;version='[2.0.0,2.0.1)',\
-	swagger-tests;version='[2.0.0,2.0.1)',\
 	junit-jupiter-params;version='[5.7.2,5.7.3)',\
-	org.osgi.service.http.whiteboard;version='[1.1.0,1.1.1)'
+	org.osgi.service.http.whiteboard;version='[1.1.0,1.1.1)',\
+	org.eclipse.sensinact.gateway.tools.swagger;version='[2.0.0,2.0.1)',\
+	org.eclipse.sensinact.gateway.tools.swagger-tests;version='[2.0.0,2.0.1)'

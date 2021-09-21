@@ -1,3 +1,4 @@
+-include: ${sensinact.root.dir}/bnd/default.tests.bnd
 -make: (*).(jar); type=bnd; recipe="${.}/tb/$1.bnd"
 -includeresource:\
 		-fan.jar,\
