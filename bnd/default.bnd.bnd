@@ -14,4 +14,3 @@ jarsigner: ${if;${isfile;${jarsigner2}};\
 -plugin.sign: aQute.bnd.signing.JartoolSigner;alias="selfsigned";path=${jarsigner};keystore="${sensinact.root.dir}/platform/sensinact-security/cert/keystore.jks";storepass="sensiNact_team"
 -sign: selfsigned
 -verbose: true
-Foo: bar
